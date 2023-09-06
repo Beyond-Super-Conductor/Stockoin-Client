@@ -1,6 +1,5 @@
 import '../styles/globals.css'
-import GlobalHeader from './nav'
-
+import ClientOnly from './ClientOnly'
 
 export const metadata = {
   title: '주식처럼 비트코인하자! 스토코인',
@@ -14,6 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <ClientOnly />
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
@@ -26,3 +26,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+

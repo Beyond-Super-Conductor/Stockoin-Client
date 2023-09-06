@@ -1,8 +1,11 @@
+import Image from 'next/image'
 import React from 'react'
 
 interface Props {
   children: React.ReactNode
 }
+
+// 스프라이트 이미지를 불러옴 다른데 갔다가 ...
 
 export default function template({children}: Props) {
   return (
@@ -10,6 +13,8 @@ export default function template({children}: Props) {
     className='flex justify-between items-center h-full gap-10'
     >
       <article className='flex-1 flex items-center justify-end box-border mt-20 border-r border-r-slate-400'>
+
+        <Image src='/cryptoCoin.png' width={220} height={220} alt='logo' />
         <div className='w-[300px] flex flex-col items-center mr-10'>
           <p className='text-[2.25rem] font-[900]'>Are you Ready to Talk about CryptoCurrency?</p>
           <p className='text-[1.15rem] mt-10 whitespace-pre-line'>
@@ -18,7 +23,7 @@ export default function template({children}: Props) {
             </p>
             <button
             className='font-[700] text-xl bg-blue-500 px-8 py-2 rounded-lg mt-10 hover:bg-blue-600 shadow-md text-white'
-            >스토코인에 대해 더 알아보기</button>
+            >스토코인에 대해 알아보기</button>
         </div>
       </article>
       <article className='flex-1'>

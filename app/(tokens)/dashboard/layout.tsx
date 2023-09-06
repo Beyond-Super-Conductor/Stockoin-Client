@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function DashboardLayout({children}: Props) {
+
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
 {/* // background: linear-gradient(90deg, rgba(89,89,164,1) 57%, rgba(111,86,166,1) 100%); */}

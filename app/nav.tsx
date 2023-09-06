@@ -25,14 +25,15 @@ export default function GlobalHeader() {
         </li>
         
         <li className='flex-1 flex justify-end items-center gap-10'>
-          <button>파트너로그인</button>
-          <button>로그인</button>
-          <button>회원가입</button>
+          <Link href="/partner">파트너로그인</Link>
+          <Link href="/auth">로그인 / 회원가입</Link>
+          <Link href="/auth">내 판</Link>
         </li>
 
       </ul>
-
+      
       <ul className='w-full flex-wrap shadow-md ring-2 ring-slate-300 rounded-md justify-between flex items-center h-auto mt-4 border-b border-slate-400 p-2 text-slate-500 px-4 cursor-pointer hover:bg-black/60 hover:text-white hover:border-2 hover:border-indigo-400 font-semibold'>
+        {/* TODO: 더보기 기능으로 메뉴판 축소하기 */}
       {
         tokenCategory.map((category) => (
         <li className='m-2 min-w-40 min-h-[40px] hover:underline-offset-4 hover:underline hover:text-slate-600 cursor-pointer'>
@@ -41,6 +42,7 @@ export default function GlobalHeader() {
         ))
       }
       </ul>
+      
     </nav>
   )
 }
