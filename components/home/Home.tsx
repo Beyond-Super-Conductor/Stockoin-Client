@@ -1,13 +1,19 @@
-import GlobalHeader from '@/app/nav'
 import React from 'react'
+import EmblaCarousel from './carousel/EmblaCarousel'
+import { EmblaOptionsType } from 'embla-carousel-react'
+
+
+const OPTIONS: EmblaOptionsType = { axis: 'y',loop: true }
+const SLIDE_COUNT = 4
+const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 
 function Home() {
   return (
     <>
     <main className="flex flex-col items-center justify-between">
-      <div className='px-10 w-full h-[240px] border border-slate-400 flex items-center justify-center mt-6 rounded-md'>
-        배너 광고 사장님 구합니다 !!!!!!를 멋있게 만들어 놓기
-      </div>
+      <section className='sandbox__carousel mt-4'>
+      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      </section>
       <div className='flex w-full gap-2'>
       <div className='flex-[0.65] w-full h-[580px] border border-slate-400 flex items-center justify-center mt-6 rounded-md'>
         실시간 차트 - 호버 2초 후 풀페이지로 전환됨.

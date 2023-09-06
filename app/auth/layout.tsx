@@ -13,8 +13,6 @@ export default function AuthLayout({children}: Props) {
   return (
     <div className={`bg-yellow-100/20 min-h-[100vh] h-auto ${notoSansKr.className}`}>
       <div className='h-1' />
-
-      
       <h1 className='mt-4 bg-white pl-4 py-4 border-y-2 border-slate-400'>
         <Link className='flex items-center' href='/'>
           <Image src='/mainLogo.jpg' width={100} height={100} alt='logo' />

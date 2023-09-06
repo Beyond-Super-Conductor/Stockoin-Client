@@ -1,3 +1,4 @@
+
 export const tokenCategory = [
   {
     koName: 'NFC',
@@ -5,7 +6,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    description: '' 
   },
   {
     koName: '오라클',
@@ -145,4 +146,6 @@ export const tokenCategory = [
     description: ''
   },
 
-]
+] as const
+
+
