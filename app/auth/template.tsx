@@ -1,0 +1,29 @@
+import React from 'react'
+
+interface Props {
+  children: React.ReactNode
+}
+
+export default function template({children}: Props) {
+  return (
+    <section
+    className='flex justify-between items-center h-full gap-10'
+    >
+      <article className='flex-1 flex items-center justify-end box-border mt-20 border-r border-r-slate-400'>
+        <div className='w-[300px] flex flex-col items-center mr-10'>
+          <p className='text-[2.25rem] font-[900]'>Are you Ready to Talk about CryptoCurrency?</p>
+          <p className='text-[1.15rem] mt-10 whitespace-pre-line'>
+            스토코인은 월드클래스 가상거래소인 업비트의 신뢰할 수 있는 코인을 다루고 있습니다.{'\n'}
+            스토코인은 가상화폐에 대한 정보를 공유하고, 토론하는 커뮤니티입니다.{'\n'}
+            </p>
+            <button
+            className='font-[700] text-xl bg-blue-500 px-8 py-2 rounded-lg mt-10 hover:bg-blue-600 shadow-md text-white'
+            >스토코인에 대해 더 알아보기</button>
+        </div>
+      </article>
+      <article className='flex-1'>
+      {children}
+      </article>
+    </section>
+  )
+}
