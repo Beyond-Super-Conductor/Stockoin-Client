@@ -23,7 +23,7 @@ const EmblaCarousel = ({slides,options}: Props) => {
           {slides.map((index) => (
             <div className="relative embla__slide" key={index}>
               <p
-                className='whitespace-pre-line w-[90%] text-center absolute text-4xl text-white font-bold top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+                className='whitespace-pre-line w-[90%] text-center absolute text-4xl text-white font-[900] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
                 <span className=' text-transparent text-7xl bg-clip-text bg-gradient-to-r to-sky-400 from-pink-600'>
                 스토코인
                 </span>
@@ -32,7 +32,7 @@ const EmblaCarousel = ({slides,options}: Props) => {
                 광고
                 </span>
                 내면{'\n'}
-                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-sky-400 to-pink-600'>
+                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r to-sky-400 from-pink-600'>
                 대박
                 </span>
                 날수도?
@@ -43,6 +43,7 @@ const EmblaCarousel = ({slides,options}: Props) => {
                 src={imageByIndex(index)}
                 width={900}
                 height={120}
+                quality={40}
                 style={{
                   objectFit: 'fill',
                   aspectRatio: '300/10',
