@@ -1,5 +1,5 @@
 'use client';
-import ShowMoreCategoryButton from '@/components/nav/ShowMoreCategoryButton'
+import ShowMoreCategoryButton from '@/app/components/nav/ShowMoreCategoryButton'
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { tokenCategory } from '@/utils/constants'
 import Image from 'next/image'
@@ -30,7 +30,7 @@ export default function GlobalHeader() {
           <input
             className='border border-slate-400 h-24 pl-4 rounded-md placeholder:text-md min-w-[400px] placeholder:text-slate-500 focus:outline-sky-400'
             type="text"
-            placeholder='주식회사 또는 관심 있는 분야를 검색해보세요!'
+            placeholder='UBCI 또는 관심 있는 토큰을 검색해보세요!'
             />
           <button className='border h-24 w-24 min border-slate-300  rounded-md p-1 hover:bg-slate-300 hover:text-slate-600 '>
             검색</button>
@@ -63,6 +63,7 @@ export default function GlobalHeader() {
         <ShowMoreCategoryButton />
     </ul>
     </nav>
+    {/* ref를 다른 곳에 넣으려면 isIntersectiong 값을 공유할 수 있게 context를 생성해 주어야 함 */}
     <div ref={targetEl} className='absolute w-[100px] h-[100px] -bottom-[100px] bg-transparent z-[9999]'>
     </div>
     </>
