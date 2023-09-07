@@ -60,17 +60,17 @@ export default function GlobalHeader() {
 
       </ul>
       {/* hover:bg-gradient-radial hover:to-[#4a74fe] hover:from-[-50%] from-[#4ad4e9] transition-all duration-500 */}
-      <ul className='relative w-full justify-between flex items-center h-auto mt-4 border-b border-slate-300 px-4 cursor-pointer'>
+      <ul className='relative w-full md:mt-0 mt-8 justify-between flex items-center h-auto border-b border-slate-300 px-4 cursor-pointer'>
         {
           tokenCategory.slice(0,5).map((category) => (
           <li key={category.enName} className='m-2 min-h-[40px] cursor-pointer'>
-            <Link className='h-[40px] text-center flex justify-center items-center gap-2 font-bold' href={`/dashboard/${category.enName}`}>
+            <Link className='h-[40px] text-center flex flex-col md:flex-row justify-center items-center gap-2 font-bold' href={`/dashboard/${category.enName}`}>
               <Image
                 src={category.icon}
                 alt="logo"
                 className='rounded-md' width={30} height={30} style={{aspectRatio: 1}} priority
               />
-              <span className='text-3xl'>{category.koName}</span>
+              <span className='text-xl md:text-3xl block pb-4 md:pb-0'>{category.koName}</span>
             </Link>
           </li>
           ))
