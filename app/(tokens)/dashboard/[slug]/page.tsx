@@ -1,29 +1,29 @@
 'use client'
-import { dashboardTitleValueAtom } from '@/store/dashboardTitleValueAtom';
-import { TokenCategories, token } from '@/types/token';
+import { findCategoryState } from '@/store/findToken';
+import { selectTokenState } from '@/store/selectToken';
+import { token } from '@/types/token';
 import { tokenCategory } from '@/utils/constants';
-import { StaticImageData } from 'next/image';
+
 import Link from 'next/link';
-import { useRouter,useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import React, { Suspense, useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 export default function UbciPage() {
   const {slug} = useParams();
   const [tokens, setTokens] = useState<token[] | []>();
-  const [category, setCategory] = useState<TokenCategories>();
-  const [titleValue, setTitleValue] = useRecoilState(dashboardTitleValueAtom);
+  const [findToken, setFindToken] = useRecoilState(findCategoryState);
+  const resetSelectToken = useResetRecoilState(selectTokenState);
+
   
   useEffect(() => {
-    
+    resetSelectToken()
     const findTokenCategory = tokenCategory.find((item) => item.enName === slug);
-
     if(findTokenCategory){
       setTokens(findTokenCategory.tokens);
-      setCategory(findTokenCategory);
-      setTitleValue({enName: findTokenCategory.enName, koName: findTokenCategory.koName})
+      setFindToken({enName: findTokenCategory.enName, koName: findTokenCategory.koName,tokens: findTokenCategory.tokens})
+
     }
-    
   }, [slug])
 
   return (
@@ -34,7 +34,11 @@ export default function UbciPage() {
           
           {
             tokens?.map((token) => (
-              <Link href={`/dashboard/${slug}/${token.enName}`} key={token.enName} className='w-full flex flex-col items-start justify-start p-4 min-h-[80px]'>
+              <Link href={{
+                pathname: `/dashboard/${slug}/${token.enName}`,
+
+                
+                }} key={token.enName} className='w-full flex flex-col items-start justify-start p-4 min-h-[80px]'>
                 <p className='text-sky-500 text-3xl font-bold'>{token.koName}</p>
                 <p className='text-slate-400/80 text-xl'>{token.enName}</p>
               </Link>

@@ -17,14 +17,14 @@ export default function DashboardLayout({children}: Props) {
       <div className='w-full flex items-center justify-end px-4 h-8'>
         <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
       </div>
+
+
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
-        
-        <div className='hover:border-b-2 border-b-2 border-transparent hover:border-b-slate-400'>
+        <div className=''>
           <Link href="/">
-            <Image src="/mainLogo.jpg" alt="logo" className='min-w-[80px] rounded-md' width={80} height={80} style={{aspectRatio: 1}} priority />
+            <Image src="/mainLogo.jpg" alt="logo" className='min-w-[80px] ' width={80} height={80} style={{aspectRatio: 1}} priority />
           </Link>
         </div>
-        
         <div className='p-2 flex-1 flex items-center justify-between bg-gradient-to-l to-[rgba(89,89,164,1)] from-[-50%] from-[#b3f864] h-full'>
           <CoinTitle />
           <form action="" className='flex items-center gap-2'>

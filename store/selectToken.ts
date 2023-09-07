@@ -1,10 +1,8 @@
 import { token } from "@/types/token";
 import { atom } from "recoil";
 
-
-
-export const dashboardTitleValueAtom = atom<token>({
-  key: 'dashboardTitleValueAtom',
+export const selectTokenState = atom<token>({
+  key: 'selectToken',
   default: {
     koName: '',
     enName: '',

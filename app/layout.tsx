@@ -1,9 +1,8 @@
 import Recoil from '@/app/components/common/recoil'
 import '../styles/globals.css'
-import ClientOnly from './ClientOnly'
 
 export const metadata = {
-  title: '주식처럼 비트코인하자! 스토코인',
+  title: '주식처럼 코인하자! let\'s 스토코인!',
   description: '스토코인은 가상화폐에 대한 토론을 나누는 커뮤니티입니다.',
 }
 
