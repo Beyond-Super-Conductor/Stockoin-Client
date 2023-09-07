@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
     <main className="flex flex-col items-center justify-between">
-      <section className='sandbox__carousel mt-4'>
+      <section className='sandbox__carousel mt-4 w-full'>
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
       <div className='flex w-full gap-2'>

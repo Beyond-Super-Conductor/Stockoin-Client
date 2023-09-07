@@ -17,36 +17,37 @@ const EmblaCarousel = ({slides,options}: Props) => {
   const [emblaRef] = useEmblaCarousel(options, [Autoplay()])
 
   return (
-    <div className="embla">
-      <div className="embla__viewport border-8 ring-8" ref={emblaRef}>
+    <div className="embla border-8 border-l-red-400 border-r-sky-400 border-t-yellow-400 border-b-indigo-400 rounded-full overflow-hidden">
+      <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
             <div className="relative embla__slide" key={index}>
               <p
-                className='whitespace-pre-line w-[90%] text-center absolute text-4xl text-white font-[900] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-                <span className=' text-transparent text-7xl bg-clip-text bg-gradient-to-r to-sky-400 from-pink-600'>
+                className='whitespace-pre-line text-center absolute text-4xl text-white font-[900] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+                  {/* linear-gradient(99.77deg, #018aee 0%, #00b886 100%); */}
+                <span className=' text-transparent text-7xl bg-clip-text bg-gradient-to-r from-[#018aee] to-[#00b886]'>
                 스토코인
                 </span>
                 에{'\n'}
-                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-sky-400 to-pink-600'>
+                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-[#018aee] to-[#00b886]'>
                 광고
                 </span>
                 내면{'\n'}
-                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r to-sky-400 from-pink-600'>
+                <span className='font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-[#018aee] to-[#00b886]'>
                 대박
                 </span>
                 날수도?
               </p>
               <Image
                 priority
-                className="embla__slide__img grayscale-[60%]"
+                className="embla__slide__img grayscale-[80%]"
                 src={imageByIndex(index)}
                 width={900}
                 height={120}
                 quality={40}
                 style={{
-                  objectFit: 'fill',
-                  aspectRatio: '300/10',
+                  objectFit: 'cover',
+                  aspectRatio: '300/20',
                 }}
                 alt="Your alt text"
               />

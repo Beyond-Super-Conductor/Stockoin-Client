@@ -20,7 +20,7 @@ export default function AuthLayout({children}: Props) {
         </Link>
       </h1>
       <main className='m-4 p-8 bg-gradient-to-l to-[#5959a4] from-[-50%] from-[#b3f864] text-white h-auto border border-slate-400 rounded-md'>
-        <h2 className='text-[1.75rem] text-center'>놀면서 투자하는 코인 커뮤니티, 스토코인</h2>
+        <h2 className='text-[3rem] font-[700] text-center'>놀면서 투자하는 코인 커뮤니티, 스토코인</h2>
         {children}
       </main>
     </div>

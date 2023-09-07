@@ -20,7 +20,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className='max-w-[1200px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto'>
+                                          
+      <body className='max-w-[1200px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto bg-gradient-to-tl to-white from-[20%] from-teal-100'>
           {children}
       </body>
     </html>

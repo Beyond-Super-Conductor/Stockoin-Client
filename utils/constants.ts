@@ -6,7 +6,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: '' 
+    icon: '🩷' 
   },
   {
     koName: '오라클',
@@ -14,7 +14,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🧡'
   },
   {
     koName: 'IoT',
@@ -22,7 +22,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💛'
   },
   {
     koName: '스마트 컨트랙',
@@ -30,7 +30,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💚'
   },
   {
     koName: '디파이',
@@ -38,7 +38,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🩵'
   },
   {
     koName: '간편결제 플랫폼',
@@ -46,7 +46,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💙'
   },
   {
     koName: '게임',
@@ -55,7 +55,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💜'
   },
   {
     koName: '광고산업',
@@ -63,7 +63,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💜'
   },
   {
     koName: '데이터저장 서비스',
@@ -71,7 +71,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💙'
   },
   {
     koName: '분산화거래소',
@@ -79,7 +79,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🩷'
   },
   {
     koName: '소셜네트워킹',
@@ -87,7 +87,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💖'
   },
   {
     koName: '인증서비스',
@@ -95,7 +95,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🤍'
   },
   {
     koName: '컨텐츠 생산 및 중개',
@@ -103,7 +103,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🩵'
   },
   {
     koName: '플랫폼',
@@ -111,7 +111,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💛'
   },
   {
     koName: 'SNS 컨텐츠',
@@ -119,7 +119,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🧡'
   },
   {
     koName: '비트코인 그룹',
@@ -127,7 +127,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '🩷'
   },
   {
     koName: '이더리움 그룹',
@@ -135,7 +135,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💝'
   },
   {
     koName: '기타',
@@ -143,7 +143,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    description: ''
+    icon: '💞'
   },
 
 ] as const
