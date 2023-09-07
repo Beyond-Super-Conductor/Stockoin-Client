@@ -30,7 +30,7 @@ export default function GlobalHeader() {
   return (
     <nav id="main--navigation" className={`sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' } transition-all duration-300`}>
       
-      <ul className='w-full flex items-center justify-center px-4 '>
+      <ul className='w-full flex md:flex-row flex-col items-center justify-center px-4 '>
         
         <li className='flex items-center justify-between flex-1 my-4'>
           <Link href="/">
@@ -52,7 +52,7 @@ export default function GlobalHeader() {
           </form>
         </li>
         
-        <li className='flex-1 flex justify-end items-center gap-10'>
+        <li className=' flex-1 flex justify-end items-center gap-10'>
           <Link href="/partner">파트너로그인</Link>
           <Link href="/auth">로그인 / 회원가입</Link>
           <Link href="/auth">내 판</Link>
