@@ -1,6 +1,7 @@
 'use client'
 
 import { tokenCategory } from '@/utils/constants'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -26,9 +27,17 @@ export default function ShowMoreCategoryButton() {
               <li>
                 <Link
                   href={`/dashboard/${category.enName}`}
-                  className="text-2xl antialiased block px-4 py-2 text-black shadow-sm hover:shadow-md"
+                  className="text-2xl flex items-center gap-4 antialiased px-4 py-2 text-black shadow-sm hover:shadow-md"
                   >
-                    {category.icon} {category.koName}
+                    <Image
+                      src={category.icon}
+                      alt="logo"
+                      className='rounded-md'
+                      width={30} height={30} style={{aspectRatio: 1}}
+                      priority
+                    />
+                    <span className='font-bold'>{category.koName}</span>
+                     
                 </Link>
               </li>
               ))

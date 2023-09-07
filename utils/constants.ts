@@ -1,12 +1,46 @@
+import flow from '@/public/assets/coins/flow.png'
+import oracles from '@/public/assets/coins/oracles.png'
+import bchain from '@/public/assets/coins/bchain.png'
+import avalanche from '@/public/assets/coins/avalanche.png'
+import solana from '@/public/assets/coins/solana.png'
+import chronos from '@/public/assets/coins/chronos.png'
+import engine from '@/public/assets/coins/engine.png'
+import basicattention from '@/public/assets/coins/basicattention.jpeg'
+import sia from '@/public/assets/coins/sia.png'
+import zerox from '@/public/assets/coins/zerox.png'
+import status from '@/public/assets/coins/status.png'
+import anchor from '@/public/assets/coins/anchor.png'
+import ontology from '@/public/assets/coins/ontology.png'
+import tron from '@/public/assets/coins/tron.png'
+import eos from '@/public/assets/coins/eos.png'
+import steam from '@/public/assets/coins/steam.png'
+import ethereum from '@/public/assets/coins/ethereum.png'
+import bitcoin from '@/public/assets/coins/bitcoin.png'
 
 export const tokenCategory = [
+  {
+    koName: '비트코인 그룹',
+    enName: 'bitcoin-group',
+    tokens: [
+      
+    ],
+    icon: bitcoin
+  },
+  {
+    koName: '이더리움 그룹',
+    enName: 'ethereum-group',
+    tokens: [
+      
+    ],
+    icon: ethereum
+  },
   {
     koName: 'NFC',
     enName: 'nfc',
     tokens: [
       
     ],
-    icon: '🩷' 
+    icon: flow
   },
   {
     koName: '오라클',
@@ -14,7 +48,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🧡'
+    icon: oracles
   },
   {
     koName: 'IoT',
@@ -22,7 +56,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💛'
+    icon: bchain
   },
   {
     koName: '스마트 컨트랙',
@@ -30,7 +64,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💚'
+    icon: avalanche
   },
   {
     koName: '디파이',
@@ -38,7 +72,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🩵'
+    icon: solana
   },
   {
     koName: '간편결제 플랫폼',
@@ -46,7 +80,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💙'
+    icon: chronos
   },
   {
     koName: '게임',
@@ -55,7 +89,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💜'
+    icon: engine
   },
   {
     koName: '광고산업',
@@ -63,7 +97,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💜'
+    icon: basicattention
   },
   {
     koName: '데이터저장 서비스',
@@ -71,7 +105,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💙'
+    icon: sia
   },
   {
     koName: '분산화거래소',
@@ -79,7 +113,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🩷'
+    icon: zerox
   },
   {
     koName: '소셜네트워킹',
@@ -87,7 +121,15 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💖'
+    icon: status
+  },
+  {
+    koName: '연산력임대서비스',
+    enName: 'certification-service',
+    tokens: [
+      
+    ],
+    icon: anchor
   },
   {
     koName: '인증서비스',
@@ -95,7 +137,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🤍'
+    icon: ontology
   },
   {
     koName: '컨텐츠 생산 및 중개',
@@ -103,7 +145,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🩵'
+    icon: tron
   },
   {
     koName: '플랫폼',
@@ -111,7 +153,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '💛'
+    icon: eos
   },
   {
     koName: 'SNS 컨텐츠',
@@ -119,31 +161,16 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: '🧡'
+    icon: steam
   },
-  {
-    koName: '비트코인 그룹',
-    enName: 'bitcoin-group',
-    tokens: [
-      
-    ],
-    icon: '🩷'
-  },
-  {
-    koName: '이더리움 그룹',
-    enName: 'ethereum-group',
-    tokens: [
-      
-    ],
-    icon: '💝'
-  },
+  
   {
     koName: '기타',
     enName: 'etc',
     tokens: [
       
     ],
-    icon: '💞'
+    icon: bitcoin
   },
 
 ] as const

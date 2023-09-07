@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
                                           
-      <body className='max-w-[1200px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto bg-gradient-to-tl to-white from-[20%] from-teal-100'>
+      <body className='max-w-[1200px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto bg-gradient-to-tl to-white from-[20%] from-teal-50'>
           {children}
       </body>
     </html>
