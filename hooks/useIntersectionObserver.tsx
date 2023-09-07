@@ -1,4 +1,7 @@
-import  { useCallback, useEffect, useRef, useState } from 'react'
+'use client'
+import { isIntersectingState } from '@/store/isIntersecting';
+import  { useEffect, useRef } from 'react'
+import { useRecoilState } from 'recoil';
 
 interface Props {
   
@@ -7,18 +10,16 @@ interface Props {
 
 function useIntersectionObserver() {
   const targetEl = useRef<HTMLDivElement>(null);
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const [intersectingState, setIntersectingState] = useState(1);
+  const [isIntersecting, setIsIntersecting] = useRecoilState(isIntersectingState);
+  
   
 
   useEffect(() => {
     const io = new IntersectionObserver((entries, observer) => {
       entries.forEach(async (entry) => {
         if(entry.isIntersecting) {
+          io.unobserve(entry.target);
           setIsIntersecting(true);
-        } 
-        else {
-          setIsIntersecting(false);
         }
       }
     )}, { threshold: 0.5 })

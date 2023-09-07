@@ -1,18 +1,33 @@
 'use client';
 import ShowMoreCategoryButton from '@/app/components/nav/ShowMoreCategoryButton'
-import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import { tokenCategory } from '@/utils/constants'
+import useThrottle from '@/hooks/useThrottle';
+import { tokenCategory } from '@/utils/constants';
+
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 export default function GlobalHeader() {
-  const { isIntersecting, targetEl } = useIntersectionObserver();
-  
-  
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const { throttleScroll } = useThrottle();
 
+  const throttleScrollHandler = () => {
+    
+    throttleScroll(() => {
+      
+      window.scrollY > 0
+      ? setIsIntersecting(true)
+      : setIsIntersecting(false)
+    }, 300)
+  }
+
+  useEffect(() => {
+    window.addEventListener(
+      'scroll',
+      throttleScrollHandler);
+  })
   return (
-    <>
     <nav id="main--navigation" className={`sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' } transition-all duration-300`}>
       
       <ul className='w-full flex items-center justify-center px-4 '>
@@ -20,7 +35,7 @@ export default function GlobalHeader() {
         <li className='flex items-center justify-between flex-1 my-4'>
           <Link href="/">
           <Image
-            src="/mainLogo.jpg"
+            src={`${isIntersecting ? '/mainLogo.jpg' : '/mainLogo2.png'} `}
             alt="logo"
             className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
           />
@@ -63,9 +78,6 @@ export default function GlobalHeader() {
         <ShowMoreCategoryButton />
     </ul>
     </nav>
-    {/* ref를 다른 곳에 넣으려면 isIntersectiong 값을 공유할 수 있게 context를 생성해 주어야 함 */}
-    <div ref={targetEl} className='absolute w-[100px] h-[100px] -bottom-[100px] bg-transparent z-[9999]'>
-    </div>
-    </>
+    
   )
 }

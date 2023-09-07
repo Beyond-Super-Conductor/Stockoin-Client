@@ -1,6 +1,8 @@
+
 import React from 'react'
 import EmblaCarousel from './carousel/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel-react'
+
 
 
 const OPTIONS: EmblaOptionsType = { axis: 'y',loop: true }
@@ -8,8 +10,10 @@ const SLIDE_COUNT = 4
 const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 
 function Home() {
+  
   return (
     <>
+    
     <main className="flex flex-col items-center justify-between">
       <section className='sandbox__carousel mt-4 w-full'>
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
@@ -18,6 +22,7 @@ function Home() {
       <div className='flex-[0.65] w-full h-[580px] border border-slate-400 flex items-center justify-center mt-6 rounded-md'>
         실시간 차트 - 호버 2초 후 풀페이지로 전환됨.
       </div>
+      
       <div className='flex-[0.35] w-full h-[580px] border border-slate-400 flex items-center justify-center mt-6 rounded-md'>
         실시간 전체 채팅
       </div>  
@@ -38,7 +43,9 @@ function Home() {
 
       </div>
       </div>
+      
     </main>
+    
     </>
     
   )
