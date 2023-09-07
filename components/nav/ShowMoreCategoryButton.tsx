@@ -24,8 +24,9 @@ export default function ShowMoreCategoryButton() {
           <ul className="py-2 text-sm" aria-labelledby="dropdownDividerButton">
             {
               tokenCategory.slice(5).map((category) => (
-              <li>
+              <li key={category.koName}>
                 <Link
+                  
                   href={`/dashboard/${category.enName}`}
                   className="text-2xl flex items-center gap-4 antialiased px-4 py-2 text-black shadow-sm hover:shadow-md"
                   >

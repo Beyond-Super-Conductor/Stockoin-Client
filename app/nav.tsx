@@ -1,24 +1,28 @@
+'use client';
 import ShowMoreCategoryButton from '@/components/nav/ShowMoreCategoryButton'
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { tokenCategory } from '@/utils/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 export default function GlobalHeader() {
-
-
+  const { isIntersecting, targetEl } = useIntersectionObserver();
+  
+  
 
   return (
-    <nav className='w-full flex flex-col h-auto items-center justify-between'>
+    <>
+    <nav id="main--navigation" className={`sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' } transition-all duration-300`}>
       
-      <ul className='w-full flex items-center justify-center px-4'>
+      <ul className='w-full flex items-center justify-center px-4 '>
         
         <li className='flex items-center justify-between flex-1 my-4'>
           <Link href="/">
           <Image
             src="/mainLogo.jpg"
             alt="logo"
-            className=' rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
+            className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
           />
 
           </Link>
@@ -28,7 +32,7 @@ export default function GlobalHeader() {
             type="text"
             placeholder='주식회사 또는 관심 있는 분야를 검색해보세요!'
             />
-          <button className='border h-24 w-24 min border-slate-300 text-slate-400 rounded-md p-1 hover:bg-slate-300 hover:text-slate-600'>
+          <button className='border h-24 w-24 min border-slate-300  rounded-md p-1 hover:bg-slate-300 hover:text-slate-600 '>
             검색</button>
           </form>
         </li>
@@ -41,10 +45,10 @@ export default function GlobalHeader() {
 
       </ul>
       {/* hover:bg-gradient-radial hover:to-[#4a74fe] hover:from-[-50%] from-[#4ad4e9] transition-all duration-500 */}
-      <ul className='relative w-full justify-between flex items-center h-auto mt-4 border-b border-slate-300 text-slate-500 px-4 cursor-pointer'>
+      <ul className='relative w-full justify-between flex items-center h-auto mt-4 border-b border-slate-300 px-4 cursor-pointer'>
         {
           tokenCategory.slice(0,5).map((category) => (
-          <li className='m-2 min-h-[40px] cursor-pointer'>
+          <li key={category.enName} className='m-2 min-h-[40px] cursor-pointer'>
             <Link className='h-[40px] text-center flex justify-center items-center gap-2 font-bold' href={`/dashboard/${category.enName}`}>
               <Image
                 src={category.icon}
@@ -59,5 +63,8 @@ export default function GlobalHeader() {
         <ShowMoreCategoryButton />
     </ul>
     </nav>
+    <div ref={targetEl} className='absolute w-[100px] h-[100px] -bottom-[100px] bg-transparent z-[9999]'>
+    </div>
+    </>
   )
 }
