@@ -97,7 +97,12 @@ export default function useWebsocket() {
           type: "ticker",
           codes: [
             "KRW-BTC",
-            "KRW-ETH"
+            "KRW-ETH",
+            "KRW-SOL",
+            "KRW-ETC",
+            "KRW-KAVA",
+            "KRW-DOGE",
+            "KRW-GLM"
           ],
           isOnlyRealtime: true
         },
