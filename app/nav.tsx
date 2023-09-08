@@ -13,9 +13,7 @@ export default function GlobalHeader() {
   const { throttleScroll } = useThrottle();
 
   const throttleScrollHandler = () => {
-    
     throttleScroll(() => {
-      
       window.scrollY > 0
       ? setIsIntersecting(true)
       : setIsIntersecting(false)
@@ -34,11 +32,20 @@ export default function GlobalHeader() {
         
         <li className='flex items-center justify-between flex-1 my-4'>
           <Link href="/">
-          <Image
-            src={`${isIntersecting ? '/mainLogo.jpg' : '/mainLogo2.png'} `}
-            alt="logo"
-            className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
-          />
+            {
+              isIntersecting
+              ? <Image
+                  src='/mainLogo.jpg'
+                  alt="logo"
+                  className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
+                />
+            : <Image
+                src='/mainLogo2.png'
+                alt="logo"
+                className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
+              />
+            }
+          
 
           </Link>
           <form className='flex-1 flex items-center gap-2 justify-center'>
