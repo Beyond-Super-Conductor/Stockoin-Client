@@ -18,7 +18,7 @@ export default function DashboardLayoutLogo() {
         icon
         ? <Link href="/">
         <Image
-          src={icon}
+          src={icon.src}
           alt="logo"
           className='min-w-[80px]'
           width={80}
