@@ -1,7 +1,7 @@
 'use client'
 import { findCategoryState } from '@/store/findToken';
 import { selectTokenState } from '@/store/selectToken';
-import { token } from '@/types/token';
+import { Coin } from '@/types/token';
 import { tokenCategory } from '@/utils/constants';
 
 import Link from 'next/link';
@@ -11,7 +11,7 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 
 export default function UbciPage() {
   const {slug} = useParams();
-  const [tokens, setTokens] = useState<token[] | []>();
+  const [tokens, setTokens] = useState<Coin[]>();
   const [findToken, setFindToken] = useRecoilState(findCategoryState);
   const resetSelectToken = useResetRecoilState(selectTokenState);
 
@@ -21,7 +21,7 @@ export default function UbciPage() {
     const findTokenCategory = tokenCategory.find((item) => item.enName === slug);
     if(findTokenCategory){
       setTokens(findTokenCategory.tokens);
-      setFindToken({enName: findTokenCategory.enName, koName: findTokenCategory.koName,tokens: findTokenCategory.tokens})
+      setFindToken({enName: findTokenCategory.enName, koName: findTokenCategory.koName, tokens: findTokenCategory.tokens})
 
     }
   }, [slug])

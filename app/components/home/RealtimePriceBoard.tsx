@@ -9,7 +9,7 @@ export default function RealtimePriceBoard() {
   return (
   <div
     className='flex-[0.65] overflow-y-scroll w-full h-[580px]  flex flex-col gap-10 items-center justify-start mt-6 rounded-md px-10 ring ring-slate-200 shadow-lg shadow-gray-300 '>
-    <div className={`sticky top-0 bg-white py-12 w-full flex items-start justify-around`}>
+    <div className={`sticky top-0 bg-white py-10 w-full flex items-start justify-around`}>
     <span className='block w-10 h-10 mr-4'></span>
     <span className='flex-1 text-2xl font-bold text-center'>마켓</span>
     <span className={`flex-1 text-2xl font-bold text-center`}>가격</span>

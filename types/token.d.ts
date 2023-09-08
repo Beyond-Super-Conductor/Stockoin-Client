@@ -1,13 +1,15 @@
 import { StaticImageData } from "next/image";
 
-export interface token {
+export interface Coin {
   koName: string;
   enName: string;
+  icon: StaticImageData;
 }
 
 export interface TokenCategories {
   koName: string;
   enName: string;
-  tokens: token[];
+  tokens: Coin[];
   icon: string | StaticImageData;
 }
+

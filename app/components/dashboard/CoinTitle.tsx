@@ -17,6 +17,7 @@ export default function CoinTitle() {
       {titleValue.koName}
       </span>
       }
+
       {
         selectToken.enName &&
         <p className='text-4xl text-white'>
@@ -24,6 +25,7 @@ export default function CoinTitle() {
            <span className='text-slate-400 text-2xl'>({selectToken.enName})</span> 
         </p>
       }
+      
       </h1>
   )
 }

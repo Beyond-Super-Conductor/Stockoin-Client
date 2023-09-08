@@ -1,5 +1,6 @@
 
 import CoinTitle from '@/app/components/dashboard/CoinTitle'
+import DashboardLayoutLogo from '@/app/components/dashboard/DashboardLayoutLogo'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -20,11 +21,7 @@ export default function DashboardLayout({children}: Props) {
 
 
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
-        <div className=''>
-          <Link href="/">
-            <Image src="/mainLogo.jpg" alt="logo" className='min-w-[80px] ' width={80} height={80} style={{aspectRatio: 1}} priority />
-          </Link>
-        </div>
+        <DashboardLayoutLogo />
         <div className='p-2 flex-1 flex items-center justify-between bg-gradient-to-l to-[rgba(89,89,164,1)] from-[-50%] from-[#b3f864] h-full'>
           <CoinTitle />
           <form action="" className='flex items-center gap-2'>

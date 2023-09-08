@@ -110,7 +110,7 @@ export default function useWebsocket() {
         cd: cur.market,
         tp: cur.trade_price,
         scr: cur.signed_change_rate,
-        tv: cur.acc_trade_volume_24h,
+        tv: cur.trade_volume,
         ms: cur.market,
         mw: cur.acc_trade_price_24h + '',
         h52wp: cur.highest_52_week_price,

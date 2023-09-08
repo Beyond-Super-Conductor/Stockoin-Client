@@ -45,8 +45,6 @@ export default function GlobalHeader() {
                 className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
               />
             }
-          
-
           </Link>
           <form className='flex-1 flex items-center gap-2 justify-center'>
           <input
@@ -58,7 +56,6 @@ export default function GlobalHeader() {
             검색</button>
           </form>
         </li>
-        
         <li className=' flex-1 flex justify-end items-center gap-10'>
           <Link href="/partner">파트너로그인</Link>
           <Link href="/auth">로그인 / 회원가입</Link>

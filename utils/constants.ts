@@ -1,42 +1,88 @@
-import flow from '@/public/assets/coins/flow.png'
-import oracles from '@/public/assets/coins/oracles.png'
-import bchain from '@/public/assets/coins/bchain.png'
-import avalanche from '@/public/assets/coins/avalanche.png'
-import solana from '@/public/assets/coins/solana.png'
-import chronos from '@/public/assets/coins/chronos.png'
-import engine from '@/public/assets/coins/engine.png'
-import basicattention from '@/public/assets/coins/basicattention.jpeg'
-import sia from '@/public/assets/coins/sia.png'
-import zerox from '@/public/assets/coins/zerox.png'
-import status from '@/public/assets/coins/status.png'
-import anchor from '@/public/assets/coins/anchor.png'
-import ontology from '@/public/assets/coins/ontology.png'
-import tron from '@/public/assets/coins/tron.png'
-import eos from '@/public/assets/coins/eos.png'
-import steam from '@/public/assets/coins/steam.png'
-import ethereum from '@/public/assets/coins/ethereum.png'
+import inch from '@/public/assets/coins/1inch.webp'
+import XTZ from '@/public/assets/coins/XTZ.webp'
+import aave from '@/public/assets/coins/aave.png'
+import ada from '@/public/assets/coins/ada.webp'
+import ankr from '@/public/assets/coins/ankr.png'
+import avax from '@/public/assets/coins/avax.png'
+import axs from '@/public/assets/coins/axs.png'
+import bat from '@/public/assets/coins/bat.jpeg'
 import bitcoin from '@/public/assets/coins/bitcoin.png'
+import bitcoin_cash from '@/public/assets/coins/bitcoin_cash.jpeg'
+import bitcoin_gold from '@/public/assets/coins/bitcoin_gold.jpeg'
+import bitcoin_sv from '@/public/assets/coins/bitcoin_sv.jpeg'
+import chz from '@/public/assets/coins/chz.png'
+import cro from '@/public/assets/coins/cro.png'
+import enj from '@/public/assets/coins/enj.png'
+import eos from '@/public/assets/coins/eos.png'
+import ethereum from '@/public/assets/coins/ethereum.png'
+import ethereum_classic from '@/public/assets/coins/ethereum_classic.png'
+import flow from '@/public/assets/coins/flow.png'
+import glm from '@/public/assets/coins/glm.png'
+import gmt from '@/public/assets/coins/gmt.png'
+import icx from '@/public/assets/coins/icx.png'
+import iost from '@/public/assets/coins/iost.png'
+import iota from '@/public/assets/coins/iota.png'
+import iq from '@/public/assets/coins/iq.png'
+import jst from '@/public/assets/coins/jst.webp'
+import knc from '@/public/assets/coins/knc.png'
+import link from '@/public/assets/coins/link.png'
+import mana from '@/public/assets/coins/mana.jpeg'
+import mbl from '@/public/assets/coins/mbl.png'
+import mvl from '@/public/assets/coins/mvl.jpeg'
+import neo from '@/public/assets/coins/neo.png'
+import ont from '@/public/assets/coins/ont.png'
+import pla from '@/public/assets/coins/pla.png'
+import powr from '@/public/assets/coins/powr.png'
+import qtum from '@/public/assets/coins/qtum.png'
+import sand from '@/public/assets/coins/sand.webp'
+import sbd from '@/public/assets/coins/sbd.png'
+import sia from '@/public/assets/coins/sia.png'
+import snt from '@/public/assets/coins/snt.png'
+import sol from '@/public/assets/coins/sol.png'
+import steem from '@/public/assets/coins/steem.png'
+import storj from '@/public/assets/coins/storj.png'
+import stx from '@/public/assets/coins/stx.png'
+import tfuel from '@/public/assets/coins/tfuel.png'
+import theta from '@/public/assets/coins/theta.jpeg'
+import tron from '@/public/assets/coins/tron.png'
+import vet from '@/public/assets/coins/vet.png'
+import waves from '@/public/assets/coins/waves.png'
+import waxp from '@/public/assets/coins/waxp.png'
+import xem from '@/public/assets/coins/xem.png'
+import xlm from '@/public/assets/coins/xlm.png'
+import zerox from '@/public/assets/coins/zerox.png'
+import zil from '@/public/assets/coins/zil.png'
+import zrx from '@/public/assets/coins/zrx.png'
+import kava from '@/public/assets/coins/kava.png'
+import rfr from '@/public/assets/coins/rfr.png'
+import cvc from '@/public/assets/coins/cvc.png'
+import meta from '@/public/assets/coins/meta.png'
 
 export const tokenCategory = [
   {
     koName: '비트코인 그룹',
     enName: 'bitcoin-group',
+    
     tokens: [
       {
         koName: '비트코인',
-        enName: 'BTC'
+        enName: 'BTC',
+        icon: bitcoin
       },
       {
         koName: '비트코인-캐시',
-        enName: 'BCH'
+        enName: 'BCH',
+        icon: bitcoin_cash
       },
       {
         koName: '비트코인에스브이',
-        enName: 'BSV'
+        enName: 'BSV',
+        icon: bitcoin_sv
       },
       {
         koName: '비트코인골드',
-        enName: 'BTG'
+        enName: 'BTG',
+        icon: bitcoin_gold
       }
     ],
     icon: bitcoin
@@ -44,14 +90,18 @@ export const tokenCategory = [
   {
     koName: '이더리움 그룹',
     enName: 'ethereum-group',
+    
     tokens: [
       {
         koName: '이더리움',
-        enName: 'ETH'
+        enName: 'ETH',
+        icon: ethereum
+        
       },
       {
         koName: '이더리움클래식',
-        enName: 'ETC'
+        enName: 'ETC',
+        icon: ethereum_classic
       }
     ],
     icon: ethereum
@@ -59,46 +109,57 @@ export const tokenCategory = [
   {
     koName: 'NFC',
     enName: 'nfc',
+    
     tokens: [
       {
         koName: '엑시인피니티',
-        enName: 'AXS'
+        enName: 'AXS',
+        icon: axs
       },
       {
         koName: '쎄타토큰',
-        enName: 'THETA'
+        enName: 'THETA',
+        icon: theta
       },
       {
         koName: '샌드박스',
-        enName: 'SAND'
+        enName: 'SAND',
+        icon: sand
       },
       {
         koName: '디센트럴랜드',
-        enName: 'MANA'
+        enName: 'MANA',
+        icon: mana
       },
       {
         koName: '플로우',
-        enName: 'FLOW'
+        enName: 'FLOW',
+        icon: flow
       },
       {
         koName: '칠리즈',
-        enName: 'CHZ'
+        enName: 'CHZ',
+        icon: chz
       },
       {
         koName: '엔진코인',
-        enName: 'ENJ'
+        enName: 'ENJ',
+        icon: enj
       },
       {
         koName: '스테픈',
-        enName: 'GMT'
+        enName: 'GMT',
+        icon: gmt
       },
       {
         koName: '왁스',
-        enName: 'WAXP'
+        enName: 'WAXP',
+        icon: waxp
       },
       {
         koName: '플레이댑',
-        enName: 'PLA'
+        enName: 'PLA',
+        icon: pla
       },
       
     ],
@@ -107,170 +168,204 @@ export const tokenCategory = [
   {
     koName: '디파이',
     enName: 'defi',
+    
     tokens: [
       {
         koName: '솔라나',
-        enName: 'SOL'
+        enName: 'SOL',
+        icon: sol
       },
       {
         koName: '에이브',
-        enName: 'AAVE'
+        enName: 'AAVE',
+        icon: aave
       },
       {
         koName: '카바',
-        enName: 'KAVA'
+        enName: 'KAVA',
+        icon: kava
       },
       {
         koName: '1인치네트워크',
-        enName: '1INCH'
+        enName: '1INCH',
+        icon: inch
       },
       {
         koName: '저스트',
-        enName: 'JST'
+        enName: 'JST',
+        icon: jst
       },
       {
         koName: '카이버네트워크',
-        enName: 'KNC'
+        enName: 'KNC',
+        icon: knc
       }
     ],
-    icon: solana
+    icon: sol
   },
   {
     koName: '스마트 컨트랙',
     enName: 'smart-contracts',
+    
     tokens: [
       {
         koName: '이더리움',
-        enName: 'ETH'
+        enName: 'ETH',
+        icon: ethereum
       },
       {
         koName: '아발란체',
-        enName: 'AVAX'
+        enName: 'AVAX',
+        icon: avax
       },
       {
         koName: '스텔라루멘',
-        enName: 'XLM'
+        enName: 'XLM',
+        icon: xlm
       },
       {
         koName: '체인링크',
-        enName: 'LINK'
+        enName: 'LINK',
+        icon: link
       },
       {
         koName: '이더리움클래식',
-        enName: 'ETC'
+        enName: 'ETC',
+        icon: ethereum_classic
       },
       {
         koName: '비체인',
-        enName: 'VET'
+        enName: 'VET',
+        icon: vet
       },
       {
         koName: '테조스',
-        enName: 'XTZ'
+        enName: 'XTZ',
+        icon: XTZ
       },
       {
         koName: '스택스',
-        enName: 'STX'
+        enName: 'STX',
+        icon: stx
       },
       {
         koName: '이오스',
-        enName: 'EOS'
+        enName: 'EOS',
+        icon: eos
       },
       {
         koName: '네오',
-        enName: 'NEO'
+        enName: 'NEO',
+        icon: neo
       },
     ],
-    icon: avalanche
+    icon: avax
   },
   {
     koName: '오라클',
     enName: 'oracle',
+    
     tokens: [
       {
         koName: '체인링크',
-        enName: 'LINK'
+        enName: 'LINK',
+        icon: link
       }
     ],
-    icon: oracles
+    icon: link
   },
   {
     koName: 'IoT',
     enName: 'iot',
+    
     tokens: [
       {
         koName: '비체인',
-        enName: 'VET'
+        enName: 'VET',
+        icon: vet
       },
       {
         koName: '아이오타',
-        enName: 'IOTA'
+        enName: 'IOTA',
+        icon: iota
       },
       {
         koName: '아이오에스티',
-        enName: 'IOST'
+        enName: 'IOST',
+        icon: iost
       },
       {
         koName: '엠블',
-        enName: 'MVL'
+        enName: 'MVL',
+        icon: mvl
       },
       {
         koName: '파워렛저',
-        enName: 'POWR'
+        enName: 'POWR',
+        icon: powr
       }
     ],
-    icon: bchain
+    icon: vet
   },
   
   
   {
     koName: '간편결제 플랫폼',
     enName: 'market-place',
+    
     tokens: [
       {
         koName: '크로노스',
-        enName: 'CRO'
+        enName: 'CRO',
+        icon: cro
       }
     ],
-    icon: chronos
+    icon: cro
   },
   {
     koName: '게임',
     enName: 'game',
-    
     tokens: [
       {
         koName: '엔진코인',
-        enName: 'ENJ'
+        enName: 'ENJ',
+        icon: enj
       },
       {
         koName: '리퍼리움',
-        enName: 'RFR'
+        enName: 'RFR',
+        icon: rfr
       }
     ],
-    icon: engine
+    icon: enj
   },
   {
     koName: '광고산업',
     enName: 'advertisement',
+    
     tokens: [
       {
         koName: '베이직어텐션토큰',
-        enName: 'BAT'
+        enName: 'BAT',
+        icon: bat
       }
     ],
-    icon: basicattention
+    icon: bat
   },
   {
     koName: '데이터저장 서비스',
     enName: 'data-store-service',
+    
     tokens: [
       {
         koName: '스토리지',
-        enName: 'STORJ'
+        enName: 'STORJ',
+        icon: storj
       },
       {
         koName: '시아코인',
-        enName: 'SC'
+        enName: 'SC',
+        icon: sia
       }
     ],
     icon: sia
@@ -278,18 +373,22 @@ export const tokenCategory = [
   {
     koName: '분산화거래소',
     enName: 'dex',
+    
     tokens: [
       {
         koName: '이더리움',
-        enName: 'ETH'
+        enName: 'ETH',
+        icon: ethereum
       },
       {
         koName: '웨이브',
-        enName: 'WAVES'
+        enName: 'WAVES',
+        icon: waves
       },
       {
-        koName: 'wpfhdprtm',
-        enName: 'ZRX'
+        koName: '제로엑스프로토콜',
+        enName: 'ZRX',
+        icon: zrx
       }
     ],
     icon: zerox
@@ -297,71 +396,86 @@ export const tokenCategory = [
   {
     koName: '소셜네트워킹',
     enName: 'social-networking',
+    
     tokens: [
       {
         koName: '스테이터스네트워크토큰',
-        enName: 'SNT'
+        enName: 'SNT',
+        icon: snt
       }
     ],
-    icon: status
+    icon: snt
   },
   {
     koName: '연산력임대서비스',
     enName: 'certification-service',
+    
     tokens: [
       {
         koName: '앵커',
-        enName: 'ANKR'
+        enName: 'ANKR',
+        icon: ankr
       },
       {
         koName: '골렘',
-        enName: 'GLM'
+        enName: 'GLM',
+        icon: glm
       }
     ],
-    icon: anchor
+    icon: ankr
   },
   {
     koName: '인증서비스',
     enName: 'certification-service',
+    
     tokens: [
       {
         koName: '온톨로지',
-        enName: 'ONT'
+        enName: 'ONT',
+        icon: ont
       },
       {
         koName: '시빅',
-        enName: 'CVC'
+        enName: 'CVC',
+        icon: cvc
       },
       {
         koName: '메타디움',
-        enName: 'META'
+        enName: 'META',
+        icon: meta
       }
     ],
-    icon: ontology
+    icon: ont
   },
   {
     koName: '컨텐츠 생산 및 중개',
     enName: 'content-production',
+    
     tokens: [
       {
         koName: '트론',
-        enName: 'TRX'
+        enName: 'TRX',
+        icon: tron
       },
       {
         koName: '쎄타토큰',
-        enName: 'THETA'
+        enName: 'THETA',
+        icon: theta
       },
       {
         koName: '쎄타퓨엘',
-        enName: 'TFUEL'
+        enName: 'TFUEL',
+        icon: tfuel
       },
       {
         koName: '아이큐',
-        enName: 'IQ'
+        enName: 'IQ',
+        icon: iq
       },
       {
         koName: '무비블록',
-        enName: 'MBL'
+        enName: 'MBL',
+        icon: mbl
       }
 
     ],
@@ -370,46 +484,57 @@ export const tokenCategory = [
   {
     koName: '플랫폼',
     enName: 'platform',
+    
     tokens: [
       {
         koName: '이오스',
-        enName: 'EOS'
+        enName: 'EOS',
+        icon: eos
       },
       {
         koName: '에이다',
-        enName: 'ADA'
+        enName: 'ADA',
+        icon: ada
       },
       {
         koName: '이더리움',
-        enName: 'ETH'
+        enName: 'ETH',
+        icon: ethereum
       },
       {
         koName: '네오',
-        enName: 'NEO'
+        enName: 'NEO',
+        icon: neo
       },
       {
         koName: '질리카',
-        enName: 'ZIL'
+        enName: 'ZIL',
+        icon: zil
       },
       {
         koName: '퀀텀',
-        enName: 'QTUM'
+        enName: 'QTUM',
+        icon: qtum
       },
       {
         koName: '넴',
-        enName: 'XEM'
+        enName: 'XEM',
+        icon: xem
       },
       {
         koName: '웨이브',
-        enName: 'WAVES'
+        enName: 'WAVES',
+        icon: waves
       },
       {
         koName: '아이콘',
-        enName: 'ICX'
+        enName: 'ICX',
+        icon: icx
       },
       {
         koName: '온톨로지',
-        enName: 'ONT'
+        enName: 'ONT',
+        icon: ont
       }
     ],
     icon: eos
@@ -417,22 +542,26 @@ export const tokenCategory = [
   {
     koName: 'SNS 컨텐츠',
     enName: 'sns-contents',
+    
     tokens: [
       {
         koName: '스팀',
-        enName: 'STEEM'
+        enName: 'STEEM',
+        icon: steem
       },
       {
         koName: '스팀달러',
-        enName: 'SBD'
+        enName: 'SBD',
+        icon: sbd
       }
     ],
-    icon: steam
+    icon: steem
   },
   
   {
     koName: '기타',
     enName: 'etc',
+    
     tokens: [
       
     ],
