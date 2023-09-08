@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko'>                             
-      <body className='max-w-[1200px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto bg-gradient-to-tl to-white from-[20%] from-teal-50'>
+      <body className='max-w-[1280px] my-0 mx-auto bg-slate-100/80 min-h-[100vh] h-auto bg-gradient-to-tl to-white from-[20%] from-teal-50'>
         <Recoil>
           {children}
         </Recoil>

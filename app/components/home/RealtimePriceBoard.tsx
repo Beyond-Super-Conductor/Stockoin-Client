@@ -7,8 +7,9 @@ export default function RealtimePriceBoard() {
   const { ticker } = useWebsocket();
 
   return (
-  <div className='flex-[0.65] w-full h-[580px] border border-slate-400 flex flex-col gap-10 items-center justify-start mt-6 rounded-md p-10'>
-    <div className={` w-full flex items-start justify-around`}>
+  <div
+    className='flex-[0.65] overflow-y-scroll w-full h-[580px]  flex flex-col gap-10 items-center justify-start mt-6 rounded-md px-10 ring ring-slate-200 shadow-lg shadow-gray-300 '>
+    <div className={`sticky top-0 bg-white py-12 w-full flex items-start justify-around`}>
     <span className='block w-10 h-10 mr-4'></span>
     <span className='flex-1 text-2xl font-bold text-center'>마켓</span>
     <span className={`flex-1 text-2xl font-bold text-center`}>가격</span>
@@ -24,7 +25,7 @@ export default function RealtimePriceBoard() {
               <span className='block w-10 h-10 border border-black mr-4'></span>
               <span className='flex-1 text-2xl font-bold text-center'>{key.replace('KRW-','')}</span>
               <span className={`flex-1 text-2xl font-bold text-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>{(ticker[key].tp).toLocaleString()} 원</span>
-              <span className='flex-1 text-2xl font-bold text-center'> {(ticker[key].scr * 100).toFixed(3)}%</span>
+              <span className={`flex-1 text-2xl font-bold text-center ${ticker[key].scr > 0 ? 'text-red-500' : 'text-blue-400'}`}> {(ticker[key].scr * 100).toFixed(3)}%</span>
               <span className='flex-1 text-2xl font-bold text-center'> {(ticker[key].tv).toFixed(3)}개</span>
               
               {/* <span className='text-2xl font-bold'>{ticker[key].ms}</span> */}

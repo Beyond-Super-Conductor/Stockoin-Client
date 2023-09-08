@@ -5,6 +5,35 @@ import crypto from 'crypto';
 import uuid from "react-uuid";
 
 
+interface ResponseTicker {
+  market: string,
+  trade_date: number,
+  trade_time:number,
+  trade_date_kst:number,
+  trade_time_kst:number,
+  trade_timestamp:number,
+  opening_price:number
+  high_price:number
+  low_price:number
+  trade_price:number
+  prev_closing_price:number
+  change: string,
+  change_price: number
+  change_rate: number
+  signed_change_price: number
+  signed_change_rate: number
+  trade_volume: number
+  acc_trade_price: number
+  acc_trade_price_24h: number
+  acc_trade_volume: number
+  acc_trade_volume_24h: number
+  highest_52_week_price: number
+  highest_52_week_date: string
+  lowest_52_week_price: number
+  lowest_52_week_date: string
+  timestamp: number
+}
+
 interface CoinTicker {
   cd: string; // 코인 코드 (KRW-BTC)
   tp: number; // 현재가 
@@ -55,8 +84,6 @@ export default function useWebsocket() {
     // 같은 상태를 업데이트 할 때, 외부에서 과거 값 참조를 하게 되면 정상적으로 처리되지 않을 수 있음.
     // 이전 상태(prevTicker)에 대한 참조 없이 업데이트
     setTicker((prevTicker) => {
-      
-      
       if (data && !prevTicker[data.cd]) {
         return {
           ...prevTicker,
@@ -71,13 +98,44 @@ export default function useWebsocket() {
           [data.cd]: { ...data, isRising }
         };
       }
-
       return prevTicker;
-
     });
   };
+  const getInitTicker = async () => {
+    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM,KRW-SAND,KRW-FLOW,KRW-SNT,KRW-WAVES');
+    const data:ResponseTicker[] = await res.json();
+    const initTicker = data.reduce((acc,cur) => {
+      const isRising = cur.opening_price < cur.trade_price; 
+      acc[cur.market] = {
+        cd: cur.market,
+        tp: cur.trade_price,
+        scr: cur.signed_change_rate,
+        tv: cur.acc_trade_volume_24h,
+        ms: cur.market,
+        mw: cur.acc_trade_price_24h + '',
+        h52wp: cur.highest_52_week_price,
+        h52wdt: cur.highest_52_week_date,
+        l52wp: cur.lowest_52_week_price,
+        l52wdt: cur.lowest_52_week_date,
+        atp24h: cur.acc_trade_price_24h,
+        atv24h: cur.acc_trade_volume_24h,
+        isRising
+      }
+      return acc;
+    }
+    ,{} as Record<string,CoinTicker>)
+    setTicker(initTicker);
+    
+
+  }
+// https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM
+  useEffect(() => {
+    
+  },[])
+
 
   useEffect(() => {
+    getInitTicker();
     const payload = {
         access_key :process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY,
         nonce: uuid(),
@@ -95,15 +153,7 @@ export default function useWebsocket() {
         },
         {
           type: "ticker",
-          codes: [
-            "KRW-BTC",
-            "KRW-ETH",
-            "KRW-SOL",
-            "KRW-ETC",
-            "KRW-KAVA",
-            "KRW-DOGE",
-            "KRW-GLM"
-          ],
+          codes: [ "KRW-BTC","KRW-ETH","KRW-SOL","KRW-ETC","KRW-KAVA","KRW-DOGE","KRW-GLM","KRW-SAND","KRW-FLOW,KRW-SNT,KRW-WAVES"],
           isOnlyRealtime: true
         },
         {

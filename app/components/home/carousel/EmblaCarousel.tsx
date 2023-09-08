@@ -17,7 +17,7 @@ const EmblaCarousel = ({slides,options}: Props) => {
   const [emblaRef] = useEmblaCarousel(options, [Autoplay()])
 
   return (
-    <div className="embla border-8 border-l-red-400 border-r-sky-400 border-t-yellow-400 border-b-indigo-400 rounded-full overflow-hidden my-12">
+    <div className="embla ring ring-slate-200 shadow-lg shadow-gray-300 rounded-full overflow-hidden my-12">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
