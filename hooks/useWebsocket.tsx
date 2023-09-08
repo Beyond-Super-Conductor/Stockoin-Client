@@ -6,18 +6,19 @@ import uuid from "react-uuid";
 
 
 interface CoinTicker {
-  cd: string;
-  tp: number;
-  scr: number;
-  tv: number;
-  ms: string;
-  mw: string;
-  h52wp: number;
-  h52wdt: string;
-  l52wp: number;
-  l52wdt: string;
-  atp24h: number;
-  atv24h: number;
+  cd: string; // 코인 코드 (KRW-BTC)
+  tp: number; // 현재가 
+  scr: number; // 전일대비 등락률
+  tv: number; // 가장 최근 거래량
+  ms: string; // 시장명
+  mw: string; // 시가총액
+  h52wp: number; // 52주 최고가
+  h52wdt: string; // 52주 최고가 달성일
+  l52wp: number; // 52주 최저가
+  l52wdt: string; // 52주 최저가 달성일
+  atp24h: number; // 24시간 가격
+  atv24h: number; // 24시간  거래량
+  isRising: boolean;
 }
 
 export function base64UrlFromBase64(str: string) {
@@ -89,9 +90,10 @@ export default function useWebsocket() {
       const data:CoinTicker = JSON.parse(Buffer.from(e.data).toString('utf-8'));
 
       if(!ticker[data.cd] || ticker[data.cd].cd === data.cd && ticker[data.cd].tp !== data.tp){
+        const isRising = ticker[data.cd].tp < data.tp
         setTicker((prev) => ({
           ...prev,
-          [data.cd]: data
+          [data.cd]: {...data,isRising}
         }))
       }
         

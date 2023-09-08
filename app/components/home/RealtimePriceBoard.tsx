@@ -11,12 +11,14 @@ export default function RealtimePriceBoard() {
     {
       ticker && Object.keys(ticker).map((key) => {
         return (
-          <div key={key} className='flex flex-col items-center justify-center'>
+          <div key={key} className={`flex flex-col items-center justify-center`}>
             <div className='flex items-center justify-center'>
               {/* <img src={`https://static.upbit.com/logos/${key}.png`} alt="logo" className='w-12 h-12' /> */}
+              {/* 코인이름 */}
               <span className='text-2xl font-bold'>{key}</span>
             </div>
-            <div className='flex items-center justify-center'>
+            {/* 현재가 */}
+            <div className={`flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
               <span className='text-2xl font-bold'>{ticker[key].tp}</span>
               <span className='text-2xl font-bold'>{ticker[key].scr}</span>
             </div>
