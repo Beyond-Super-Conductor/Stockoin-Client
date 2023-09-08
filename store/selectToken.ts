@@ -6,6 +6,6 @@ export const selectTokenState = atom<Coin>({
   default: {
     koName: '',
     enName: '',
-    icon: ''
+    icon: null
   },
 });

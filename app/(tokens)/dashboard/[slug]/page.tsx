@@ -12,7 +12,7 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 export default function UbciPage() {
   const {slug} = useParams();
   const [tokens, setTokens] = useState<Coin[]>();
-  const [findToken, setFindToken] = useRecoilState(findCategoryState);
+  const [findCategory, setFindCategory] = useRecoilState(findCategoryState);
   const resetSelectToken = useResetRecoilState(selectTokenState);
 
   
@@ -20,8 +20,9 @@ export default function UbciPage() {
     resetSelectToken()
     const findTokenCategory = tokenCategory.find((item) => item.enName === slug);
     if(findTokenCategory){
-      setTokens(findTokenCategory.tokens);
-      setFindToken({enName: findTokenCategory.enName, koName: findTokenCategory.koName, tokens: findTokenCategory.tokens})
+      const { enName,icon,koName,tokens } = findTokenCategory
+      setTokens(tokens);
+      setFindCategory({enName: enName, koName: koName, tokens: tokens})
 
     }
   }, [slug])

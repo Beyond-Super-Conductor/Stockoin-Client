@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 export interface Coin {
   koName: string;
   enName: string;
-  icon: StaticImageData;
+  icon: StaticImageData | null;
 }
 
 export interface TokenCategories {
