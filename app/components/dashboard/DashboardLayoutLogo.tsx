@@ -11,7 +11,7 @@ import { useRecoilValue } from 'recoil';
 
 export default function DashboardLayoutLogo() {
   const { icon } = useRecoilValue(selectTokenState);
-  console.log(icon);
+  
   return (
     <div className='border border-indigo-200'>
       {
@@ -25,6 +25,7 @@ export default function DashboardLayoutLogo() {
           height={80}
           style={{aspectRatio: 1}}
           priority
+          
         />
       </Link>
         : <Link href="/">
@@ -35,7 +36,6 @@ export default function DashboardLayoutLogo() {
           width={80}
           height={80}
           style={{aspectRatio: 1}}
-          priority
         />
       </Link>
       }

@@ -102,7 +102,7 @@ export default function useWebsocket() {
     });
   };
   const getInitTicker = async () => {
-    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM,KRW-SAND,KRW-FLOW,KRW-SNT,KRW-WAVES');
+    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-XRP,KRW-ARK,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM');
     const data:ResponseTicker[] = await res.json();
     const initTicker = data.reduce((acc,cur) => {
       const isRising = cur.opening_price < cur.trade_price; 
@@ -153,7 +153,7 @@ export default function useWebsocket() {
         },
         {
           type: "ticker",
-          codes: [ "KRW-BTC","KRW-ETH","KRW-SOL","KRW-ETC","KRW-KAVA","KRW-DOGE","KRW-GLM","KRW-SAND","KRW-FLOW,KRW-SNT,KRW-WAVES"],
+          codes: [ "KRW-BTC","KRW-ETH","KRW-SOL","KRW-ETC","KRW-KAVA","KRW-DOGE","KRW-GLM,KRW-XRP",],
           isOnlyRealtime: true
         },
         {
