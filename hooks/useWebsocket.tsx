@@ -24,8 +24,6 @@ interface CoinTicker {
 export function base64UrlFromBase64(str: string) {
   return str.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
-
-
 // create JWT Token
 export function sign(payload: any, secretKey: string) {
   const header = {
@@ -53,18 +51,43 @@ export default function useWebsocket() {
   const ws = useRef<WebSocket | null>(null);
   const [ticker,setTicker] = useState<Record<string,CoinTicker>>({});
 
+  const updateTicker = (data:CoinTicker) => {
+    // 같은 상태를 업데이트 할 때, 외부에서 과거 값 참조를 하게 되면 정상적으로 처리되지 않을 수 있음.
+    // 이전 상태(prevTicker)에 대한 참조 없이 업데이트
+    setTicker((prevTicker) => {
+      
+      
+      if (data && !prevTicker[data.cd]) {
+        return {
+          ...prevTicker,
+          [data.cd]: { ...data }
+        };
+      }
+
+      if (prevTicker[data.cd].cd === data.cd && prevTicker[data.cd].tp !== data.tp) {
+        const isRising = prevTicker[data.cd]?.tp < data.tp; 
+        return {
+          ...prevTicker,
+          [data.cd]: { ...data, isRising }
+        };
+      }
+
+      return prevTicker;
+
+    });
+  };
 
   useEffect(() => {
-    
     const payload = {
         access_key :process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY,
         nonce: uuid(),
       }
     const secrey_key = process.env.NEXT_PUBLIC_UPBIT_SECRET_KEY ?? '';
     const token = sign(payload, secrey_key);
-
     ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
     ws.current.binaryType = 'arraybuffer';
+
+
     ws.current.onopen = () => {
       const init = [
         {
@@ -84,20 +107,10 @@ export default function useWebsocket() {
       ]
       ws.current?.send(JSON.stringify(init));
     }
-    ws.current.onmessage = (e) => {
-      
-      
-      const data:CoinTicker = JSON.parse(Buffer.from(e.data).toString('utf-8'));
 
-      if(!ticker[data.cd] || ticker[data.cd].cd === data.cd && ticker[data.cd].tp !== data.tp){
-        const isRising = ticker[data.cd].tp < data.tp
-        setTicker((prev) => ({
-          ...prev,
-          [data.cd]: {...data,isRising}
-        }))
-      }
-        
-      console.log(ticker);
+    ws.current.onmessage = (e) => {
+      const data:CoinTicker = JSON.parse(Buffer.from(e.data).toString('utf-8'));
+      updateTicker(data);
     }
 
 
