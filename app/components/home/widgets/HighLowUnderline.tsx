@@ -23,6 +23,6 @@ export default function HighLowUnderline({isRising}: Props) {
   }, [isRising])
 
   return (
-    <span className={`block w-[60px] h-[1px] absolute -bottom-2 right-1/3 ${highlight}`}></span>
+    <span className={`block w-[60px] h-[1px] absolute top-10 ${highlight}`}/>
   )
 }

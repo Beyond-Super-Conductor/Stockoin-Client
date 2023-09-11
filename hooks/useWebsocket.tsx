@@ -34,7 +34,7 @@ interface ResponseTicker {
   timestamp: number
 }
 
-interface CoinTicker {
+export interface CoinTicker {
   cd: string; // 코인 코드 (KRW-BTC)
   tp: number; // 현재가 
   scr: number; // 전일대비 등락률
@@ -75,7 +75,15 @@ export function sign(payload: any, secretKey: string) {
   return `${encodedHeader}.${encodedPayload}.${signature}`;
 }
 
-export default function useWebsocket() {
+interface Props {
+  marketList: string[] | string;
+  marketQuery: string;
+}
+
+export default function useWebsocket({marketList,marketQuery}: Props = {
+  marketList: ['KRW-BTC','KRW-ETH','KRW-XRP','KRW-ARK','KRW-SOL','KRW-ETC','KRW-KAVA','KRW-DOGE','KRW-GLM'],
+  marketQuery: 'KRW-BTC,KRW-ETH,KRW-XRP,KRW-ARK,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM'
+}) {
 
   const ws = useRef<WebSocket | null>(null);
   const [ticker,setTicker] = useState<Record<string,CoinTicker>>({});
@@ -102,7 +110,7 @@ export default function useWebsocket() {
     });
   };
   const getInitTicker = async () => {
-    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-XRP,KRW-ARK,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM');
+    const res = await fetch(`https://api.upbit.com/v1/ticker?markets=${marketQuery}`);
     const data:ResponseTicker[] = await res.json();
     const initTicker = data.reduce((acc,cur) => {
       const isRising = cur.opening_price < cur.trade_price; 
@@ -125,14 +133,7 @@ export default function useWebsocket() {
     }
     ,{} as Record<string,CoinTicker>)
     setTicker(initTicker);
-    
-
   }
-// https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-SOL,KRW-ETC,KRW-KAVA,KRW-DOGE,KRW-GLM
-  useEffect(() => {
-    
-  },[])
-
 
   useEffect(() => {
     getInitTicker();
@@ -153,7 +154,7 @@ export default function useWebsocket() {
         },
         {
           type: "ticker",
-          codes: [ "KRW-BTC","KRW-ETH","KRW-SOL","KRW-ETC","KRW-KAVA","KRW-DOGE","KRW-GLM,KRW-XRP",],
+          codes: typeof marketList === 'string' ? [marketList] : marketList,
           isOnlyRealtime: true
         },
         {
