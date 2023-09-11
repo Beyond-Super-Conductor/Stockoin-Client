@@ -2,6 +2,7 @@
 
 import useWebsocket from '@/hooks/useWebsocket'
 import React from 'react'
+import HighLowUnderline from './widgets/HighLowUnderline';
 
 export default function RealtimePriceBoard() {
   const { ticker } = useWebsocket();
@@ -24,7 +25,13 @@ export default function RealtimePriceBoard() {
               {/* <img src={`https://static.upbit.com/logos/${key}.png`} alt="logo" className='w-12 h-12' /> */}
               <span className='block w-10 h-10 border border-black mr-4'></span>
               <span className='flex-1 text-2xl font-bold text-center'>{key.replace('KRW-','')}</span>
-              <span className={`flex-1 text-2xl font-bold text-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>{(ticker[key].tp).toLocaleString()} 원</span>
+              <p className={`relative flex-1 text-2xl font-bold flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
+                <span> {(ticker[key].tp).toLocaleString()} 원</span>
+                <span className={`absolute top-0 left-0`}>
+                  {ticker[key].isRising ? '▲' : '▼'}
+                </span>
+                <HighLowUnderline isRising={ticker[key].isRising} />
+              </p>
               <span className={`flex-1 text-2xl font-bold text-center ${ticker[key].scr > 0 ? 'text-red-500' : 'text-blue-400'}`}> {(ticker[key].scr * 100).toFixed(3)}%</span>
               <span className='flex-1 text-2xl font-bold text-center'> {(ticker[key].tv).toFixed(3)}개</span>
               

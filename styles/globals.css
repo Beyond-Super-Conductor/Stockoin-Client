@@ -295,6 +295,18 @@ html {
   }
 }
 
+.price-change-up {
+  background-color: #ff4141;
+  transition: border-bottom 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
+.price-change-down {
+  background-color: #2d63e2;
+  transition: border-bottom 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
 .sandbox__carousel {
   position: relative;
   background-color: var(--background-code);
