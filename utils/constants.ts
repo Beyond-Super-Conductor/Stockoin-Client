@@ -1,5 +1,4 @@
 import inch from '@/public/assets/coins/1inch.webp'
-import xtz from '@/public/assets/coins/xtz.webp'
 import aave from '@/public/assets/coins/aave.webp'
 import ada from '@/public/assets/coins/ada.webp'
 import ankr from '@/public/assets/coins/ankr.webp'
@@ -60,6 +59,10 @@ import meta from '@/public/assets/coins/meta.webp'
 import ark from '@/public/assets/coins/ark.webp'
 import xrp from '@/public/assets/coins/xrp.webp'
 import doge from '@/public/assets/coins/doge.webp'
+import xtz from '@/public/assets/coins/xtz.webp'
+
+
+
 export const tokenCategory = [
   {
     koName: '비트코인 그룹',
