@@ -1,16 +1,15 @@
 import React, { Suspense } from 'react'
+import NaverLoginButton from '../components/auth/NaverLoginButton';
 
 export default function AuthPage() {
+  
   
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <fieldset className='w-full flex flex-col gap-2 items-center justify-center border border-white py-10'>
         <legend className='px-4 text-2xl'>소셜로그인</legend>
         <li className='w-full flex items-center justify-center'>
-        <button  className='w-full pr-20 flex items-center rounded-[2px] bg-[#03c75a] min-w-[280px] max-w-[400px] shadow-sm shadow-gray-200'>
-          <img src="/naverLogo.png" alt="logo" className='w-[54px] h-[54px]' />
-            <p className='text-3xl w-full text-end'>네이버 로그인</p>
-          </button>
+        <NaverLoginButton />
         </li>
         <li className='w-full flex items-center justify-center'>
         <button  className='w-full pr-20 flex items-center rounded-[2px] bg-[#4285f4]  box-border min-w-[280px] max-w-[400px] shadow-sm shadow-gray-200'>

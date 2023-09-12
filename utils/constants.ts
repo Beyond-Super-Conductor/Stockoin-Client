@@ -1,5 +1,5 @@
 import inch from '@/public/assets/coins/1inch.webp'
-import XTZ from '@/public/assets/coins/XTZ.webp'
+import xtz from '@/public/assets/coins/xtz.webp'
 import aave from '@/public/assets/coins/aave.png'
 import ada from '@/public/assets/coins/ada.webp'
 import ankr from '@/public/assets/coins/ankr.png'
@@ -14,8 +14,8 @@ import chz from '@/public/assets/coins/chz.png'
 import cro from '@/public/assets/coins/cro.png'
 import enj from '@/public/assets/coins/enj.png'
 import eos from '@/public/assets/coins/eos.png'
-import ethereum from '@/public/assets/coins/ethereum.png'
-import ethereum_classic from '@/public/assets/coins/ethereum_classic.png'
+import eth from '@/public/assets/coins/eth.png'
+import etc from '@/public/assets/coins/etc.png'
 import flow from '@/public/assets/coins/flow.png'
 import glm from '@/public/assets/coins/glm.png'
 import gmt from '@/public/assets/coins/gmt.png'
@@ -89,22 +89,22 @@ export const tokenCategory = [
   },
   {
     koName: '이더리움 그룹',
-    enName: 'ethereum-group',
+    enName: 'eth-group',
     
     tokens: [
       {
         koName: '이더리움',
         enName: 'ETH',
-        icon: ethereum
+        icon: eth
         
       },
       {
         koName: '이더리움클래식',
         enName: 'ETC',
-        icon: ethereum_classic
+        icon: etc
       }
     ],
-    icon: ethereum
+    icon: eth
   },
   {
     koName: 'NFC',
@@ -211,7 +211,7 @@ export const tokenCategory = [
       {
         koName: '이더리움',
         enName: 'ETH',
-        icon: ethereum
+        icon: eth
       },
       {
         koName: '아발란체',
@@ -231,7 +231,7 @@ export const tokenCategory = [
       {
         koName: '이더리움클래식',
         enName: 'ETC',
-        icon: ethereum_classic
+        icon: etc
       },
       {
         koName: '비체인',
@@ -240,8 +240,8 @@ export const tokenCategory = [
       },
       {
         koName: '테조스',
-        enName: 'XTZ',
-        icon: XTZ
+        enName: 'xtz',
+        icon: xtz
       },
       {
         koName: '스택스',
@@ -378,7 +378,7 @@ export const tokenCategory = [
       {
         koName: '이더리움',
         enName: 'ETH',
-        icon: ethereum
+        icon: eth
       },
       {
         koName: '웨이브',
@@ -499,7 +499,7 @@ export const tokenCategory = [
       {
         koName: '이더리움',
         enName: 'ETH',
-        icon: ethereum
+        icon: eth
       },
       {
         koName: '네오',

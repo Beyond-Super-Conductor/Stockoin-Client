@@ -27,7 +27,13 @@ export default function page() {
 
   useEffect(() => {
     if(!ticker || !ticker[`KRW-${tokenDetail}`]) return;
-    setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev]);
+    if(tickers.length < 20){
+      setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev]);
+    } else {
+      setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev.slice(0,19)]);
+    }
+    
+    
   },[ticker]);
 
 
@@ -46,13 +52,41 @@ export default function page() {
   // isRising: boolean;
   console.log(tickers);
   return (
-    <div>
+    <div className='w-full'>
+      <div className='w-full h-[400px] bg-slate-400 flex items-center justify-center'>
+          <div className='flex-[0.7]'>차트</div>
+          <div className='flex-[0.3] border border-red-400 h-full'>
+            {
+              tickers.length > 0 && (
+                <p className='flex flex-col items-center justify-center'>
+                  <span>{tickers[tickers.length - 1].atp}</span>
+                  <span>{tickers[tickers.length - 1].mn}</span>
+                  <span>{tickers[tickers.length - 1].h52wdt}</span>
+                  <span>{tickers[tickers.length - 1].h52wp}</span>
+                  <span>{tickers[tickers.length - 1].l52wdt}</span>
+                  <span>{tickers[tickers.length - 1].l52wp}</span>
+                  <span>{tickers[tickers.length - 1].atp24h}</span>
+                  <span>{tickers[tickers.length - 1].atv24h}</span>
+                </p>
+              )
+            }
+          </div>
+      </div>
+      <div className=''>
+      <div className={`sticky top-0 bg-white py-10 w-full flex items-start justify-around`}>
+        <span className='block w-14 h-10'></span>
+        <span className='flex-1 text-2xl font-bold text-center'>마켓</span>
+        <span className={`flex-1 text-2xl font-bold text-center`}>가격</span>
+        <span className='flex-1 text-2xl font-bold text-center'> 전일대비 등락율</span>
+        <span className='flex-1 text-2xl font-bold text-center'> 체결량</span>
+      </div>
+        
       {
         tickers.length > 0 && (
 
             tickers.map((item,index) => 
                 <div key={index} className='flex items-center justify-center gap-4'>
-              <span className='block w-10 h-10 border border-black mr-4'></span>
+              <span className='block w-14 h-10'>{item.ab && item.ab === 'BID' ? '매수' : '매도'}</span>
               <span className='flex-1 text-2xl font-bold text-center'>{item.cd.replace('KRW-','')}</span>
               <p className={`relative flex-1 text-2xl font-bold flex items-center justify-center ${item.isRising ? 'text-red-500' : 'text-blue-400'}`}>
                 <span> {(item.tp).toLocaleString()} 원</span>
@@ -66,6 +100,7 @@ export default function page() {
             </div>
             )
           )}
+      </div>
     </div>
   )
 }

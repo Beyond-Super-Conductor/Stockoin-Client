@@ -5,8 +5,6 @@ interface Props {
   children: React.ReactNode
 }
 
-
-
 export default function template({children}: Props) {
   return (
     <section

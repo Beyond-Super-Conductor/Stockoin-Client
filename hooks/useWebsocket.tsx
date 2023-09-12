@@ -36,11 +36,13 @@ interface ResponseTicker {
 
 export interface CoinTicker {
   cd: string; // 코인 코드 (KRW-BTC)
+  ab?: "BID" | "ASK"; // 매수/매도
   tp: number; // 현재가 
   scr: number; // 전일대비 등락률
   tv: number; // 가장 최근 거래량
   ms: string; // 시장명
-  mw: string; // 시가총액
+  atp: string; // 시가총액
+  mn: string; // 마켓명
   h52wp: number; // 52주 최고가
   h52wdt: string; // 52주 최고가 달성일
   l52wp: number; // 52주 최저가
@@ -115,12 +117,13 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     const initTicker = data.reduce((acc,cur) => {
       const isRising = cur.opening_price < cur.trade_price; 
       acc[cur.market] = {
+        mn: cur.market,
         cd: cur.market,
         tp: cur.trade_price,
         scr: cur.signed_change_rate,
         tv: cur.trade_volume,
         ms: cur.market,
-        mw: cur.acc_trade_price_24h + '',
+        atp: cur.acc_trade_price_24h + '',
         h52wp: cur.highest_52_week_price,
         h52wdt: cur.highest_52_week_date,
         l52wp: cur.lowest_52_week_price,
@@ -134,19 +137,8 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     ,{} as Record<string,CoinTicker>)
     setTicker(initTicker);
   }
-
-  useEffect(() => {
-    getInitTicker();
-    const payload = {
-        access_key :process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY,
-        nonce: uuid(),
-      }
-    const secrey_key = process.env.NEXT_PUBLIC_UPBIT_SECRET_KEY ?? '';
-    const token = sign(payload, secrey_key);
-    ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
-    ws.current.binaryType = 'arraybuffer';
-
-
+  const connect = () => {
+    if(!ws.current) return;
     ws.current.onopen = () => {
       const init = [
         {
@@ -163,7 +155,19 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
       ]
       ws.current?.send(JSON.stringify(init));
     }
+  }
 
+  useEffect(() => {
+    getInitTicker();
+    const payload = {
+        access_key :process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY,
+        nonce: uuid(),
+      }
+    const secrey_key = process.env.NEXT_PUBLIC_UPBIT_SECRET_KEY ?? '';
+    const token = sign(payload, secrey_key);
+    ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
+    ws.current.binaryType = 'arraybuffer';
+    connect();
     ws.current.onmessage = (e) => {
       const data:CoinTicker = JSON.parse(Buffer.from(e.data).toString('utf-8'));
       updateTicker(data);
@@ -172,6 +176,11 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
 
     ws.current.onclose = () => {
       console.log('disconnected')
+      setTimeout(() => {
+        console.log('websocket recovery connection...')
+        connect();
+      }, 1000);
+      
     }
     return () => {
       ws.current?.close()
