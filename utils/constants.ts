@@ -59,7 +59,7 @@ import meta from '@/public/assets/coins/meta.webp'
 import ark from '@/public/assets/coins/ark.webp'
 import xrp from '@/public/assets/coins/xrp.webp'
 import doge from '@/public/assets/coins/doge.webp'
-import xtz from '@/public/assets/coins/xtz.webp'
+// import xtz from '@/public/assets/coins/xtz.webp'
 
 
 
@@ -243,11 +243,11 @@ export const tokenCategory = [
         enName: 'VET',
         icon: vet
       },
-      {
-        koName: '테조스',
-        enName: 'XTZ',
-        icon: xtz
-      },
+      // {
+      //   koName: '테조스',
+      //   enName: 'XTZ',
+      //   icon: xtz
+      // },
       {
         koName: '스택스',
         enName: 'STX',

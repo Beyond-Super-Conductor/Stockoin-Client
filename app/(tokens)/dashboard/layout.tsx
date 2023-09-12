@@ -18,7 +18,6 @@ export default function DashboardLayout({children}: Props) {
       <div className='w-full flex items-center justify-end px-4 h-8'>
         <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
       </div>
-// 0 122 255
 
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60 bg-[rgb(0,122,255)]'>
         <DashboardLayoutLogo />
