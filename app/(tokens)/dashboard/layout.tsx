@@ -18,9 +18,9 @@ export default function DashboardLayout({children}: Props) {
       <div className='w-full flex items-center justify-end px-4 h-8'>
         <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
       </div>
+// 0 122 255
 
-
-      <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
+      <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60 bg-[rgb(0,122,255)]'>
         <DashboardLayoutLogo />
         <div className='p-2 flex-1 flex items-center justify-between bg-gradient-to-l to-[rgba(89,89,164,1)] from-[-50%] from-[#b3f864] h-full'>
           <CoinTitle />

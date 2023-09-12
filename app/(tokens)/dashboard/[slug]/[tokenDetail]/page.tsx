@@ -1,14 +1,14 @@
 'use client'
 import HighLowUnderline from '@/app/components/home/widgets/HighLowUnderline';
 import useWebsocket, { CoinTicker } from '@/hooks/useWebsocket';
-import { findCategoryState, selectTokens } from '@/store/findToken';
+import { findCategoryState } from '@/store/findToken';
 import { selectTokenState } from '@/store/selectToken';
 import { tokenCategory } from '@/utils/constants';
 import { convertAndRoundUpCurrency } from '@/utils/convertAndRoundUpCurrency';
 import { formatDateToAgo } from '@/utils/formatDateToAgo';
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 export default function page() {
   const [selectToken,setSelectToken] = useRecoilState(selectTokenState);
@@ -34,8 +34,6 @@ export default function page() {
     } else {
       setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev.slice(0,19)]);
     }
-    
-    
   },[ticker]);
 
 
@@ -78,6 +76,7 @@ export default function page() {
 // }
   return (
     <div className='w-full'>
+
       <div className='w-full h-[400px] bg-slate-400 flex items-center justify-center'>
           <div className='flex-[0.7]'>차트</div>
           <div className='flex-[0.3] border border-red-400 h-full bg-white'>
@@ -85,7 +84,7 @@ export default function page() {
               tickers.length > 0 && (
                 <p className='flex flex-col items-end justify-center font-bold w-full px-8 py-4'>
                   <span className='flex justify-between w-full'>
-                  <span>시가총액:</span><span> {convertAndRoundUpCurrency(+tickers[tickers.length - 1].atp)}</span>
+                    <span>시가총액:</span><span> {convertAndRoundUpCurrency(+tickers[tickers.length - 1].atp)}</span>
                   </span>
                   <span className='flex justify-between w-full'>
                   <span>52주 최고가 달성일:</span><span> {formatDateToAgo(tickers[tickers.length - 1].h52wdt)}</span>
@@ -110,6 +109,7 @@ export default function page() {
             }
           </div>
       </div>
+
       <div className=''>
       <div className={`sticky top-0 bg-white py-10 w-full flex items-start justify-around`}>
         <span className='block w-14 h-10'></span>
@@ -118,7 +118,6 @@ export default function page() {
         <span className='flex-1 text-2xl font-bold text-center'> 전일대비 등락율</span>
         <span className='flex-1 text-2xl font-bold text-center'> 체결량</span>
       </div>
-        
       {
         tickers.length > 0 && (
 

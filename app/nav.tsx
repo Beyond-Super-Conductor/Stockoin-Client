@@ -45,7 +45,6 @@ export default function GlobalHeader() {
                 src='/mainLogo2.png'
                 alt="logo"
                 className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
-                
               />
             }
           </Link>
