@@ -4,8 +4,8 @@ import DashboardLayoutLogo from '@/app/components/dashboard/DashboardLayoutLogo'
 import { dashboardColorState } from '@/store/dashboardColor'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { useRecoilValue } from 'recoil'
+import React, { useEffect } from 'react'
+import { useRecoilValue, useResetRecoilState } from 'recoil'
 
 
 interface Props {
@@ -14,8 +14,16 @@ interface Props {
 
 export default function DashboardLayout({children}: Props) {
   const dashboardColor = useRecoilValue(dashboardColorState);
+  const resetBackgroundColor = useResetRecoilState(dashboardColorState);
+  const handleBackButtonClick = () => resetBackgroundColor();
 
-  console.log(dashboardColor[0]);
+  useEffect(() => {
+    window.addEventListener('popstate', handleBackButtonClick)
+    return () => {
+      window.removeEventListener('popstate', handleBackButtonClick)
+    }
+  },[])
+
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
 

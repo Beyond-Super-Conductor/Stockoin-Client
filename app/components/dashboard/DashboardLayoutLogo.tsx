@@ -2,7 +2,7 @@
 import { selectTokenState } from '@/store/selectToken';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil';
 import colorThief from 'colorthief';
 import { rgbToHex } from '@/utils/rgbToHex';
@@ -12,30 +12,25 @@ export default function DashboardLayoutLogo() {
   const { icon } = useRecoilValue(selectTokenState);
   const imageRef = useRef<HTMLImageElement>(null);
   const [dashboardColor, setDashboardColor] = useRecoilState(dashboardColorState);
-  useEffect(() => {
+
+  const getPalette = useCallback( () => {
     if(!imageRef.current) return;
     const color = new colorThief();
-    let result: string[]
-
-    if(imageRef.current.complete){
-      const temp = color.getPalette(imageRef.current,5);
-      result = rgbToHex(temp)
-      setDashboardColor(result)
-    }else {
-      imageRef.current.addEventListener('load', () => {
-      const temp = color.getPalette(imageRef.current,5);
-      result = rgbToHex(temp)
-      setDashboardColor(result)
-      })
-    }
-    return () => {
-      imageRef.current?.removeEventListener('load', () => {
-        const temp = color.getPalette(imageRef.current,5);
-        result = rgbToHex(temp)
-        console.log('window-load',result);
-        })
-    }
+    const image = imageRef.current;
+    const result = rgbToHex(color.getPalette(image,5))
+    
+    setDashboardColor(result)
   },[imageRef.current,icon])
+
+  useEffect(() => {
+    if(!imageRef.current) return;
+    imageRef.current.complete
+    ? getPalette()
+    : imageRef.current.addEventListener('load', getPalette)
+
+    return () => imageRef.current?.removeEventListener('load', getPalette);
+  },[imageRef.current,icon])
+
   return (
     <div className='border border-indigo-200'>
       {

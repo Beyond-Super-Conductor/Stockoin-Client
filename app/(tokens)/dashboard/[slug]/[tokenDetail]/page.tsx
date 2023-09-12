@@ -16,7 +16,7 @@ export default function page() {
   const {slug, tokenDetail} = useParams();
   const { ticker } = useWebsocket({marketList:`KRW-${tokenDetail}`,marketQuery:`KRW-${tokenDetail}`})
   const [tickers,setTickers] = useState<CoinTicker[]>([]);
-
+  
   useEffect(() => {  
     const selectedCategory = tokenCategory.find((item) => item.enName === slug);
     if(!selectedCategory) return;
@@ -29,12 +29,11 @@ export default function page() {
 
   useEffect(() => {
     if(!ticker || !ticker[`KRW-${tokenDetail}`]) return;
-    if(tickers.length < 20){
-      setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev]);
-    } else {
-      setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev.slice(0,19)]);
-    }
+    tickers.length < 20
+    ? setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev])
+    : setTickers((prev) => [ticker[`KRW-${tokenDetail}`],...prev.slice(0,19)]);
   },[ticker]);
+  
 
 
 
