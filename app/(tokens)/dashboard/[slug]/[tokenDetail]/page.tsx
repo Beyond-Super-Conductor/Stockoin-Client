@@ -5,6 +5,7 @@ import { findCategoryState, selectTokens } from '@/store/findToken';
 import { selectTokenState } from '@/store/selectToken';
 import { tokenCategory } from '@/utils/constants';
 import { convertAndRoundUpCurrency } from '@/utils/convertAndRoundUpCurrency';
+import { formatDateToAgo } from '@/utils/formatDateToAgo';
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -82,15 +83,28 @@ export default function page() {
           <div className='flex-[0.3] border border-red-400 h-full bg-white'>
             {
               tickers.length > 0 && (
-                <p className='flex flex-col items-center justify-center  font-bold h-ful'>
-                  <span>시가총액: {convertAndRoundUpCurrency(+tickers[tickers.length - 1].atp)}</span>
-                  <span>코인이름: {tickers[tickers.length - 1].mn}</span>
-                  <span>52주 최고가 달성일{tickers[tickers.length - 1].h52wdt}</span>
-                  <span>52주 최고가 {convertAndRoundUpCurrency(tickers[tickers.length - 1].h52wp)}</span>
-                  <span>52주 최저가 달성일{tickers[tickers.length - 1].l52wdt}</span>
-                  <span>52주 최저가{convertAndRoundUpCurrency(tickers[tickers.length - 1].l52wp)}</span>
-                  <span>24시간 누적 거래대금 {convertAndRoundUpCurrency(tickers[tickers.length - 1].atp24h)}</span>
-                  <span>24시간 누적 거래량 {Math.round(tickers[tickers.length - 1].atv24h).toLocaleString()}개</span>
+                <p className='flex flex-col items-end justify-center font-bold w-full px-8 py-4'>
+                  <span className='flex justify-between w-full'>
+                  <span>시가총액:</span><span> {convertAndRoundUpCurrency(+tickers[tickers.length - 1].atp)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>52주 최고가 달성일:</span><span> {formatDateToAgo(tickers[tickers.length - 1].h52wdt)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>52주 최고가:</span><span> {convertAndRoundUpCurrency(tickers[tickers.length - 1].h52wp)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>52주 최저가 달성일:</span><span> {formatDateToAgo(tickers[tickers.length - 1].l52wdt)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>52주 최저가:</span><span>{convertAndRoundUpCurrency(tickers[tickers.length - 1].l52wp)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>24시간 누적 거래대금:</span><span> {convertAndRoundUpCurrency(tickers[tickers.length - 1].atp24h)}</span>
+                  </span>
+                  <span className='flex justify-between w-full'>
+                  <span>24시간 누적 거래량:</span><span> {Math.round(tickers[tickers.length - 1].atv24h).toLocaleString()}개</span>
+                  </span>
                 </p>
               )
             }

@@ -242,7 +242,7 @@ export const tokenCategory = [
       },
       {
         koName: '테조스',
-        enName: 'xtz',
+        enName: 'XTZ',
         icon: xtz
       },
       {
