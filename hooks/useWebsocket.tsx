@@ -17,7 +17,7 @@ interface ResponseTicker {
   low_price:number
   trade_price:number
   prev_closing_price:number
-  change: string,
+  change: 'RISE' | 'EVEN' | 'FALL',
   change_price: number
   change_rate: number
   signed_change_price: number
@@ -57,7 +57,7 @@ export interface CoinTicker {
   isRising: boolean;
   aav?: number // 누적 매도량 - ask
   abv?: number // 누적 매수량 - bid
-  c?: 'RISE' | 'EVEN' | 'FALL' // 전일 대비
+  c: 'RISE' | 'EVEN' | 'FALL' // 전일 대비
   cp?: number // 부호 없는 전일 대비 값
   cr?: number // 부호 없는 전일 대비 등락률
   dd?: null // 상장폐지일
@@ -153,6 +153,8 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
         atp24h: cur.acc_trade_price_24h,
         atv24h: cur.acc_trade_volume_24h,
         atv: cur.acc_trade_volume,
+        c: cur.change,
+        tms: cur.timestamp,
         isRising
       }
       return acc;

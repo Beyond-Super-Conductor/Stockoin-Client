@@ -18,7 +18,7 @@ export default function DashboardLayoutLogo() {
     const color = new colorThief();
     const image = imageRef.current;
     const result = rgbToHex(color.getPalette(image,5))
-    
+
     setDashboardColor(result)
   },[imageRef.current,icon])
 
@@ -45,7 +45,6 @@ export default function DashboardLayoutLogo() {
           height={80}
           style={{aspectRatio: 1}}
           priority
-          
         />
       </Link>
         : <Link href="/">
@@ -59,7 +58,6 @@ export default function DashboardLayoutLogo() {
         />
       </Link>
       }
-          
-        </div>
+    </div>
   )
 }

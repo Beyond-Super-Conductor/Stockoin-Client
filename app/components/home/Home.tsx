@@ -2,6 +2,8 @@ import React from 'react'
 import EmblaCarousel from './carousel/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel-react'
 import RealtimePriceBoard from './RealtimePriceBoard'
+import Chat from './widgets/Chat'
+import MainSection from './MainSection'
 
 const OPTIONS: EmblaOptionsType = { axis: 'y',loop: true }
 const SLIDE_COUNT = 4
@@ -27,13 +29,7 @@ function Home() {
       <section className='sandbox__carousel mt-4 w-full'>
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
-      <div className='flex w-full gap-2'>
-      <RealtimePriceBoard />
-      
-      <div className='flex-[0.35] w-full h-[580px] ring ring-slate-200 shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-md'>
-        실시간 전체 채팅
-      R</div>  
-      </div>
+      <MainSection />
       <div className='px-10 w-full h-[280px] ring ring-slate-200 shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-md'>
         최근 본 코인
       </div>

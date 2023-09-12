@@ -26,24 +26,22 @@ export default function DashboardLayout({children}: Props) {
 
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
-
       <div className='w-full flex items-center justify-end px-4 h-8'>
         <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
       </div>
-
-
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
         <DashboardLayoutLogo />
+
         <div
         className={`p-2 flex-1 flex items-center justify-between h-full`}
         style={{
-          background: `linear-gradient(to left, ${dashboardColor[0]}, ${dashboardColor[1]}, ${dashboardColor[2]}, ${dashboardColor[3]})`
+          background: `linear-gradient(to left, ${dashboardColor[0]}, ${dashboardColor[1]}, ${dashboardColor[2]}, ${dashboardColor[3]})`,
         }}
         >
           <CoinTitle />
           <form action="" className='flex items-center gap-2'>
             <input
-              className='w-[360px]  font-bold h-24 mb-[1px] rounded-full border border-slate-400 p-1 pl-6 placeholder:text-2xl min-w-[200px] placeholder:text-slate-500 focus:outline-sky-400'
+              className='w-[360px] font-bold h-24 mb-[1px] rounded-full border border-slate-400 p-1 pl-6 placeholder:text-2xl min-w-[200px] placeholder:text-slate-500 focus:outline-sky-400'
               type="text"
               placeholder='찾으려는 토큰을 검색해보세요!'
               />
@@ -51,6 +49,7 @@ export default function DashboardLayout({children}: Props) {
               검색
             </button>
           </form>
+
         </div>
       </nav>
       {children}
