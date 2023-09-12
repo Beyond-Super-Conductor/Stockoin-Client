@@ -1,9 +1,11 @@
-
+'use client'
 import CoinTitle from '@/app/components/dashboard/CoinTitle'
 import DashboardLayoutLogo from '@/app/components/dashboard/DashboardLayoutLogo'
+import { dashboardColorState } from '@/store/dashboardColor'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useRecoilValue } from 'recoil'
 
 
 interface Props {
@@ -11,7 +13,9 @@ interface Props {
 }
 
 export default function DashboardLayout({children}: Props) {
+  const dashboardColor = useRecoilValue(dashboardColorState);
 
+  console.log(dashboardColor[0]);
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
 
@@ -19,9 +23,15 @@ export default function DashboardLayout({children}: Props) {
         <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
       </div>
 
-      <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60 bg-[rgb(0,122,255)]'>
+
+      <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
         <DashboardLayoutLogo />
-        <div className='p-2 flex-1 flex items-center justify-between bg-gradient-to-l to-[rgba(89,89,164,1)] from-[-50%] from-[#b3f864] h-full'>
+        <div
+        className={`p-2 flex-1 flex items-center justify-between h-full`}
+        style={{
+          background: `linear-gradient(to left, ${dashboardColor[0]}, ${dashboardColor[1]}, ${dashboardColor[2]}, ${dashboardColor[3]})`
+        }}
+        >
           <CoinTitle />
           <form action="" className='flex items-center gap-2'>
             <input
