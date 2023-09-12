@@ -1,73 +1,73 @@
 import inch from '@/public/assets/coins/1inch.webp'
 import xtz from '@/public/assets/coins/xtz.webp'
-import aave from '@/public/assets/coins/aave.png'
+import aave from '@/public/assets/coins/aave.webp'
 import ada from '@/public/assets/coins/ada.webp'
-import ankr from '@/public/assets/coins/ankr.png'
-import avax from '@/public/assets/coins/avax.png'
-import axs from '@/public/assets/coins/axs.png'
-import bat from '@/public/assets/coins/bat.jpeg'
-import bitcoin from '@/public/assets/coins/bitcoin.png'
-import bitcoin_cash from '@/public/assets/coins/bitcoin_cash.jpeg'
-import bitcoin_gold from '@/public/assets/coins/bitcoin_gold.jpeg'
-import bitcoin_sv from '@/public/assets/coins/bitcoin_sv.jpeg'
-import chz from '@/public/assets/coins/chz.png'
-import cro from '@/public/assets/coins/cro.png'
-import enj from '@/public/assets/coins/enj.png'
-import eos from '@/public/assets/coins/eos.png'
-import eth from '@/public/assets/coins/eth.png'
-import etc from '@/public/assets/coins/etc.png'
-import flow from '@/public/assets/coins/flow.png'
-import glm from '@/public/assets/coins/glm.png'
-import gmt from '@/public/assets/coins/gmt.png'
-import icx from '@/public/assets/coins/icx.png'
-import iost from '@/public/assets/coins/iost.png'
-import iota from '@/public/assets/coins/iota.png'
-import iq from '@/public/assets/coins/iq.png'
+import ankr from '@/public/assets/coins/ankr.webp'
+import avax from '@/public/assets/coins/avax.webp'
+import axs from '@/public/assets/coins/axs.webp'
+import bat from '@/public/assets/coins/bat.webp'
+import btc from '@/public/assets/coins/btc.webp'
+import bitcoin_cash from '@/public/assets/coins/bitcoin_cash.webp'
+import bitcoin_gold from '@/public/assets/coins/bitcoin_gold.webp'
+import bitcoin_sv from '@/public/assets/coins/bitcoin_sv.webp'
+import chz from '@/public/assets/coins/chz.webp'
+import cro from '@/public/assets/coins/cro.webp'
+import enj from '@/public/assets/coins/enj.webp'
+import eos from '@/public/assets/coins/eos.webp'
+import eth from '@/public/assets/coins/eth.webp'
+import etc from '@/public/assets/coins/etc.webp'
+import flow from '@/public/assets/coins/flow.webp'
+import glm from '@/public/assets/coins/glm.webp'
+import gmt from '@/public/assets/coins/gmt.webp'
+import icx from '@/public/assets/coins/icx.webp'
+import iost from '@/public/assets/coins/iost.webp'
+import iota from '@/public/assets/coins/iota.webp'
+import iq from '@/public/assets/coins/iq.webp'
 import jst from '@/public/assets/coins/jst.webp'
-import knc from '@/public/assets/coins/knc.png'
-import link from '@/public/assets/coins/link.png'
-import mana from '@/public/assets/coins/mana.jpeg'
-import mbl from '@/public/assets/coins/mbl.png'
-import mvl from '@/public/assets/coins/mvl.jpeg'
-import neo from '@/public/assets/coins/neo.png'
-import ont from '@/public/assets/coins/ont.png'
-import pla from '@/public/assets/coins/pla.png'
-import powr from '@/public/assets/coins/powr.png'
-import qtum from '@/public/assets/coins/qtum.png'
+import knc from '@/public/assets/coins/knc.webp'
+import link from '@/public/assets/coins/link.webp'
+import mana from '@/public/assets/coins/mana.webp'
+import mbl from '@/public/assets/coins/mbl.webp'
+import mvl from '@/public/assets/coins/mvl.webp'
+import neo from '@/public/assets/coins/neo.webp'
+import ont from '@/public/assets/coins/ont.webp'
+import pla from '@/public/assets/coins/pla.webp'
+import powr from '@/public/assets/coins/powr.webp'
+import qtum from '@/public/assets/coins/qtum.webp'
 import sand from '@/public/assets/coins/sand.webp'
-import sbd from '@/public/assets/coins/sbd.png'
-import sia from '@/public/assets/coins/sia.png'
-import snt from '@/public/assets/coins/snt.png'
-import sol from '@/public/assets/coins/sol.png'
-import steem from '@/public/assets/coins/steem.png'
-import storj from '@/public/assets/coins/storj.png'
-import stx from '@/public/assets/coins/stx.png'
-import tfuel from '@/public/assets/coins/tfuel.png'
-import theta from '@/public/assets/coins/theta.jpeg'
-import tron from '@/public/assets/coins/tron.png'
-import vet from '@/public/assets/coins/vet.png'
-import waves from '@/public/assets/coins/waves.png'
-import waxp from '@/public/assets/coins/waxp.png'
-import xem from '@/public/assets/coins/xem.png'
-import xlm from '@/public/assets/coins/xlm.png'
-import zerox from '@/public/assets/coins/zerox.png'
-import zil from '@/public/assets/coins/zil.png'
-import zrx from '@/public/assets/coins/zrx.png'
-import kava from '@/public/assets/coins/kava.png'
-import rfr from '@/public/assets/coins/rfr.png'
-import cvc from '@/public/assets/coins/cvc.png'
-import meta from '@/public/assets/coins/meta.png'
+import sbd from '@/public/assets/coins/sbd.webp'
+import sia from '@/public/assets/coins/sia.webp'
+import snt from '@/public/assets/coins/snt.webp'
+import sol from '@/public/assets/coins/sol.webp'
+import steem from '@/public/assets/coins/steem.webp'
+import storj from '@/public/assets/coins/storj.webp'
+import stx from '@/public/assets/coins/stx.webp'
+import tfuel from '@/public/assets/coins/tfuel.webp'
+import theta from '@/public/assets/coins/theta.webp'
+import tron from '@/public/assets/coins/tron.webp'
+import vet from '@/public/assets/coins/vet.webp'
+import waves from '@/public/assets/coins/waves.webp'
+import waxp from '@/public/assets/coins/waxp.webp'
+import xem from '@/public/assets/coins/xem.webp'
+import xlm from '@/public/assets/coins/xlm.webp'
+import zerox from '@/public/assets/coins/zerox.webp'
+import zil from '@/public/assets/coins/zil.webp'
+import zrx from '@/public/assets/coins/zrx.webp'
+import kava from '@/public/assets/coins/kava.webp'
+import rfr from '@/public/assets/coins/rfr.webp'
+import cvc from '@/public/assets/coins/cvc.webp'
+import meta from '@/public/assets/coins/meta.webp'
 
 export const tokenCategory = [
   {
     koName: '비트코인 그룹',
-    enName: 'bitcoin-group',
+    enName: 'btc-group',
     
     tokens: [
       {
         koName: '비트코인',
         enName: 'BTC',
-        icon: bitcoin
+        icon: btc
       },
       {
         koName: '비트코인-캐시',
@@ -85,7 +85,7 @@ export const tokenCategory = [
         icon: bitcoin_gold
       }
     ],
-    icon: bitcoin
+    icon: btc
   },
   {
     koName: '이더리움 그룹',
@@ -565,7 +565,7 @@ export const tokenCategory = [
     tokens: [
       
     ],
-    icon: bitcoin
+    icon: btc
   },
 
 ]

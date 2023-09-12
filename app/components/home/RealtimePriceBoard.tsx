@@ -19,10 +19,10 @@ export default function RealtimePriceBoard() {
     </div>
     {
       ticker && Object.keys(ticker).map((key) => {
-        console.log(`${key.replace('KRW-','').toLowerCase()}.png`);
+        console.log(`${key.replace('KRW-','').toLowerCase()}.webp`);
         return (
           <div key={key} className={` w-full flex items-start justify-around border-b border-b-slate-400/60 pb-2`}>
-              <img src={`/assets/coins/${key.replace('KRW-','').toLowerCase()}.png`} alt="logo" className='w-10 h-10' />
+              <img src={`/assets/coins/${key.replace('KRW-','').toLowerCase()}.webp`} alt="logo" className='w-10 h-10' />
               
               <span className='flex-1 text-2xl font-bold text-center'>{key.replace('KRW-','')}</span>
               <p className={`relative flex-1 text-2xl font-bold flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
