@@ -165,7 +165,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     ws.current.onopen = () => {
       const init = [
         {
-          ticket: "test-websocket"
+          ticket: `${marketQuery}`
         },
         {
           type: "ticker",
@@ -176,6 +176,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
           format: "SIMPLE"
         }
       ]
+      console.log('websocket connected')
       ws.current?.send(JSON.stringify(init));
     }
   }
@@ -195,7 +196,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
       const data:CoinTicker = JSON.parse(Buffer.from(e.data).toString('utf-8'));
       updateTicker(data);
     }
-
+    
 
     ws.current.onclose = () => {
       console.log('disconnected')
