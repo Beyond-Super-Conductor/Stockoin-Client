@@ -37,12 +37,15 @@ export default function GlobalHeader() {
               ? <Image
                   src='/mainLogo.jpg'
                   alt="logo"
-                  className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
+                  className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
+                  priority
+                  
                 />
             : <Image
                 src='/mainLogo2.png'
                 alt="logo"
-                className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}} priority
+                className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
+                
               />
             }
           </Link>
@@ -72,7 +75,7 @@ export default function GlobalHeader() {
               <Image
                 src={category.icon}
                 alt="logo"
-                className='rounded-md' width={30} height={30} style={{aspectRatio: 1}} priority
+                className='rounded-md' width={30} height={30} style={{aspectRatio: 1}}
               />
               <span className='text-xl md:text-3xl block pb-4 md:pb-0'>{category.koName}</span>
             </Link>

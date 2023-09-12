@@ -2,8 +2,6 @@ import React, { Suspense } from 'react'
 import NaverLoginButton from '../components/auth/NaverLoginButton';
 
 export default function AuthPage() {
-  
-  
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <fieldset className='w-full flex flex-col gap-2 items-center justify-center border border-white py-10'>

@@ -32,7 +32,11 @@ interface ResponseTicker {
   lowest_52_week_price: number
   lowest_52_week_date: string
   timestamp: number
+  market_status: string
 }
+
+
+
 
 export interface CoinTicker {
   cd: string; // 코인 코드 (KRW-BTC)
@@ -40,8 +44,9 @@ export interface CoinTicker {
   tp: number; // 현재가 
   scr: number; // 전일대비 등락률
   tv: number; // 가장 최근 거래량
-  ms: string; // 시장명
+  ms: string; // 스테이터스
   atp: string; // 시가총액
+  atv: number; // 총거래량
   mn: string; // 마켓명
   h52wp: number; // 52주 최고가
   h52wdt: string; // 52주 최고가 달성일
@@ -50,6 +55,24 @@ export interface CoinTicker {
   atp24h: number; // 24시간 가격
   atv24h: number; // 24시간  거래량
   isRising: boolean;
+  aav?: number // 누적 매도량 - ask
+  abv?: number // 누적 매수량 - bid
+  c?: 'RISE' | 'EVEN' | 'FALL' // 전일 대비
+  cp?: number // 부호 없는 전일 대비 값
+  cr?: number // 부호 없는 전일 대비 등락률
+  dd?: null // 상장폐지일
+  hp?: number // 고가
+  its?: false // 거래 정지 여부
+  lp?: number // 저가
+  mw?: "NONE" | "CAUTION" //유의 종목 지정 여부 
+  op?: number // 시가
+  pcp?: number // 전일 종가
+  scp?: number // 부호 있는 전일 대비 값
+  st?: "REALTIME" | "SNAPSHOT" // 스트림 타입
+  tdt?: string // 최근 거래 일자
+  tms?: number // 타임스탬프
+  ttm?: string // 최근 거래 시각 HHmmss
+  ttms?: number // 거래 체결 타임스탬프
 }
 
 export function base64UrlFromBase64(str: string) {
@@ -100,7 +123,6 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
           [data.cd]: { ...data }
         };
       }
-
       if (prevTicker[data.cd].cd === data.cd && prevTicker[data.cd].tp !== data.tp) {
         const isRising = prevTicker[data.cd]?.tp < data.tp; 
         return {
@@ -122,14 +144,15 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
         tp: cur.trade_price,
         scr: cur.signed_change_rate,
         tv: cur.trade_volume,
-        ms: cur.market,
-        atp: cur.acc_trade_price_24h + '',
+        ms: cur.market_status,
+        atp: cur.acc_trade_price + '',
         h52wp: cur.highest_52_week_price,
         h52wdt: cur.highest_52_week_date,
         l52wp: cur.lowest_52_week_price,
         l52wdt: cur.lowest_52_week_date,
         atp24h: cur.acc_trade_price_24h,
         atv24h: cur.acc_trade_volume_24h,
+        atv: cur.acc_trade_volume,
         isRising
       }
       return acc;

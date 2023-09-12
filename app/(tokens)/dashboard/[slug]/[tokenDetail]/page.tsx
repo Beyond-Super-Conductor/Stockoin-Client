@@ -4,6 +4,7 @@ import useWebsocket, { CoinTicker } from '@/hooks/useWebsocket';
 import { findCategoryState, selectTokens } from '@/store/findToken';
 import { selectTokenState } from '@/store/selectToken';
 import { tokenCategory } from '@/utils/constants';
+import { convertAndRoundUpCurrency } from '@/utils/convertAndRoundUpCurrency';
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -37,36 +38,59 @@ export default function page() {
   },[ticker]);
 
 
-  // cd: string; // 코인 코드 (KRW-BTC)
-  // tp: number; // 현재가 
-  // scr: number; // 전일대비 등락률
-  // tv: number; // 가장 최근 거래량
-  // ms: string; // 시장명
-  // mw: string; // 시가총액
-  // h52wp: number; // 52주 최고가
-  // h52wdt: string; // 52주 최고가 달성일
-  // l52wp: number; // 52주 최저가
-  // l52wdt: string; // 52주 최저가 달성일
-  // atp24h: number; // 24시간 가격
-  // atv24h: number; // 24시간  거래량
-  // isRising: boolean;
-  console.log(tickers);
+
+// export interface CoinTicker {
+//   cd: string; // 코인 코드 (KRW-BTC)
+//   ab?: "BID" | "ASK"; // 매수/매도
+//   tp: number; // 현재가 
+//   scr: number; // 전일대비 등락률
+//   tv: number; // 가장 최근 거래량
+//   ms: string; // 스테이터스
+//   atp: string; // 시가총액
+//   atv: number; // 총거래량
+//   mn: string; // 마켓명
+//   h52wp: number; // 52주 최고가
+//   h52wdt: string; // 52주 최고가 달성일
+//   l52wp: number; // 52주 최저가
+//   l52wdt: string; // 52주 최저가 달성일
+//   atp24h: number; // 24시간 가격
+//   atv24h: number; // 24시간  거래량
+//   isRising: boolean;
+//   aav?: number // 누적 매도량 - ask
+//   abv?: number // 누적 매수량 - bid
+//   c?: 'RISE' | 'EVEN' | 'FALL' // 전일 대비
+//   cp?: number // 부호 없는 전일 대비 값
+//   cr?: number // 부호 없는 전일 대비 등락률
+//   dd?: null // 상장폐지일
+//   hp?: number // 고가
+//   its?: false // 거래 정지 여부
+//   lp?: number // 저가
+//   mw?: "NONE" | "CAUTION" //유의 종목 지정 여부 
+//   op?: number // 시가
+//   pcp?: number // 전일 종가
+//   scp?: number // 부호 있는 전일 대비 값
+//   st?: "REALTIME" | "SNAPSHOT" // 스트림 타입
+//   tdt?: string // 최근 거래 일자
+//   tms?: number // 타임스탬프
+//   ttm?: string // 최근 거래 시각 HHmmss
+//   ttms?: number // 거래 체결 타임스탬프
+// }
   return (
     <div className='w-full'>
       <div className='w-full h-[400px] bg-slate-400 flex items-center justify-center'>
           <div className='flex-[0.7]'>차트</div>
-          <div className='flex-[0.3] border border-red-400 h-full'>
+          <div className='flex-[0.3] border border-red-400 h-full bg-white'>
             {
               tickers.length > 0 && (
-                <p className='flex flex-col items-center justify-center'>
-                  <span>{tickers[tickers.length - 1].atp}</span>
-                  <span>{tickers[tickers.length - 1].mn}</span>
-                  <span>{tickers[tickers.length - 1].h52wdt}</span>
-                  <span>{tickers[tickers.length - 1].h52wp}</span>
-                  <span>{tickers[tickers.length - 1].l52wdt}</span>
-                  <span>{tickers[tickers.length - 1].l52wp}</span>
-                  <span>{tickers[tickers.length - 1].atp24h}</span>
-                  <span>{tickers[tickers.length - 1].atv24h}</span>
+                <p className='flex flex-col items-center justify-center  font-bold h-ful'>
+                  <span>시가총액: {convertAndRoundUpCurrency(+tickers[tickers.length - 1].atp)}</span>
+                  <span>코인이름: {tickers[tickers.length - 1].mn}</span>
+                  <span>52주 최고가 달성일{tickers[tickers.length - 1].h52wdt}</span>
+                  <span>52주 최고가 {convertAndRoundUpCurrency(tickers[tickers.length - 1].h52wp)}</span>
+                  <span>52주 최저가 달성일{tickers[tickers.length - 1].l52wdt}</span>
+                  <span>52주 최저가{convertAndRoundUpCurrency(tickers[tickers.length - 1].l52wp)}</span>
+                  <span>24시간 누적 거래대금 {convertAndRoundUpCurrency(tickers[tickers.length - 1].atp24h)}</span>
+                  <span>24시간 누적 거래량 {Math.round(tickers[tickers.length - 1].atv24h).toLocaleString()}개</span>
                 </p>
               )
             }
@@ -104,14 +128,3 @@ export default function page() {
     </div>
   )
 }
-
-  // <div>
-          //   <p className={`relative flex-1 text-2xl font-bold flex items-center justify-center ${item[`KRW-${tokenDetail}`].isRising ? 'text-red-500' : 'text-blue-400'}`}>
-          //       <span> {(ticker[`KRW-${tokenDetail}`].tp).toLocaleString()} 원</span>
-          //       <span className={`absolute top-0 left-0`}>
-          //         {ticker[`KRW-${tokenDetail}`].isRising ? '▲' : '▼'}
-          //       </span>
-          //       <HighLowUnderline isRising={ticker[`KRW-${tokenDetail}`].isRising} />
-          //     </p>
-          // </div>
-        

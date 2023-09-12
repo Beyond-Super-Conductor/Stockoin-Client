@@ -57,7 +57,9 @@ import kava from '@/public/assets/coins/kava.webp'
 import rfr from '@/public/assets/coins/rfr.webp'
 import cvc from '@/public/assets/coins/cvc.webp'
 import meta from '@/public/assets/coins/meta.webp'
-
+import ark from '@/public/assets/coins/ark.webp'
+import xrp from '@/public/assets/coins/xrp.webp'
+import doge from '@/public/assets/coins/doge.webp'
 export const tokenCategory = [
   {
     koName: '비트코인 그룹',
@@ -563,9 +565,23 @@ export const tokenCategory = [
     enName: 'etc',
     
     tokens: [
-      
+      {
+        koName: '리플',
+        enName: 'XRP',
+        icon: xrp
+      },
+      {
+        enName: 'ARK',
+        koName: '아크',
+        icon: ark
+      },
+      {
+        enName: 'DOGE',
+        koName: '도지코인',
+        icon: doge
+      }
     ],
-    icon: btc
+    icon: xrp
   },
 
 ]
