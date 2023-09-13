@@ -1,7 +1,7 @@
 'use client';
 import ShowMoreCategoryButton from '@/app/components/nav/ShowMoreCategoryButton'
 import useThrottle from '@/hooks/useThrottle';
-import { tokenCategory } from '@/utils/constants';
+import { coinCategory } from '@/utils/constants';
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -68,7 +68,7 @@ export default function GlobalHeader() {
       {/* hover:bg-gradient-radial hover:to-[#4a74fe] hover:from-[-50%] from-[#4ad4e9] transition-all duration-500 */}
       <ul className='relative w-full md:mt-0 mt-8 justify-between flex items-center h-auto border-b border-slate-300 px-4 cursor-pointer'>
         {
-          tokenCategory.slice(0,5).map((category) => (
+          coinCategory.slice(0,5).map((category) => (
           <li key={category.enName} className='m-2 min-h-[40px] cursor-pointer'>
             <Link className='h-[40px] text-center flex flex-col md:flex-row justify-center items-center gap-2 font-bold' href={`/dashboard/${category.enName}`}>
               <Image

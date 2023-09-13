@@ -1,9 +1,9 @@
 'use client'
 import HighLowUnderline from '@/app/components/home/widgets/HighLowUnderline';
 import useWebsocket, { CoinTicker } from '@/hooks/useWebsocket';
-import { findCategoryState } from '@/store/findToken';
-import { selectTokenState } from '@/store/selectToken';
-import { tokenCategory } from '@/utils/constants';
+import { findCategoryState } from '@/store/findCoin';
+import { selectCoinstate } from '@/store/selectCoin';
+import { coinCategory } from '@/utils/constants';
 import { convertAndRoundUpCurrency } from '@/utils/convertAndRoundUpCurrency';
 import { formatDateToAgo } from '@/utils/formatDateToAgo';
 import { useParams } from 'next/navigation'
@@ -11,20 +11,20 @@ import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 export default function page() {
-  const [selectToken,setSelectToken] = useRecoilState(selectTokenState);
+  const [selectCoin,setselectCoin] = useRecoilState(selectCoinstate);
   const [findCategory,setFindCategory] = useRecoilState(findCategoryState)
   const {slug, tokenDetail} = useParams();
   const { ticker } = useWebsocket({marketList:`KRW-${tokenDetail}`,marketQuery:`KRW-${tokenDetail}`})
   const [tickers,setTickers] = useState<CoinTicker[]>([]);
   
   useEffect(() => {  
-    const selectedCategory = tokenCategory.find((item) => item.enName === slug);
+    const selectedCategory = coinCategory.find((item) => item.enName === slug);
     if(!selectedCategory) return;
     setFindCategory(selectedCategory);
-    const selectedToken = selectedCategory.tokens
+    const selectedToken = selectedCategory.coins
     .find((item) => item.enName === tokenDetail);
     if(!selectedToken) return;
-    setSelectToken(selectedToken);
+    setselectCoin(selectedToken);
   },[slug, tokenDetail]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 'use client';
-import { selectTokenState } from '@/store/selectToken';
+import { selectCoinstate } from '@/store/selectCoin';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useRef } from 'react'
@@ -9,7 +9,7 @@ import { rgbToHex } from '@/utils/rgbToHex';
 import { dashboardColorState } from '@/store/dashboardColor';
 
 export default function DashboardLayoutLogo() {
-  const { icon } = useRecoilValue(selectTokenState);
+  const { icon } = useRecoilValue(selectCoinstate);
   const imageRef = useRef<HTMLImageElement>(null);
   const [dashboardColor, setDashboardColor] = useRecoilState(dashboardColorState);
 

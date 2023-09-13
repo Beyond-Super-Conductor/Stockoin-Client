@@ -1,6 +1,6 @@
 'use client'
 
-import { tokenCategory } from '@/utils/constants'
+import { coinCategory } from '@/utils/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -23,7 +23,7 @@ export default function ShowMoreCategoryButton() {
         className={`absolute right-0 top-[66px] z-10 ${showMoreCoin ? 'block' : 'hidden'} border-2 border-slate-200 rounded-md shadow-md shadow-gray-300  bg-[#E5FDF8]`}>
           <ul className="py-2 text-sm" aria-labelledby="dropdownDividerButton">
             {
-              tokenCategory.slice(5).map((category) => (
+              coinCategory.slice(5).map((category) => (
               <li key={category.koName}>
                 <Link
                   

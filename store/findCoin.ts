@@ -8,14 +8,14 @@ export const findCategoryState = atom<Omit<TokenCategories,'icon'>>({
   default: {
     koName: '',
     enName: '',
-    tokens: [],
+    coins: [],
   },
 });
 
-export const selectTokens = selector({
-  key: 'findTokenSelector',
+export const selectCoins = selector({
+  key: 'findcoinselector',
   get: ({get}) => {
-    const {tokens} = get(findCategoryState);
-    return tokens;
+    const {coins} = get(findCategoryState);
+    return coins;
   },
 })

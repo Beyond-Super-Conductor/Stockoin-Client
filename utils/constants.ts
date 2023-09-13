@@ -63,12 +63,12 @@ import doge from '@/public/assets/coins/doge.webp'
 
 
 
-export const tokenCategory = [
+export const coinCategory = [
   {
     koName: '비트코인 그룹',
     enName: 'btc-group',
     
-    tokens: [
+    coins: [
       {
         koName: '비트코인',
         enName: 'BTC',
@@ -96,7 +96,7 @@ export const tokenCategory = [
     koName: '이더리움 그룹',
     enName: 'eth-group',
     
-    tokens: [
+    coins: [
       {
         koName: '이더리움',
         enName: 'ETH',
@@ -115,7 +115,7 @@ export const tokenCategory = [
     koName: 'NFC',
     enName: 'nfc',
     
-    tokens: [
+    coins: [
       {
         koName: '엑시인피니티',
         enName: 'AXS',
@@ -174,7 +174,7 @@ export const tokenCategory = [
     koName: '디파이',
     enName: 'defi',
     
-    tokens: [
+    coins: [
       {
         koName: '솔라나',
         enName: 'SOL',
@@ -212,7 +212,7 @@ export const tokenCategory = [
     koName: '스마트 컨트랙',
     enName: 'smart-contracts',
     
-    tokens: [
+    coins: [
       {
         koName: '이더리움',
         enName: 'ETH',
@@ -270,7 +270,7 @@ export const tokenCategory = [
     koName: '오라클',
     enName: 'oracle',
     
-    tokens: [
+    coins: [
       {
         koName: '체인링크',
         enName: 'LINK',
@@ -283,7 +283,7 @@ export const tokenCategory = [
     koName: 'IoT',
     enName: 'iot',
     
-    tokens: [
+    coins: [
       {
         koName: '비체인',
         enName: 'VET',
@@ -318,7 +318,7 @@ export const tokenCategory = [
     koName: '간편결제 플랫폼',
     enName: 'market-place',
     
-    tokens: [
+    coins: [
       {
         koName: '크로노스',
         enName: 'CRO',
@@ -330,7 +330,7 @@ export const tokenCategory = [
   {
     koName: '게임',
     enName: 'game',
-    tokens: [
+    coins: [
       {
         koName: '엔진코인',
         enName: 'ENJ',
@@ -348,7 +348,7 @@ export const tokenCategory = [
     koName: '광고산업',
     enName: 'advertisement',
     
-    tokens: [
+    coins: [
       {
         koName: '베이직어텐션토큰',
         enName: 'BAT',
@@ -361,7 +361,7 @@ export const tokenCategory = [
     koName: '데이터저장 서비스',
     enName: 'data-store-service',
     
-    tokens: [
+    coins: [
       {
         koName: '스토리지',
         enName: 'STORJ',
@@ -379,7 +379,7 @@ export const tokenCategory = [
     koName: '분산화거래소',
     enName: 'dex',
     
-    tokens: [
+    coins: [
       {
         koName: '이더리움',
         enName: 'ETH',
@@ -402,7 +402,7 @@ export const tokenCategory = [
     koName: '소셜네트워킹',
     enName: 'social-networking',
     
-    tokens: [
+    coins: [
       {
         koName: '스테이터스네트워크토큰',
         enName: 'SNT',
@@ -415,7 +415,7 @@ export const tokenCategory = [
     koName: '연산력임대서비스',
     enName: 'certification-service',
     
-    tokens: [
+    coins: [
       {
         koName: '앵커',
         enName: 'ANKR',
@@ -433,7 +433,7 @@ export const tokenCategory = [
     koName: '인증서비스',
     enName: 'certification-service',
     
-    tokens: [
+    coins: [
       {
         koName: '온톨로지',
         enName: 'ONT',
@@ -456,7 +456,7 @@ export const tokenCategory = [
     koName: '컨텐츠 생산 및 중개',
     enName: 'content-production',
     
-    tokens: [
+    coins: [
       {
         koName: '트론',
         enName: 'TRX',
@@ -490,7 +490,7 @@ export const tokenCategory = [
     koName: '플랫폼',
     enName: 'platform',
     
-    tokens: [
+    coins: [
       {
         koName: '이오스',
         enName: 'EOS',
@@ -548,7 +548,7 @@ export const tokenCategory = [
     koName: 'SNS 컨텐츠',
     enName: 'sns-contents',
     
-    tokens: [
+    coins: [
       {
         koName: '스팀',
         enName: 'STEEM',
@@ -567,7 +567,7 @@ export const tokenCategory = [
     koName: '기타',
     enName: 'etc',
     
-    tokens: [
+    coins: [
       {
         koName: '리플',
         enName: 'XRP',

@@ -1,8 +1,8 @@
 'use client'
-import { findCategoryState } from '@/store/findToken';
-import { selectTokenState } from '@/store/selectToken';
+import { findCategoryState } from '@/store/findCoin';
+import { selectCoinstate } from '@/store/selectCoin';
 import { Coin } from '@/types/token';
-import { tokenCategory } from '@/utils/constants';
+import { coinCategory } from '@/utils/constants';
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -11,18 +11,18 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 
 export default function UbciPage() {
   const {slug} = useParams();
-  const [tokens, setTokens] = useState<Coin[]>();
+  const [coins, setcoins] = useState<Coin[]>();
   const [findCategory, setFindCategory] = useRecoilState(findCategoryState);
-  const resetSelectToken = useResetRecoilState(selectTokenState);
+  const resetselectCoin = useResetRecoilState(selectCoinstate);
 
   
   useEffect(() => {
-    resetSelectToken()
-    const findTokenCategory = tokenCategory.find((item) => item.enName === slug);
-    if(findTokenCategory){
-      const { enName,icon,koName,tokens } = findTokenCategory
-      setTokens(tokens);
-      setFindCategory({enName: enName, koName: koName, tokens: tokens})
+    resetselectCoin()
+    const findcoinCategory = coinCategory.find((item) => item.enName === slug);
+    if(findcoinCategory){
+      const { enName,icon,koName,coins } = findcoinCategory
+      setcoins(coins);
+      setFindCategory({enName: enName, koName: koName, coins: coins})
     }
   }, [slug])
 
@@ -31,7 +31,7 @@ export default function UbciPage() {
       <Suspense fallback={<div>loading...</div>}>
         <div className='flex flex-col items-center justify-center w-full'>
           {
-            tokens?.map((token) => (
+            coins?.map((token) => (
               <Link href={{
                 pathname: `/dashboard/${slug}/${token.enName}`,
                 }} key={token.enName} className='w-full flex flex-col items-start justify-start p-4 min-h-[80px]'>

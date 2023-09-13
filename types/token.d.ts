@@ -9,7 +9,7 @@ export interface Coin {
 export interface TokenCategories {
   koName: string;
   enName: string;
-  tokens: Coin[];
+  coins: Coin[];
   icon: string | StaticImageData;
 }
 
