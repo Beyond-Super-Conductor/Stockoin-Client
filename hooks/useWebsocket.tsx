@@ -163,8 +163,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
         access_key :accessKey,
         nonce: uuid(),
       }
-    console.log('accessKey',accessKey)
-    console.log('secretKey',secretKey)
+    
     const token = sign(payload, secretKey as string);
     ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
     ws.current.binaryType = 'arraybuffer';
