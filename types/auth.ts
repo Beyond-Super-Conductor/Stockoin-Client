@@ -9,6 +9,8 @@ export enum AuthProvider {
   KAKAO = 'kakao'
 }
 
+
+
 export interface User{
   userId: number,
   email: string,

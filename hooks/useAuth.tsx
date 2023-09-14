@@ -62,8 +62,5 @@ export default function useAuth() {
     }
   }
 
-  
-
-
   return { error, user, isLoading, getOAuth, putUserProfile, getUserProfile }
 }
