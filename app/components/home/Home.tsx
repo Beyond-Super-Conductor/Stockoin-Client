@@ -1,24 +1,12 @@
 import React from 'react'
 import EmblaCarousel from './carousel/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel-react'
-import RealtimePriceBoard from './RealtimePriceBoard'
-import Chat from './widgets/Chat'
 import MainSection from './MainSection'
 
 const OPTIONS: EmblaOptionsType = { axis: 'y',loop: true }
 const SLIDE_COUNT = 4
 const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 
-// 종목 전체 조회
-// https://api.upbit.com/v1/market/all
-// {
-//   "market": "KRW-XRP",
-//   "korean_name": "리플",
-//   "english_name": "Ripple"
-// },
-// 요청 헤더(Request Header)에 Accept-Encoding: gzip 을 추가하시면 트래픽 비용을 줄일 수 있습니다.
-// 종목별 가격 조회
-// 'https://api.upbit.com/v1/ticker?markets=KRW-BTC'
 
 function Home() {
   

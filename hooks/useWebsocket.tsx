@@ -1,7 +1,7 @@
 'use client'
-
+import { sign } from "@/utils/createJWT";
 import { useEffect, useRef, useState } from "react"
-import crypto from 'crypto';
+
 import uuid from "react-uuid";
 
 
@@ -34,9 +34,6 @@ interface ResponseTicker {
   timestamp: number
   market_status: string
 }
-
-
-
 
 export interface CoinTicker {
   cd: string; // 코인 코드 (KRW-BTC)
@@ -74,32 +71,6 @@ export interface CoinTicker {
   ttm?: string // 최근 거래 시각 HHmmss
   ttms?: number // 거래 체결 타임스탬프
 }
-
-export function base64UrlFromBase64(str: string) {
-  return str.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-}
-// create JWT Token
-export function sign(payload: any, secretKey: string) {
-  const header = {
-    alg: 'HS256',
-    typ: 'JWT'
-  };
-  const encodedHeader = base64UrlFromBase64(Buffer.from(JSON.stringify(header)).toString('base64'));
-
-  const encodedPayload = base64UrlFromBase64(
-    Buffer.from(JSON.stringify(payload)).toString('base64')
-  );
-
-  const signature = base64UrlFromBase64(
-    crypto
-      .createHmac('sha256', secretKey)
-      .update(encodedHeader + '.' + encodedPayload)
-      .digest('base64')
-  );
-
-  return `${encodedHeader}.${encodedPayload}.${signature}`;
-}
-
 interface Props {
   marketList: string[] | string;
   marketQuery: string;
@@ -192,8 +163,9 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
         access_key :accessKey,
         nonce: uuid(),
       }
-    const secrey_key = secretKey as string;
-    const token = sign(payload, secrey_key);
+    console.log('accessKey',accessKey)
+    console.log('secretKey',secretKey)
+    const token = sign(payload, secretKey as string);
     ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
     ws.current.binaryType = 'arraybuffer';
     connect();
