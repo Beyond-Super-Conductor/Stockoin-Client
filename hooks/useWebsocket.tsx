@@ -185,11 +185,14 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
 
   useEffect(() => {
     getInitTicker();
+    const accessKey = process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY;
+    const secretKey = process.env.NEXT_PUBLIC_UPBIT_SECRET_KEY;
+
     const payload = {
-        access_key :process.env.NEXT_PUBLIC_UPBIT_ACCESS_KEY,
+        access_key :accessKey,
         nonce: uuid(),
       }
-    const secrey_key = process.env.NEXT_PUBLIC_UPBIT_SECRET_KEY ?? '';
+    const secrey_key = secretKey as string;
     const token = sign(payload, secrey_key);
     ws.current = new WebSocket(`wss://api.upbit.com/websocket/v1?authorization=Bearer ${token}`);
     ws.current.binaryType = 'arraybuffer';
@@ -199,7 +202,6 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
       updateTicker(data);
     }
     
-
     ws.current.onclose = () => {
       console.log('disconnected')
       setTimeout(() => {

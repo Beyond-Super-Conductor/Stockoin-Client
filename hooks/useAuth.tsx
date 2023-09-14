@@ -17,8 +17,9 @@ export default function useAuth() {
     // process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
     setIsLoading(true);
     try {
+      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
       const response:AxiosResponse<User> = await get(
-        `/oauth2/authorization?code=${queries.code}&authProvider=${queries.authProvider}&redirect_uri=${process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI}&state=${queries.state}`
+        `/oauth2/authorization?code=${queries.code}&authProvider=${queries.authProvider}&redirect_uri=${redirectUri}&state=${queries.state}`
         );
       setUser(response.data);
       setIsLoading(false);

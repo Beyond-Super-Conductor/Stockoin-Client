@@ -10,11 +10,12 @@ export default function NaverPage() {
 
   useEffect(() => {
     if(searchParams.has('code')) {
+      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
       getUser({
         code: searchParams.get('code') as string,
         authProvider:'naver',
         state: searchParams.get('state') as string,
-        redirect_uri: process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI as string
+        redirect_uri: redirectUri as string
       })
     }
   },[searchParams])
