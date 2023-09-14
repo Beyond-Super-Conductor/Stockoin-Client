@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react'
 import NaverLoginButton from '../components/auth/NaverLoginButton';
+import KakaoLoginButton from '../components/auth/KakaoLoginButton';
+import GoogleLoginButton from '../components/auth/GoogleLoginButton';
 
 export default function AuthPage() {
   return (
@@ -9,18 +11,8 @@ export default function AuthPage() {
         <li className='w-full flex items-center justify-center'>
         <NaverLoginButton />
         </li>
-        <li className='w-full flex items-center justify-center'>
-        <button  className='w-full pr-20 flex items-center rounded-[2px] bg-[#4285f4]  box-border min-w-[280px] max-w-[400px] shadow-sm shadow-gray-200'>
-          <img src="/googleLogo.jpeg" alt="logo" className='w-[48px] h-[48px] p-1' />
-            <p className='text-3xl text-white w-full text-end'>구글 로그인</p>
-          </button>
-        </li>
-        <li className='w-full flex items-center justify-center'>
-        <button  className='w-full pr-20 flex items-center rounded-[2px] bg-[#FEE500] min-w-[280px]  max-w-[400px] shadow-sm shadow-gray-200'>
-          <img src="/kakaoLogo.jpeg" alt="logo" className='w-[48px] h-[48px]' />
-            <p className='text-3xl  w-full text-end text-[#000]'>카카오 로그인</p>
-          </button>
-        </li>
+        <GoogleLoginButton />
+        <KakaoLoginButton />
       </fieldset>
     </Suspense>
   )

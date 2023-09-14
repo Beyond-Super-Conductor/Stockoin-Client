@@ -1,10 +1,12 @@
 'use client'
-import SignupForm from '@/app/components/auth/SignupForm';
-import useAuth from '@/hooks/useAuth';
-import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect } from 'react'
 
-export default function NaverPage() {
+import SignupForm from "@/app/components/auth/SignupForm";
+import useAuth from "@/hooks/useAuth";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+
+export default function page() {
+  
   const { error, user, isLoading, getOAuth } = useAuth();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -12,12 +14,13 @@ export default function NaverPage() {
   
   useEffect(() => {
     if(searchParams.has('code')) {
-      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
+      const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
+      // http://localhost:3000/auth/login/google?code=4%2F0Adeu5BUACRQjJiAwf5OeBgE3KL22ic9t0R0RbuRz2os0RhZe3ZFA1fEFddv9JeHkr8mZ7w&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent
       getOAuth({
         code: searchParams.get('code') as string,
-        authProvider:'naver',
-        state: searchParams.get('state') as string,
-        redirect_uri: redirectUri as string
+        authProvider:'google',
+        state: 'google',
+        redirect_uri: redirectUri as string,
       })
     }
   },[searchParams])
@@ -31,6 +34,7 @@ export default function NaverPage() {
       }
     }
   },[user])
+  
   return (
     <div>
       {error && <p>{error}</p>}

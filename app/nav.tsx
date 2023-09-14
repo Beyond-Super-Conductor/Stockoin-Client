@@ -1,15 +1,18 @@
 'use client';
 import ShowMoreCategoryButton from '@/app/components/nav/ShowMoreCategoryButton'
+import useAuth from '@/hooks/useAuth';
 import useThrottle from '@/hooks/useThrottle';
+import { userState } from '@/store/user';
 import { coinCategory } from '@/utils/constants';
-
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
+import { useRecoilValue } from 'recoil';
 
 export default function GlobalHeader() {
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const user = useRecoilValue(userState);
+  const { getUserProfile } = useAuth();
   const { throttleScroll } = useThrottle();
 
   const throttleScrollHandler = () => {
@@ -24,7 +27,12 @@ export default function GlobalHeader() {
     window.addEventListener(
       'scroll',
       throttleScrollHandler);
-  })
+  },[])
+
+  useEffect(() => {
+    getUserProfile();
+  },[])
+
   return (
     <nav id="main--navigation" className={`sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' } transition-all duration-300`}>
       
@@ -59,11 +67,20 @@ export default function GlobalHeader() {
           </form>
         </li>
         <li className=' flex-1 flex justify-end items-center gap-10'>
-          <Link href="/partner">파트너로그인</Link>
-          <Link href="/auth">로그인 / 회원가입</Link>
-          <Link href="/auth">내 판</Link>
+          {
+            !user
+            ? <>
+                <Link href="/partner">파트너로그인</Link>
+                <Link href="/auth">로그인 / 회원가입</Link>
+              </>
+            : <>
+                <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
+                <Link href="/auth">내 판</Link>
+              </>
+          }
+          
         </li>
-
+          
       </ul>
       {/* hover:bg-gradient-radial hover:to-[#4a74fe] hover:from-[-50%] from-[#4ad4e9] transition-all duration-500 */}
       <ul className='relative w-full md:mt-0 mt-8 justify-between flex items-center h-auto border-b border-slate-300 px-4 cursor-pointer'>

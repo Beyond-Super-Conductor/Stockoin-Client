@@ -25,10 +25,12 @@ export interface User{
   nickname: string | null
 }
 
+// code, scope, authuser, prompt
 export interface AuthQuery {
   code: string;
   authProvider: string;
   state: string;
   redirect_uri: string;
+  scope?: string;
 }
 

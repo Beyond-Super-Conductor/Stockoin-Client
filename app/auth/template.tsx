@@ -24,7 +24,7 @@ export default function template({children}: Props) {
             >스토코인에 대해 알아보기</button>
         </div>
       </article>
-      <article className='flex-1 h-full'>
+      <article className='flex-1 h-full min-h-[300px]'>
       {children}
       </article>
     </section>

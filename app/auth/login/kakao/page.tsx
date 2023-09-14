@@ -1,10 +1,11 @@
-'use client'
+'use client';
 import SignupForm from '@/app/components/auth/SignupForm';
 import useAuth from '@/hooks/useAuth';
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import React, { useEffect } from 'react'
 
-export default function NaverPage() {
+export default function page() {
   const { error, user, isLoading, getOAuth } = useAuth();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -12,11 +13,12 @@ export default function NaverPage() {
   
   useEffect(() => {
     if(searchParams.has('code')) {
-      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
+      const redirectUri = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI
+      
       getOAuth({
         code: searchParams.get('code') as string,
-        authProvider:'naver',
-        state: searchParams.get('state') as string,
+        authProvider:'kakao',
+        state: 'kakao',
         redirect_uri: redirectUri as string
       })
     }
@@ -31,6 +33,7 @@ export default function NaverPage() {
       }
     }
   },[user])
+  
   return (
     <div>
       {error && <p>{error}</p>}

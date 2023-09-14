@@ -14,7 +14,6 @@ export default function HighLowUnderline({isRising}: Props) {
     }else{
       setHighlight('price-change-down')
     }
-
     const timer = setTimeout(() => {
       setHighlight('')
     }, 300);
@@ -23,6 +22,6 @@ export default function HighLowUnderline({isRising}: Props) {
   }, [isRising])
 
   return (
-    <span className={`block w-[60px] h-[1px] absolute top-10 ${highlight}`}/>
+    <span className={`block w-[60px] h-[1px] absolute top-8 ${highlight}`}/>
   )
 }

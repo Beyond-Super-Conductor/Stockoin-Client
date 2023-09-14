@@ -2,6 +2,7 @@
 import CoinTitle from '@/app/components/dashboard/CoinTitle'
 import DashboardLayoutLogo from '@/app/components/dashboard/DashboardLayoutLogo'
 import { dashboardColorState } from '@/store/dashboardColor'
+import { userState } from '@/store/user'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
@@ -14,6 +15,7 @@ interface Props {
 
 export default function DashboardLayout({children}: Props) {
   const dashboardColor = useRecoilValue(dashboardColorState);
+  const user = useRecoilValue(userState);
   const resetBackgroundColor = useResetRecoilState(dashboardColorState);
   const handleBackButtonClick = () => resetBackgroundColor();
 
@@ -27,7 +29,7 @@ export default function DashboardLayout({children}: Props) {
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
       <div className='w-full flex items-center justify-end px-4 h-8'>
-        <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>
+        {!user && <Link href='/auth' className='text-2xl'>아직 스토코인 회원이 아니라면? 회원가입 10초 컷</Link>}
       </div>
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
         <DashboardLayoutLogo />
