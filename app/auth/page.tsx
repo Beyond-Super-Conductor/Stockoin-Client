@@ -5,7 +5,7 @@ import GoogleLoginButton from '../components/auth/GoogleLoginButton';
 
 export default function AuthPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    
       <fieldset className='w-full flex flex-col gap-2 items-center justify-center border border-white py-10'>
         <legend className='px-4 text-2xl'>소셜로그인</legend>
         <li className='w-full flex items-center justify-center'>
@@ -14,6 +14,6 @@ export default function AuthPage() {
         <GoogleLoginButton />
         <KakaoLoginButton />
       </fieldset>
-    </Suspense>
+    
   )
 }

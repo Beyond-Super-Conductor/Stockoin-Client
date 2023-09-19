@@ -75,6 +75,7 @@ export default function GlobalHeader() {
               </>
             : <>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
+                <button>로그아웃</button>
                 <Link href="/auth">내 판</Link>
               </>
           }

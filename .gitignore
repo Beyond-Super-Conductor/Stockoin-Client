@@ -26,9 +26,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
-.env
-.env.production
-.env.development
 # vercel
 .vercel
 
@@ -37,3 +34,9 @@ yarn-error.log*
 next-env.d.ts
 
 test.js
+
+
+
+.env
+.env.production
+.env.development

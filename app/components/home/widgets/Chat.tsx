@@ -10,7 +10,8 @@ interface Props {
 export default function Chat({ isExpanded, onShrink, onExpand }: Props) {
   return (
     <div className={`
-     ${isExpanded ? 'hidden' : 'flex-[0.35]'} transition-all duration-700  w-full h-[580px] ring ring-slate-200 shad ow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-md`}>
+     ${isExpanded ? 'hidden' : 'flex-[0.35]'}
+       w-full h-[580px] ring ring-slate-200 shad ow-lg shadow-gray-300 flex items-center justify-center rounded-md`}>
     실시간 전체 채팅
   R</div>  
   )

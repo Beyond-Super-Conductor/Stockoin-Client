@@ -3,7 +3,7 @@ import { selectCoinstate } from '@/store/selectCoin';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useRef } from 'react'
-import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import colorThief from 'colorthief';
 import { rgbToHex } from '@/utils/rgbToHex';
 import { dashboardColorState } from '@/store/dashboardColor';

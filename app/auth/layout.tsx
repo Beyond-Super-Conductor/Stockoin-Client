@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { notoSansKr } from '../fonts/fonts'
 
@@ -11,6 +11,7 @@ interface Props {
 
 export default function AuthLayout({children}: Props) {
   return (
+    
     <div className={`bg-yellow-100/20 min-h-[100vh] h-auto ${notoSansKr.className}`}>
       <div className='h-1' />
       <h1 className='mt-4 bg-white pl-4 py-4 border-y-2 border-slate-400'>
@@ -24,5 +25,6 @@ export default function AuthLayout({children}: Props) {
         {children}
       </main>
     </div>
+    
   )
 }

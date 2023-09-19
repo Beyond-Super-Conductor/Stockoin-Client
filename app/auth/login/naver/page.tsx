@@ -34,7 +34,7 @@ export default function NaverPage() {
   return (
     <div>
       {error && <p>{error}</p>}
-      {isLoading && <p>loading...</p>}
+      {isLoading && <p>회원정보를 확인하고 있습니다</p>}
       {(!error && user && !user?.isInitProfile) && <SignupForm />}
     </div>
   )
