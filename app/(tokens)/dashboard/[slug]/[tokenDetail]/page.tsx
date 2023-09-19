@@ -8,6 +8,7 @@ import { selectCoinstate } from '@/store/selectCoin';
 import { coinCategory } from '@/utils/constants';
 import { convertAndRoundUpCurrency } from '@/utils/convertAndRoundUpCurrency';
 import { formatDateToAgo } from '@/utils/formatDateToAgo';
+import Link from 'next/link';
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -123,29 +124,38 @@ export default function page() {
                   <span className={`flex-1  text-center ${item.scr > 0 ? 'text-red-500' : 'text-blue-400'}`}> {(item.scr * 100).toFixed(3)}%</span>
                   <span className='flex-1 text-2xl text-center'>
                     <span className='block mr-2'>{(Math.round(item.tp * item.tv / 100) * 100).toLocaleString()}원</span>
+
                     <span className='text-lg'>
-                      (
-                      {
+                      ({
                         item.tv > 10
                         ? (item.tv).toFixed(0)
-                        : (item.tv).toFixed(3)}개
-                      </span>
-                      )
+                        : (item.tv).toFixed(3)
+                        }ea)
+                    </span>
+
                   </span>
-                </div>
-                )
-              )}
+                </div>))}
             </div>
-            <div className='flex-[0.7]'>
-              <div className='flex justify-center items-center w-full h-[60px]'>
-              <h3 className='font-[500] text-3xl w-full text-center border-b border-b-slate-400'>{selectCoin?.koName} 게시판</h3>
+            <article className='flex-[0.7]'>
+              <header className='relative flex justify-center items-center w-full h-[40px] shadow-sm border-b border-b-slate-200'>
+                <p className='font-[500] text-3xl'>{selectCoin?.koName} 게시판</p>
+                <Link
+                href={`/dashboard/${slug}/${tokenDetail}/write`}
+                className='absolute top-0 right-0 z-0 bg-indigo-400 px-4 py-2 text-white rounded-md shadow-md shadow-gray-200 ring-2 ring-indigo-600/60 font-bold'
+                >
+                  
+                  글쓰기
+                </Link>  
+              </header>
+              <div className='flex flex-col items-center justify-center'>
+                <p>아필패는 과학이다</p>
+                <p>아크 안간 흑우 손들어라</p>
+                <p>여기는 게시판자리다 알겠냐?</p>
+                <p>신한 444-777-101033 형님들 의리가 살아있음을 보여주십쇼</p>
+                <p>아크를 대하는 자세</p>
               </div>
-              <p>아필패는 과학이다</p>
-              <p>아크 안간 흑우 손들어라</p>
-              <p>여기는 게시판자리다 알겠냐?</p>
-              <p>신한 444-777-101033 형님들 의리가 살아있음을 보여주십쇼</p>
-              <p>아크를 대하는 자세</p>
-            </div>            
+            </article>            
+            
           </div>
     </div>
   )

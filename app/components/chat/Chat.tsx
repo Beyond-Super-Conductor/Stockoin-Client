@@ -17,11 +17,11 @@ export default function Chat({ selectCoin, onClickChatSwitch }: Props) {
   const { value:chatMessageValue, onChange:onChangeChatMessage } = useInput()
 
   return (
-    <div className="fixed bottom-0 right-0 w-[30%] h-[50vh] flex flex-col border shadow-md bg-white bg-opacity-20">
+    <div className="fixed bottom-0 right-0 w-[25%] h-[50vh] flex flex-col border shadow-md bg-white bg-opacity-60 z-10">
               <div className="flex items-center justify-between border-b p-2">
                 {/* <!-- user Avatar --> */}
                 <div className="flex items-center">
-                  {/* className="rounded-full w-10 h-10" */}
+                  
                   {selectCoin?.icon && <Image src={selectCoin.icon} width={40} height={40} alt='coin image' />}
                   <div className="pl-2">
                     <div className="font-semibold">
