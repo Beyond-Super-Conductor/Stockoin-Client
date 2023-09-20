@@ -60,6 +60,8 @@ import ark from '@/public/assets/coins/ark.webp'
 import xrp from '@/public/assets/coins/xrp.webp'
 import doge from '@/public/assets/coins/doge.webp'
 // import xtz from '@/public/assets/coins/xtz.webp'
+import {align,font,fontColor,fontSize,formatBlock,hiliteColor,horizontalRule,lineHeight,list,paragraphStyle,table,template,textStyle,image, link as editorLink } from 'suneditor/src/plugins'
+import { SunEditorOptions } from 'suneditor/src/options'
 
 
 
@@ -590,3 +592,58 @@ export const coinCategory = [
 ]
 
 
+export const editorOptions:SunEditorOptions = {
+  showPathLabel: false,
+  minHeight: "50vh",
+  maxHeight: "70vh",
+  plugins: [
+    align,
+    font,
+    fontColor,
+    fontSize,
+    formatBlock,
+    hiliteColor,
+    horizontalRule,
+    lineHeight,
+    list,
+    paragraphStyle,
+    table,
+    template,
+    textStyle,
+    image,
+    editorLink
+  ],
+  buttonList: [
+    ["undo", "redo"],
+    ["font", "fontSize", "formatBlock"],
+    ["image","link"],
+    ["paragraphStyle"],
+    [
+      "bold",
+      "underline",
+      "italic",
+      "strike",
+    ],
+    ["fontColor", "hiliteColor"],
+    ["removeFormat"],
+    ["align", "horizontalRule", "list", "lineHeight"],
+    ["table"],
+  ],
+  formats: ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6"],
+  font: [
+    "Arial",
+    "Calibri",
+    "Comic Sans",
+    "Courier",
+    "Garamond",
+    "Georgia",
+    "Impact",
+    "Lucida Console",
+    "Palatino Linotype",
+    "Segoe UI",
+    "Tahoma",
+    "Times New Roman",
+    "Trebuchet MS"
+  ]
+}
+export const EDITOR_DEFAULT_STYLE = "position:relative; font-family: '-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif'; font-size: 14px;"

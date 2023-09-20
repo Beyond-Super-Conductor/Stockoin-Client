@@ -54,8 +54,18 @@ export const get = async <T>(url: string, query?: Record<string,any>):Promise<Ax
     
     return response.data;
   } catch(e) {
-    const axiosError = e as CustomError;
-    throw Error(axiosError.message);
+   const err = e as CustomError;
+   if(err.response){
+    throw err.response.data
+   }else {
+    throw err;
+   }
+//    throw err.response?.data || {
+//     ...err,
+//     message: '서버에서 에러가 발생했습니다. 서버 관리자를 태형 80대로 다스리겠습니다.',
+//     code: 'error',
+//     status: 500
+//  }
   }
 }
 
@@ -64,8 +74,13 @@ export const post = async <T>(url: string, data: any):Promise<AxiosResponse<T,Cu
     const response = await axios.post(url, data);
     return response.data;
   } catch(e) {
-    const axiosError = e as CustomError;
-    throw Error(axiosError.message);
+    const err = e as CustomError;
+    throw err.response?.data || {
+      ...err,
+      message: '서버에서 에러가 발생했습니다. 서버 관리자를 태형 80대로 다스리겠습니다.',
+      code: 'error',
+      status: 500
+   }
   }
 }
 
@@ -74,7 +89,12 @@ export const put = async <T>(url: string, data: any):Promise<AxiosResponse<T,Cus
     const response = await axios.put(url, data);
     return response.data;
   } catch(e) {
-    const axiosError = e as CustomError;
-    throw Error(axiosError.message);
+    const err = e as CustomError;
+    throw err.response?.data || {
+      ...err,
+      message: '서버에서 에러가 발생했습니다. 서버 관리자를 태형 80대로 다스리겠습니다.',
+      code: 'error',
+      status: 500
+   }
   }
 }

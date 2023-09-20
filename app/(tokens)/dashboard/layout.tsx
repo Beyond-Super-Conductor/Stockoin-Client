@@ -2,9 +2,6 @@
 import CoinTitle from '@/app/components/dashboard/CoinTitle'
 import DashboardLayoutLogo from '@/app/components/dashboard/DashboardLayoutLogo'
 import { dashboardColorState } from '@/store/dashboardColor'
-import { userState } from '@/store/user'
-import Image from 'next/image'
-import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
@@ -15,7 +12,6 @@ interface Props {
 
 export default function DashboardLayout({children}: Props) {
   const dashboardColor = useRecoilValue(dashboardColorState);
-  
   const resetBackgroundColor = useResetRecoilState(dashboardColorState);
   const handleBackButtonClick = () => resetBackgroundColor();
 
@@ -28,10 +24,8 @@ export default function DashboardLayout({children}: Props) {
 
   return (
     <div className='flex flex-col items-center w-full h-[1000px]'>
-      
       <nav className='flex items-center w-full h-auto border-b border-b-slate-400/60'>
         <DashboardLayoutLogo />
-
         <div
         className={`p-2 flex-1 flex items-center justify-between h-full`}
         style={{

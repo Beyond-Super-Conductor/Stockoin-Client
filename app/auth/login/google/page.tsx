@@ -3,10 +3,11 @@
 import SignupForm from "@/app/components/auth/SignupForm";
 import useAuth from "@/hooks/useAuth";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+
+
 
 export default function page() {
-  
   const { error, user, isLoading, getOAuth } = useAuth();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -34,10 +35,10 @@ export default function page() {
   },[user])
   
   return (
-    <div>
+    <Suspense fallback={<p>회원정보를 확인하고 있습니다.</p>}>
       {error && <p>{error}</p>}
-      {isLoading && <p>회원정보를 확인하고 있습니다.</p>}
+      
       {(!error && user && !user?.isInitProfile) && <SignupForm />}
-    </div>
+    </Suspense>
   )
 }

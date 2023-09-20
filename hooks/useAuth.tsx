@@ -27,10 +27,11 @@ export default function useAuth() {
       setIsLoading(false);
       return response.data;
     } catch (error) {
-      const axiosError = error as CustomError 
-      setError(axiosError.message);
+      const err = error as CustomError 
+      console.log(error);
+      setError(err.message);
       setIsLoading(false);
-      return axiosError
+      return err
     }
   }
 

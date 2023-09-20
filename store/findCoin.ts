@@ -1,4 +1,4 @@
-import { TokenCategories } from "@/types/token";
+import { TokenCategories } from "@/types/coin";
 import { atom, selector } from "recoil";
 
 

@@ -1,7 +1,7 @@
 'use client'
 
 import useInput from "@/hooks/useInput";
-import { Coin } from "@/types/token";
+import { Coin } from "@/types/coin";
 import Image from "next/image";
 
 
