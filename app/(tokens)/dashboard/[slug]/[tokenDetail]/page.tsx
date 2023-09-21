@@ -5,16 +5,6 @@ import { AxiosResponse } from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-// params: Params
-
-// const res = await fetch(`${BASE_URL}/post?pageNo=1&pageSize=100&postEnums=TYPE_CATEGORY&categoryEnums=${tokenDetail}`)
-
-// const posts: CoinPostsResponse = await res.json();
-
-// export async function generateStaticParams() {
-//   return [{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, ]
-// }
-
 const getCoinPosts = async (tokenDetail: string) => {
   let change1InchName;
   if(tokenDetail === '1INCH') change1InchName = 'INCH';
@@ -23,7 +13,7 @@ const getCoinPosts = async (tokenDetail: string) => {
       cache: 'no-cache'
     })  
     const { data: { posts } }: CoinPostsResponse = await res.json();
-    
+
     return posts;
   } catch (error) {
     console.error(error);
