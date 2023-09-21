@@ -7,7 +7,7 @@ import React from 'react'
 // TODO:  use client로 제목만 가져다 붙이는 로직 작성
 
 interface Props {
-  posts: CoinPost[] | undefined;
+  posts: CoinPost[];
 }
 
 export default function CoinPosts({posts}:Props) {
