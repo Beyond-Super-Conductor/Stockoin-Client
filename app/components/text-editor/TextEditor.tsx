@@ -10,7 +10,8 @@ import { unSavedPostState } from '@/store/unSavedPost';
 import { useCallback, useEffect, useRef } from 'react';
 import { EDITOR_DEFAULT_STYLE, editorOptions } from '@/utils/constants';
 import useCoinBoardActions from '@/hooks/useCoinBoardActions';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
+import useAuth from '@/hooks/useAuth';
 
 export default function TextEditor() {
   const {tokenDetail} = useParams();
@@ -19,7 +20,8 @@ export default function TextEditor() {
   const [unSavedPost, setUnSavedPost] = useRecoilState(unSavedPostState);
   const { value: titleValue, onChange: onChangeTitleValue } = useInput();
   const { value:contentValue, onChange: onChangeContentValue } = useInput();
-  
+  const { user,getUserProfile } = useAuth();
+  const router = useRouter();
   const getSunEditorInstance = (sunEditor:SunEditorCore) => {
     editorRef.current = sunEditor;
   }
@@ -36,10 +38,10 @@ export default function TextEditor() {
       content: contentValue,
       categoryEnums: tokenDetail as string,
     })
-  },[tokenDetail, titleValue, contentValue])
-
+  },[tokenDetail, titleValue, contentValue])  
 
   useEffect(() => {
+    if(!user) return;
     if(unSavedPost) {
       const isReWriteConfirm = window.confirm('저장되지 않은 글이 있습니다. 마저 작성하시겠습니까?')
       if(isReWriteConfirm) {
@@ -47,7 +49,12 @@ export default function TextEditor() {
       }
       setUnSavedPost('');
     }
-  },[])
+  },[user])
+
+  
+  
+
+
 
   return (
     <>

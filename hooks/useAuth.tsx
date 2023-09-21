@@ -36,6 +36,7 @@ export default function useAuth() {
   }
 
   const getUserProfile = async() => {
+    if(!localStorage.getItem('accessToken')) return;
     setIsLoading(true);
     try {
       const response:AxiosResponse<User> = await get('users');

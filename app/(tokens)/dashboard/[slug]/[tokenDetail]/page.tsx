@@ -16,20 +16,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 // }
 
 const getCoinPosts = async (tokenDetail: string) => {
-  // tokenDetail 잘 찍힘..
   let change1InchName;
-  
-  if(tokenDetail === '1INCH') {
-    change1InchName = 'INCH';
-  }
-
-  console.log(`${BASE_URL}post?pageNo=0&pageSize=10&postEnums=TYPE_CATEGORY&categoryEnums=${tokenDetail === '1INCH' ? change1InchName : tokenDetail}`)
+  if(tokenDetail === '1INCH') change1InchName = 'INCH';
   try {
     const res = await fetch(`${BASE_URL}post?pageNo=0&pageSize=10&postEnums=TYPE_CATEGORY&categoryEnums=${tokenDetail === '1INCH' ? change1InchName : tokenDetail}`,{
       cache: 'no-cache'
     })  
     const { data: { posts } }: CoinPostsResponse = await res.json();
-    console.log(posts);
+    
     return posts;
   } catch (error) {
     console.error(error);
