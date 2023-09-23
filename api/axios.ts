@@ -48,7 +48,7 @@ axios.interceptors.request.use(
   });
 
 
-export const get = async <T>(url: string, query?: Record<string,any>):Promise<AxiosResponse<T,CustomError>> => {
+export const get = async <T>(url: string, query?: Record<string,T>):Promise<AxiosResponse<T,CustomError>> => {
   try {
     const response = await axios.get(url, { params: query });
     
@@ -69,7 +69,7 @@ export const get = async <T>(url: string, query?: Record<string,any>):Promise<Ax
   }
 }
 
-export const post = async <T>(url: string, data: any):Promise<AxiosResponse<T,CustomError>> => {
+export const post = async <T>(url: string, data: T):Promise<AxiosResponse<T,CustomError>> => {
   try {
     const response = await axios.post(url, data);
     return response.data;
@@ -84,7 +84,7 @@ export const post = async <T>(url: string, data: any):Promise<AxiosResponse<T,Cu
   }
 }
 
-export const put = async <T>(url: string, data: any):Promise<AxiosResponse<T,CustomError>> => {
+export const put = async <T>(url: string, data: T):Promise<AxiosResponse<T,CustomError>> => {
   try {
     const response = await axios.put(url, data);
     return response.data;

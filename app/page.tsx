@@ -5,9 +5,10 @@ import GlobalHeader from "./nav";
 
 export default function Page() {
   return (
-      <RootLayout>
-        <GlobalHeader />
-        <Home />
-      </RootLayout>
+    <>
+      <GlobalHeader />
+      <Home />
+    </>
   )
+  
 }

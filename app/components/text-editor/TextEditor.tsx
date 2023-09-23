@@ -14,13 +14,13 @@ import { useParams, useRouter } from 'next/navigation';
 import useAuth from '@/hooks/useAuth';
 
 export default function TextEditor() {
-  const {tokenDetail} = useParams();
-  const { data, createCoinPost, error, getPostsByCoinName, loading } = useCoinBoardActions();
+  const {tokenDetail,slug} = useParams();
+  const { createCoinPost, error } = useCoinBoardActions();
   const editorRef = useRef<SunEditorCore>();
   const [unSavedPost, setUnSavedPost] = useRecoilState(unSavedPostState);
   const { value: titleValue, onChange: onChangeTitleValue } = useInput();
   const { value:contentValue, onChange: onChangeContentValue } = useInput();
-  const { user,getUserProfile } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const getSunEditorInstance = (sunEditor:SunEditorCore) => {
     editorRef.current = sunEditor;
@@ -38,6 +38,7 @@ export default function TextEditor() {
       content: contentValue,
       categoryEnums: tokenDetail as string,
     })
+    router.refresh();
   },[tokenDetail, titleValue, contentValue])  
 
   useEffect(() => {

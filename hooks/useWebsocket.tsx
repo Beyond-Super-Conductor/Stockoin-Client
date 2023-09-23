@@ -65,6 +65,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     ,{} as Record<string,CoinTicker>)
     setTicker(initTicker);
   }
+  // TODO: 클리어타임아웃 설정하기
   const connect = () => {
     if(!ws.current) return;
     ws.current.onopen = () => {
@@ -106,6 +107,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     }
     
     ws.current.onclose = () => {
+      
       console.log('disconnected')
       setTimeout(() => {
         console.log('websocket recovery connection...')

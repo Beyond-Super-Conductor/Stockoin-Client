@@ -1,5 +1,6 @@
 import TextEditor from '@/app/components/text-editor/TextEditor';
 
+
 export default function WritePage() {
   
   return (

@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import RealtimePriceBoard from './RealtimePriceBoard'
 import Chat from './widgets/Chat'
+import RealtimePriceBoardTitle from './widgets/RealtimePriceBoardTitle';
 
 export default function MainSection() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,7 +32,9 @@ export default function MainSection() {
    }
   return (
     <div className='flex w-full gap-2'>
-    <RealtimePriceBoard isExpanded={isExpanded} onShrink={onShrink} onExpand={onExpand} />
+    <RealtimePriceBoard isExpanded={isExpanded} onShrink={onShrink} onExpand={onExpand}>
+      <RealtimePriceBoardTitle />
+    </RealtimePriceBoard>
     <Chat isExpanded={isExpanded} onShrink={onShrink} onExpand={onExpand} />
     </div>
   )
