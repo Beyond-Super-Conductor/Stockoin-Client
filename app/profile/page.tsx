@@ -22,8 +22,8 @@ export default function ProfilePage() {
   return (
     
     <section className='flex p-8'>
+      
       <Suspense fallback={<div>Loading...</div>}>
-    
       <article className='flex-[0.3] p-4 flex flex-col items-center justify-center gap-2 ring ring-gray-200 rounded-md'>
       {
         user &&
@@ -48,6 +48,7 @@ export default function ProfilePage() {
       </article>
       
       </Suspense>
+      
       <article className='flex-[0.7] flex flex-col gap-4'>
         <div className='w-full p-4 ring ring-gray-200 rounded-md'>
           <h2>Social</h2>

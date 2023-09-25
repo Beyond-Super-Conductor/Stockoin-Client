@@ -48,7 +48,7 @@ axios.interceptors.request.use(
   });
 
 
-export const get = async <T>(url: string, query?: Record<string,T>):Promise<AxiosResponse<T,CustomError>> => {
+export const get = async <T,P>(url: string, query?: P):Promise<AxiosResponse<T,CustomError>> => {
   try {
     const response = await axios.get(url, { params: query });
     

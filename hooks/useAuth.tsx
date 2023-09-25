@@ -18,7 +18,6 @@ export default function useAuth() {
     // process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
     setIsLoading(true);
     try {
-      
       const response:AxiosResponse<User> = await get(
         '/oauth2/authorization',
         queries
