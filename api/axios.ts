@@ -3,6 +3,7 @@ export interface CustomError extends AxiosError {
   message: string;
   code: string;
   errors: any;
+  timestamp: string;
 }
 
 const axios = Axios.create({

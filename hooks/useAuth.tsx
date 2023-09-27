@@ -7,15 +7,13 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-
 export default function useAuth() {
   const [error, setError] = useState('');
-  const [user, setUser] = useRecoilState(userState);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const getOAuth = async (queries:AuthQuery) => {
-    // process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
     setIsLoading(true);
     try {
       const response:AxiosResponse<User> = await get(
@@ -27,15 +25,17 @@ export default function useAuth() {
       return response.data;
     } catch (error) {
       const err = error as CustomError 
-      console.log(error);
       setError(err.message);
+      if(err.status === 500) {
+        setError('서버에서 에러가 발생했습니다. \n 에러내용을 캡쳐하여 문의주시면 인과관계를 철저히 밝혀내어 원인자에게 태형 80대를 고하겠습니다.');
+      }
       setIsLoading(false);
-      return err
+      return err;
     }
   }
 
   const getUserProfile = async() => {
-    if(!localStorage.getItem('access_token')) return;
+    // if(!localStorage.getItem('access_token')) return;
     setIsLoading(true);
     try {
       const response:AxiosResponse<User> = await get('users');
@@ -55,6 +55,7 @@ export default function useAuth() {
     try {
       await put('users', additionalData);
       setIsLoading(false);
+      
       router.push('/');
     } catch (error) {
       const axiosError = error as CustomError

@@ -1,20 +1,15 @@
-import DetailPage from "@/app/components/dashboard/detail-page/DetailPage";
-import { CoinPost, CoinPostsResponse } from "@/types/coinBoardActions";
+import { rest } from "msw";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+import type { RestRequest, ResponseComposition, DefaultBodyType, RestContext } from "msw";
 
-const getCoinPosts = async (tokenDetail: string) => {
+const mockGetPosts = (req: RestRequest, res: ResponseComposition<DefaultBodyType>, ctx: RestContext) => {
   
-  let change1InchName;
-  if(tokenDetail === '1INCH') change1InchName = 'INCH';
-  try {
-    const res = await fetch(`${BASE_URL}/post?pageNo=0&pageSize=10&postEnums=TYPE_CATEGORY&categoryEnums=${tokenDetail === '1INCH' ? change1InchName : tokenDetail}`,{
-      cache: 'no-cache',
-    })  
-    const { data }: CoinPostsResponse = await res.json();
-    console.log(data);
-    return data ? data.posts :
-        [
+  return res(
+    ctx.status(200),
+    ctx.delay(100),
+    ctx.json([
+      {
+        posts: [
           {
           id: 3084,
           title: '아줌마 이 코인 얼마에요?',
@@ -55,15 +50,46 @@ const getCoinPosts = async (tokenDetail: string) => {
                 picture: 'https://avatars.githubusercontent.com/u/10000000?v=4',
                 }
             },
-        ] as CoinPost[]
+    ],
+        totalElements: 3,
+        totalPages: 4,
+        pageNo: 1,
+        pageSize: 40,
+        last: false
+      }
       
-  } catch (error) {
-    console.error(error);
-  }
+    ])
+  );
 }
 
-export default async function Page({params}: any) {
-  const posts = await getCoinPosts(params.tokenDetail);
-  return <DetailPage posts={posts}/>
-    
-}
+const mockLogin = (req: RestRequest, res: ResponseComposition<DefaultBodyType>, ctx: RestContext) => {
+  return res(
+    ctx.status(200),
+    ctx.delay(100),
+    ctx.json({
+      data: {
+        userId: 9999,
+        email: 'mocking@mock.com',
+        name: '김목성',
+        picture: 'https://avatars.githubusercontent.com/u/10000000?v=4',
+        role: 'cake',
+        authProvider: 'Mock',
+        providerId: 2444,
+        accessToken: 'accesstoken',
+        refreshToken: 'refreshtoken',
+        isInitProfile: false,
+        gender: 'Male',
+        birthday: '1990-11-14',
+        nickname: '모킹데이터'
+      }
+    })
+  );
+} 
+
+const handlers = [
+      rest.get('https://api.stokoin.com/api/v1/users', mockLogin),
+      rest.get('https://api.stokoin.com/api/v1/post', mockGetPosts)
+    ]
+
+export default handlers;
+

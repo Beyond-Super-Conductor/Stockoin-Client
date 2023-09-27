@@ -33,3 +33,12 @@
 - tms: number - 타임스탬프
 - ttm: string - 최근 거래 시각 HHmmss
 - ttms: number - 거래 체결 타임스탬프
+
+
+___
+
+### MSW 적용방법
+
+1. npm install msw --save-dev
+2. npx msw init public/ --save
+3. write handler.ts in mocks foler

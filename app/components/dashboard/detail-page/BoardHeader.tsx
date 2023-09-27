@@ -13,7 +13,7 @@ export default function BoardHeader() {
     <p className='font-[500] text-3xl'>{selectCoin?.koName} 게시판</p>
     <Link
     href={`/dashboard/${slug}/${tokenDetail}/write`}
-    className='z-0 bg-indigo-400 px-4 text-white rounded-md shadow-md shadow-gray-200 ring-2 ring-indigo-600/60 font-bold'
+    className=' bg-indigo-400 px-4 text-white rounded-md shadow-md shadow-gray-200 font-bold hover:bg-indigo-500 transition-all'
     >
       글쓰기
     </Link>

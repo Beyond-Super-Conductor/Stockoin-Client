@@ -2,19 +2,17 @@
 import ShowMoreCategoryButton from '@/app/components/nav/ShowMoreCategoryButton'
 import useAuth from '@/hooks/useAuth';
 import useThrottle from '@/hooks/useThrottle';
-import { userState } from '@/store/user';
 import { coinCategory } from '@/utils/constants';
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil';
 
 export default function GlobalHeader() {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const user = useRecoilValue(userState);
-  const { getUserProfile } = useAuth();
+  
+  const { getUserProfile,user } = useAuth();
   const { throttleScroll } = useThrottle();
-
+  
   const throttleScrollHandler = () => {
     throttleScroll(() => {
       window.scrollY > 0
@@ -76,7 +74,7 @@ export default function GlobalHeader() {
               </>
             : <>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
-                <button>로그아웃</button>
+                <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
                 <Link href="/auth">내 판</Link>
               </>
           }

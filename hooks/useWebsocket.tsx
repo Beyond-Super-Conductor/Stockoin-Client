@@ -82,7 +82,7 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
           format: "SIMPLE"
         }
       ]
-      console.log('websocket connected')
+      
       ws.current?.send(JSON.stringify(init));
     }
   }
@@ -108,9 +108,9 @@ export default function useWebsocket({marketList,marketQuery}: Props = {
     
     ws.current.onclose = () => {
       
-      console.log('disconnected')
+      
       setTimeout(() => {
-        console.log('websocket recovery connection...')
+        
         connect();
       }, 1000);
       

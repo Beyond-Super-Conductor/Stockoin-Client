@@ -1,10 +1,10 @@
 'use client'
-import { userState } from '@/store/user'
-import React, { Suspense, useRef, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import FieldsetContainer from './widgets/FieldsetContainer'
 import { AdditionalUserData } from '@/types/signForm'
 import useAuth from '@/hooks/useAuth'
+import { objectFalsyCheck } from '@/utils/objectFalsyCheck'
+import { useSearchParams,useRouter } from 'next/navigation'
 
 
 interface ControlRef {
@@ -13,32 +13,30 @@ interface ControlRef {
 }
 
 export default function SignupForm() {
+  
+  const { error, user, getOAuth } = useAuth();
+  const searchParams = useSearchParams();
   const [additionalUserData, setAdditionalUserData] = useState<AdditionalUserData>({birthday:'',gender:'MAN',nickname:''});
   const birthdayControlRef = useRef<ControlRef | null>(null);
   const genderControlRef = useRef<ControlRef | null>(null);
   const nicknameControlRef = useRef<ControlRef | null>(null);
   const { putUserProfile } = useAuth();
-  
+
+  const router = useRouter();
+
   const onSubmitUpdateUser = (async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // 객체 순회하며 falsy값 체크, falsy면 alert, return
+    objectFalsyCheck(additionalUserData)
     try {
       await putUserProfile(additionalUserData)  
     } catch (error) {
-      console.error(error);
+      throw Error('회원가입 양식을 제출하던 중에 에러가 발생하였습니다')
     }
   })
-
+  
   const onChangeAdditionalUserData = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { target:{ name, value } } = e
-    
-    setAdditionalUserData((prev) => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-  const onSelectAdditionalUserData = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const { target:{ name, value } } = e
-    
     setAdditionalUserData((prev) => ({
       ...prev,
       [name]: value
@@ -64,26 +62,51 @@ export default function SignupForm() {
     nicknameControlRef.current?.onBlurInput()
   }
   
+
+  useEffect(() => {
+    if(user) {
+      localStorage.setItem('access_token', user.accessToken);
+      localStorage.setItem('refresh_token', user.refreshToken);
+      if(user?.isInitProfile){
+        router.push('/');
+      }
+    }
+  },[user])
+
+
+  useEffect(() => {
+    if(searchParams.has('code')) {
+      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
+      getOAuth({
+        code: searchParams.get('code') as string,
+        authProvider:'naver',
+        state: searchParams.get('state') as string,
+        redirect_uri: redirectUri as string
+      })
+    }
+  },[])
+
+  
+  if(error) throw Error(error);
+
+  
   return (
-    <div className='w-full h-[500px]'>
-      <fieldset className='border border-white h-full'>
-        <legend className='text-4xl p-4 m-4 '>추가정보 작성</legend>
-        
+    
       <form onSubmit={onSubmitUpdateUser}>
         <div className="w-1/2  flex flex-col items-center justify-center gap-4 mx-auto">
           <FieldsetContainer labelText='성별' ref={genderControlRef}>
             <div className='flex items-center justify-around'>
             <label className="inline-flex items-center space-x-2 text-white">
-              <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onSelectAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="MAN" />
+              <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onChangeAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="MAN" />
               <span className="font-[500]">남성</span>
             </label>
-
               <label className="inline-flex items-center space-x-2 text-white">
-                <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onSelectAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="WOMAN" />
+                <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onChangeAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="WOMAN" />
                 <span className="font-[500]">여성</span>
               </label>
             </div>
           </FieldsetContainer>
+
           <FieldsetContainer labelText='생년월일' ref={birthdayControlRef}>
           <input
             onFocus={focusInput}
@@ -108,6 +131,7 @@ export default function SignupForm() {
               className='w-full text-center text-black bg-white rounded-md border-gray-300 shadow-sm shadow-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent px-3 py-2'
               />
             </FieldsetContainer>
+
           <button
             type='submit'
             className={`
@@ -118,11 +142,11 @@ export default function SignupForm() {
             hover:after:translate-x-[-50%] hover:after:bg-rose-600
             hover:font-bold hover:border-l-rose-600 hover:border-r-blue-500 hover:border-b-blue-500 hover:border-t-red-600
             `}
-            >회원가입</button>
+            >
+            회원가입
+            </button>
         </div>
       </form>
       
-      </fieldset>
-    </div>
   )
 }

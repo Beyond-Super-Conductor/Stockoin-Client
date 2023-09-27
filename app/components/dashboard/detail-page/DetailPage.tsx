@@ -19,9 +19,9 @@ export default function DetailPage({posts}: Props) {
       <RankingBoard />
       <Chat />
     </div>
-    <div className='flex'>
+    <div className='flex gap-2 min-h-[400px]'>
       <TradeHistoryPanel />
-        <CoinBoard posts={posts} />
+      <CoinBoard posts={posts} />
     </div>
     </>
   )

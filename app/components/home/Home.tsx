@@ -1,20 +1,15 @@
-import React, { use } from 'react'
 import EmblaCarousel from './carousel/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel-react'
 import MainSection from './MainSection'
-import { get } from '@/api/axios'
+
 
 const OPTIONS: EmblaOptionsType = { axis: 'y',loop: true }
 const SLIDE_COUNT = 4
 const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 
-
 function Home() {
-  // const a = use(fetchData());
   
   return (
-    <>
-    
     <main className="flex flex-col items-center justify-between mt-24">
       <section className='sandbox__carousel mt-4 w-full'>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
@@ -37,21 +32,7 @@ function Home() {
       </div>
       
     </main>
-    
-    </>
-    
   )
 }
 
 export default Home
-
-
-// export async function fetchData() {
-
-//   try {
-//     const data = await get('/users');
-//     return data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }

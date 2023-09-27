@@ -22,8 +22,7 @@ export interface Response {
   errors: any;
 }
 
-export interface CoinPost 
-  {
+export interface CoinPost {
     id: number;
     title: string;
     content: string;
@@ -42,9 +41,35 @@ export interface CoinPost
         nickname: string;
         picture: string;
         isInitProfile: true;
-    };
+    },
+    totalElements: number,
+    totalPages: number,
+    pageNo: number,
+    pageSize: number,
+    last: boolean
 }
 
+
+export interface CoinReplyResponse extends Response {
+  data: {
+    comments: [
+      {
+        id: number,
+        content: string,
+        user: {
+          id: number,
+          email: string,
+          name: string,
+          nickname: string,
+          picture: string,
+          isInitProfile: true
+        },
+        createdAt: string,
+        updatedAt: string
+      }
+    ],
+  }
+}
 
 export interface CoinPostsResponse extends Response {
   data: {

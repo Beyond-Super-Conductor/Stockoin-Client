@@ -10,7 +10,7 @@ interface Props {
 export default async function CoinBoard({ posts }: Props) {
     
   return (
-    <article className='flex-[0.6]'>
+    <article className='flex-[0.7]'>
       <BoardHeader />
       <CoinPosts posts={posts}/>
     </article>
