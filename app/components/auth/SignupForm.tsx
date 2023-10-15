@@ -85,10 +85,6 @@ export default function SignupForm() {
       })
     }
   },[])
-
-  
-  if(error) throw Error(error);
-
   
   return (
     
