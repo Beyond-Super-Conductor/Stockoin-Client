@@ -22,7 +22,7 @@ export default function useStomp() {
   const generateSocket = () => {
     if(!wsPath) return;
     socket = new Client({
-      webSocketFactory: () => new SockJS('http://api.stokoin.com/api/v1/ws/chat'),
+      webSocketFactory: () => new SockJS('https://api.stokoin.com/api/v1/ws/chat'),
       // connectHeaders: {
       //   Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       // },
