@@ -17,8 +17,6 @@ const wsPath = process.env.NEXT_PUBLIC_LOCAL_WEBSOCKET
 let socket:Client;
 export default function useStomp() {
   
-  
-
   const generateSocket = () => {
     if(!wsPath) return;
     socket = new Client({

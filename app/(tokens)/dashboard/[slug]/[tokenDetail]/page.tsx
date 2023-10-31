@@ -31,7 +31,7 @@ const getCoinPosts = async (tokenDetail: string) => {
               id: 9981,
               email: 'iam@coin.reseller',
               name: '김모킹',
-              nickname: '코카인같은비트코인',
+              nickname: '히히히',
               picture: 'https://avatars.githubusercontent.com/u/10000000?v=4',
               }
           },

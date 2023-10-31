@@ -28,7 +28,6 @@ export default function GlobalHeader() {
   },[])
 
   useEffect(() => {
-    
     getUserProfile();
   },[])
 
@@ -46,7 +45,6 @@ export default function GlobalHeader() {
                   alt="logo"
                   className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
                   priority
-                  
                 />
             : <Image
                 src='/mainLogo2.png'
