@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import RealtimePriceBoard from './RealtimePriceBoard'
 import Chat from './widgets/Chat'
 import RealtimePriceBoardTitle from './widgets/RealtimePriceBoardTitle';
-import useStomp from '@/hooks/useStomp';
+// import useStomp from '@/hooks/useStomp';
 
 export default function MainSection() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { publish } = useStomp();
+  // const { publish } = useStomp();
 
 
   const onShrink = () => {

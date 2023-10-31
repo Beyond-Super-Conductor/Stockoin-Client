@@ -17,44 +17,44 @@ const wsPath = process.env.NEXT_PUBLIC_LOCAL_WEBSOCKET
 let socket:Client;
 export default function useStomp() {
   
-  const generateSocket = () => {
-    if(!wsPath) return;
-    socket = new Client({
-      webSocketFactory: () => new SockJS('https://api.stokoin.com/api/v1/ws/chat'),
-      // connectHeaders: {
-      //   Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      // },
-      reconnectDelay: 5000,
-      heartbeatIncoming: 4000,
-      heartbeatOutgoing: 4000,
-      })
-    socket.onConnect = (frame) => {
+  // const generateSocket = () => {
+  //   if(!wsPath) return;
+  //   socket = new Client({
+  //     webSocketFactory: () => new SockJS('https://api.stokoin.com/api/v1/ws/chat'),
+  //     // connectHeaders: {
+  //     //   Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+  //     // },
+  //     reconnectDelay: 5000,
+  //     heartbeatIncoming: 4000,
+  //     heartbeatOutgoing: 4000,
+  //     })
+  //   socket.onConnect = (frame) => {
       
-      console.log('connected');
-      socket.subscribe('/topic/greeting', (message) => {
-        console.log(message.body);
-      });
-    }
-  }
-  const publish:Publish = useCallback(({destination, body, headers}) => {
+  //     console.log('connected');
+  //     socket.subscribe('/topic/greeting', (message) => {
+  //       console.log(message.body);
+  //     });
+  //   }
+  // }
+  // const publish:Publish = useCallback(({destination, body, headers}) => {
     
-    if(!socket) return;
-    socket?.publish({
-      destination,
-      body : typeof body === 'string'
-            ? body 
-            : JSON.stringify(body),
-      headers
-    });
-  },[])
-  const connect = () => {
-    generateSocket();
-    socket.activate();
-  }
+  //   if(!socket) return;
+  //   socket?.publish({
+  //     destination,
+  //     body : typeof body === 'string'
+  //           ? body 
+  //           : JSON.stringify(body),
+  //     headers
+  //   });
+  // },[])
+  // const connect = () => {
+  //   generateSocket();
+  //   socket.activate();
+  // }
   
-  useEffect(() => {
-    connect();
-  },[])
+  // useEffect(() => {
+  //   connect();
+  // },[])
 
-  return {publish}
+  return {}
 }
