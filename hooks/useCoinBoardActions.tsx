@@ -11,12 +11,15 @@ export default function useCoinBoardActions() {
   const [error, setError] = useState<string | null>(null);
 
   const getPostsByCoinName = async (pageNum:number,coin:string) => {
+    setLoading(true);
     try {
       const res: AxiosResponse<CoinPostsResponse> = await get(`post?pageNo=${pageNum}&pageSize=10&postEnums=TYPE_CATEGORY&categoryEnums=${coin}`);
-     setData(res.data)
+      setData(res.data)
     } catch (error) {
       const err = error as CustomError;
       setError(err.message)
+    } finally {
+      setLoading(false);
     }
   }
 

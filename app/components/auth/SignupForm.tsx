@@ -4,7 +4,7 @@ import FieldsetContainer from './widgets/FieldsetContainer'
 import { AdditionalUserData } from '@/types/signForm'
 import useAuth from '@/hooks/useAuth'
 import { objectFalsyCheck } from '@/utils/objectFalsyCheck'
-import { useSearchParams,useRouter } from 'next/navigation'
+import { useSearchParams,useRouter, useParams } from 'next/navigation'
 
 
 interface ControlRef {
@@ -14,14 +14,13 @@ interface ControlRef {
 
 export default function SignupForm() {
   
-  const { error, user, getOAuth } = useAuth();
+  const { user, getOAuth } = useAuth();
   const searchParams = useSearchParams();
   const [additionalUserData, setAdditionalUserData] = useState<AdditionalUserData>({birthday:'',gender:'MAN',nickname:''});
   const birthdayControlRef = useRef<ControlRef | null>(null);
   const genderControlRef = useRef<ControlRef | null>(null);
   const nicknameControlRef = useRef<ControlRef | null>(null);
   const { putUserProfile } = useAuth();
-
   const router = useRouter();
 
   const onSubmitUpdateUser = (async (e:React.FormEvent<HTMLFormElement>) => {
@@ -73,17 +72,31 @@ export default function SignupForm() {
     }
   },[user])
 
+  useEffect(() => {
+    let redirectUri;
+    
+    const snsName = window.location.pathname.split('/').pop();
+
+    if(snsName === 'kakao') {
+      redirectUri = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI
+    } else if(snsName === 'google') {
+      redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
+   
+    } else if(searchParams.has('code')) {
+      redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
+    }
+
+    getOAuth({
+      code: searchParams.get('code') as string,
+      authProvider: snsName as string,
+      state: searchParams.get('state') as string,
+      redirect_uri: redirectUri as string
+    })
+  },[])
+
 
   useEffect(() => {
-    if(searchParams.has('code')) {
-      const redirectUri = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI
-      getOAuth({
-        code: searchParams.get('code') as string,
-        authProvider:'naver',
-        state: searchParams.get('state') as string,
-        redirect_uri: redirectUri as string
-      })
-    }
+    
   },[])
   
   return (
@@ -92,10 +105,10 @@ export default function SignupForm() {
         <div className="w-1/2  flex flex-col items-center justify-center gap-4 mx-auto">
           <FieldsetContainer labelText='성별' ref={genderControlRef}>
             <div className='flex items-center justify-around'>
-            <label className="inline-flex items-center space-x-2 text-white">
-              <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onChangeAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="MAN" />
-              <span className="font-[500]">남성</span>
-            </label>
+              <label className="inline-flex items-center space-x-2 text-white">
+                <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onChangeAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="MAN" />
+                <span className="font-[500]">남성</span>
+              </label>
               <label className="inline-flex items-center space-x-2 text-white">
                 <input type="radio" onFocus={genderFocusInput} onBlur={genderBlurInput} onChange={onChangeAdditionalUserData} className="form-radio text-blue-500 h-8 w-8" name="gender" value="WOMAN" />
                 <span className="font-[500]">여성</span>

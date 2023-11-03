@@ -1,14 +1,20 @@
-import { CoinPost as ICoinPost } from '@/types/coinBoardActions';
-import React from 'react'
+'use client';
+import React, { useEffect } from 'react'
+import useCoinBoardActions from '@/hooks/useCoinBoardActions';
+import { useParams } from 'next/navigation';
 import CoinPost from './CoinPost';
 
-interface Props {
-  posts: ICoinPost[] | undefined;
-}
+export default function CoinPosts() {
+  const { data, loading, getPostsByCoinName } = useCoinBoardActions();
+  const params = useParams();
 
-export default function CoinPosts( { posts }: Props) {
-  
-  
+  useEffect(() => {
+    if(!params.tokenDetail) return ;
+    getPostsByCoinName(0,params.tokenDetail as string);
+  },[])
+
+  if(loading) return <div>loading...</div>
+
   return (
     <div className='flex flex-col items-center justify-center' key={'render-post-wrapper'}>
         <ul className='w-full' key={'render-post'}>
@@ -22,7 +28,7 @@ export default function CoinPosts( { posts }: Props) {
           <span className='flex-[0.1] text-center'>추천</span>
         </li>
         {
-          posts?.map((post) => (
+          data?.posts?.map((post) => (
             <CoinPost key={post.id} post={post} />
           ))
         }
@@ -30,3 +36,4 @@ export default function CoinPosts( { posts }: Props) {
     </div>
   )
 }
+

@@ -4,15 +4,15 @@ import { CoinPost } from '@/types/coinBoardActions'
 import BoardHeader from './BoardHeader'
 
 interface Props {
-  posts: CoinPost[] | undefined
+  
 }
 
-export default async function CoinBoard({ posts }: Props) {
+export default async function CoinBoard() {
     
   return (
     <article className='flex-[0.7]'>
       <BoardHeader />
-      <CoinPosts posts={posts}/>
+      <CoinPosts/>
     </article>
   )
 }

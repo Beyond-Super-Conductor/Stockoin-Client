@@ -72,14 +72,12 @@ export interface CoinReplyResponse extends Response {
 }
 
 export interface CoinPostsResponse extends Response {
-  data: {
-    posts: CoinPost[],
-    totalElements: number,
-    totalPages: number,
-    pageNo: number,
-    pageSize: number,
-    last: boolean
-  }
+  posts: CoinPost[],
+  totalElements: number,
+  totalPages: number,
+  pageNo: number,
+  pageSize: number,
+  last: boolean
 }
 
 export interface CoinPostResponse extends Response {

@@ -6,10 +6,10 @@ import CoinBoard from './CoinBoard';
 import Chat from '../../chat/Chat';
 import { CoinPost } from '@/types/coinBoardActions';
 interface Props {
-  posts: CoinPost[] | undefined
+  
 }
 
-export default function DetailPage({posts}: Props) {
+export default function DetailPage() {
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function DetailPage({posts}: Props) {
     </div>
     <div className='flex gap-2 min-h-[400px]'>
       <TradeHistoryPanel />
-      <CoinBoard posts={posts} />
+      <CoinBoard />
     </div>
     </>
   )
