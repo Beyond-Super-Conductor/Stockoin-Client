@@ -10,8 +10,8 @@ const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 function Home() {
   
   return (
-    <main className="flex flex-col items-center justify-between mt-24">
-      <section className='sandbox__carousel mt-4 w-full'>
+    <main className="flex flex-col items-center justify-between mt-4">
+      <section className='sandbox__carousel w-full'>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
       <MainSection />
