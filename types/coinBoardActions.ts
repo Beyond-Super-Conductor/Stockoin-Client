@@ -17,9 +17,15 @@ export interface CoinBoardParamsRequest {
 
 export interface Response {
   result: "SUCCESS" | "FAIL"
-  message: string | null,
-  code: string | null,
-  errors: any;
+  message: string,
+  code: string,
+  errors: [
+    {
+      field: string,
+      value: string,
+      reason: string
+    }
+  ]
 }
 
 export interface CoinPost {
@@ -81,7 +87,7 @@ export interface CoinPostsResponse extends Response {
 }
 
 export interface CoinPostResponse extends Response {
-  data: {
+  
     id: number,
     title: string,
     content: string,
@@ -101,7 +107,27 @@ export interface CoinPostResponse extends Response {
       picture: string,
       isInitProfile: true
     }
-  },
 }
 
-
+export interface Comment {
+  id: number,
+  content: string,
+  user: {
+    id: number,
+    email: string,
+    name: string,
+    nickname: string,
+    picture: string,
+    isInitProfile: boolean
+  },
+  createdAt: string
+  updatedAt: string
+}
+export interface CoinCommentResponse extends Response{
+    comments: Comment[]
+    last: true
+    pageNo: 0
+    pageSize: 10
+    totalElements: 0
+    totalPages: 0
+}

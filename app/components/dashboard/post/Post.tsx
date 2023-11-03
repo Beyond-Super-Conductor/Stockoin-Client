@@ -1,15 +1,28 @@
-
+'use client';
+import useCoinBoardActions from '@/hooks/useCoinBoardActions';
 import { CoinPost } from '@/types/coinBoardActions'
 import { formatDate } from '@/utils/formatDate';
 import parse from 'html-react-parser';
 import Image from 'next/image';
+import { useParams, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
-interface Props {
-  post: CoinPost | undefined;
-}
 
-export default function Post({ post }: Props) {
 
+export default function Post() {
+  const { detail: post, comments, getCommentsByPostId, getPostById } = useCoinBoardActions();
+  const params = useParams();
+
+
+  useEffect(() => {
+    if(!params.postId) return ;
+
+    getPostById(+params.postId);
+    getCommentsByPostId(+params.postId);
+  },[params.postId])
+
+  console.log(comments)
+  
   if(!post) return null;
   return (
     <div className='w-full'>
@@ -41,9 +54,9 @@ export default function Post({ post }: Props) {
             <p className='text-lg'>작성일자:{formatDate(post.createdAt)}</p>
             <p className='text-lg'>수정일자:{formatDate(post.updatedAt)}</p>
             <div>
-            <span className='inline-block text-lg pr-2'>조회: {post.viewCount}</span>
-            <span className='inline-block text-lg'>추천: 4</span>
-            <span className='inline-block text-lg'>댓글: 4</span>
+            <span className='px-1 inline-block text-lg pr-2'>조회: {post.viewCount}</span>
+            <span className='px-1 inline-block text-lg'>추천: 4</span>
+            <span className='px-1 inline-block text-lg'>댓글: 4</span>
             </div>
           </div>
         </div>
@@ -51,12 +64,19 @@ export default function Post({ post }: Props) {
       {/* content */}
       <div className='relative w-full min-h-[600px] border border-slate-400 border-t-transparent pt-20 px-4' >
         {parse(post.content)}
-        <div className='absolute bottom-20 left-1/2 right-1/2 -translate-x-1/2 border w-[200px] h-[120px] flex items-center justify-center'>
-          <button>추천</button>
+        <div
+          className={`
+           absolute bottom-20 left-1/2 right-1/2 -translate-x-1/2 border w-[200px] h-[120px] flex flex-col items-center justify-center rounded-md
+           cursor-pointer font-bold
+           hover:border-slate-400 hover:bg-indigo-400 hover:text-white  hover:transition-all hover:duration-500
+           active:border-indigo-400 active:bg-red-400 active:text-white active:rounded-2xl
+           `}>
+          <button className='text-3xl'>추천</button>
+          <span className="block text-lg tracking-wide ">(4)</span>
         </div>
       </div>
       {/* reply */}
-      <div>
+      <div className='bg-slate-200 py-8'>
         <div className='w-full flex items-center justify-between px-4 border-b-2 pb-2 border-b-slate-600'>
           <div className='flex gap-2 h-20 pt-4'>
             <p>전체 댓글 6개</p>
@@ -72,14 +92,25 @@ export default function Post({ post }: Props) {
             <button>새로고침</button>
           </div>
         </div>
-
-        <p>댓글1</p>
-        <p>댓글1</p>
-        <p>댓글1</p>
-        <p>댓글1</p>
-        <p>댓글1</p>
-        <p>댓글1</p>
-        <p>댓글1</p>
+        {
+          (comments && comments.comments.length > 0)
+          ? comments.comments.map((comment) => (
+            <div className='w-full  flex items-center justify-between px-4 border-b-2 pb-2 border-b-slate-600'>
+              <div className='flex gap-2 h-20 pt-4'>
+                <p>{comment.user.nickname}</p>
+                <p>{formatDate(comment.createdAt)}</p>
+              </div>
+              <div className='flex gap-2 items-center'>
+                <button>답글</button>
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+          ))
+          : <div className='w-full h-20 flex items-center justify-center'>
+              <p>댓글이 없습니다.</p>
+            </div>
+        }
       </div>
       <div className='w-full my-10 flex items-center justify-end px-20 border-y border-slate-400 h-[200px] gap-2'>
         <p className='flex-[0.4]'>

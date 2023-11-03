@@ -20,7 +20,7 @@ export default function UbciPage() {
     resetselectCoin()
     const findcoinCategory = coinCategory.find((item) => item.enName === slug);
     if(findcoinCategory){
-      const { enName,icon,koName,coins } = findcoinCategory
+      const { enName,icon,koName,coins } = findcoinCategory;
       setcoins(coins);
       setFindCategory({enName: enName, koName: koName, coins: coins})
     }
