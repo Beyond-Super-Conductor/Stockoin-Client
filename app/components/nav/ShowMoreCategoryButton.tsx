@@ -23,7 +23,7 @@ export default function ShowMoreCategoryButton() {
         className={`
         absolute right-0 top-[66px] z-10
         ${showMoreCoin ? 'block' : 'hidden'}
-        border-2 border-slate-200 rounded-md shadow-md shadow-gray-300  bg-[#E5FDF8]`}>
+        border-2 border-slate-200 rounded-lg shadow-md shadow-gray-300  bg-[#E5FDF8]`}>
           <ul className="py-2 text-sm" aria-labelledby="dropdownDividerButton">
             {
               coinCategory.slice(5).map((coin) => (
@@ -36,7 +36,7 @@ export default function ShowMoreCategoryButton() {
                     <Image
                       src={coin.icon}
                       alt="logo"
-                      className='rounded-md'
+                      className='rounded-lg'
                       width={30} height={30} style={{aspectRatio: 1}}
                       priority
                     />

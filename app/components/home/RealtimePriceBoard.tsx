@@ -26,7 +26,7 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
     h-[580px]
     flex flex-col items-center justify-start gap-4
     px-8
-    rounded-md ring ring-slate-200
+    rounded-lg ring ring-slate-200
     shadow-lg shadow-gray-300
     transition-all duration-700 ease-in-out
       `}>

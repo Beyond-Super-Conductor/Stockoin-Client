@@ -20,7 +20,7 @@ export default function AuthLayout({children}: Props) {
           <p className='text-2xl px-4'>플랫폼 계정으로 스토코인에 로그인하세요!</p>
         </Link>
       </h1>
-      <main className='m-4 p-8 bg-gradient-to-l to-[#5959a4] from-[-50%] from-[#b3f864] text-white h-auto border border-slate-400 rounded-md'>
+      <main className='m-4 p-8 bg-gradient-to-l to-[#5959a4] from-[-50%] from-[#b3f864] text-white h-auto border border-slate-400 rounded-lg'>
         <h2 className='text-[3rem] font-[700] text-center'>놀면서 투자하는 코인 커뮤니티, 스토코인</h2>
         {children}
       </main>

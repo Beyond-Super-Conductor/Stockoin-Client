@@ -24,7 +24,7 @@ export default function ProfilePage() {
     <section className='flex p-8'>
       
       <Suspense fallback={<div>Loading...</div>}>
-      <article className='flex-[0.3] p-4 flex flex-col items-center justify-center gap-2 ring ring-gray-200 rounded-md'>
+      <article className='flex-[0.3] p-4 flex flex-col items-center justify-center gap-2 ring ring-gray-200 rounded-lg'>
       {
         user &&
         <form 
@@ -50,7 +50,7 @@ export default function ProfilePage() {
       </Suspense>
       
       <article className='flex-[0.7] flex flex-col gap-4'>
-        <div className='w-full p-4 ring ring-gray-200 rounded-md'>
+        <div className='w-full p-4 ring ring-gray-200 rounded-lg'>
           <h2>Social</h2>
           <p>
             팔로우 : 2억 7천만명
@@ -62,7 +62,7 @@ export default function ProfilePage() {
           </p>
         </div>
         <div
-          className='flex-1 w-full p-4 ring ring-gray-200 rounded-md'>
+          className='flex-1 w-full p-4 ring ring-gray-200 rounded-lg'>
           <h2>My Favorite Coin</h2>
           <ul>
             <li>

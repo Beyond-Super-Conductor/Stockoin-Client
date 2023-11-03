@@ -23,7 +23,7 @@ const FieldsetContainer = forwardRef(({labelText,children}: Props,ref) => {
   }))
 
   return (
-    <fieldset ref={fieldsetRef} className='w-full border border-white px-4 py-4 rounded-md'>
+    <fieldset ref={fieldsetRef} className='w-full border border-white px-4 py-4 rounded-lg'>
       <legend ref={labelRef} className="self-start text-xl p-2 font-semibold tracking-wider transition-all duration-300 ease-in-out">{labelText}</legend>
       {children}
     </fieldset>

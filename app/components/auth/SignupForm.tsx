@@ -125,7 +125,7 @@ export default function SignupForm() {
             type="date"
             value={additionalUserData?.birthday ?? ''}
             onChange={onChangeAdditionalUserData}
-            className="w-full text-center text-black bg-white rounded-md border-gray-300 shadow-sm shadow-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent px-3 py-2"
+            className="w-full text-center text-black bg-white rounded-lg border-gray-300 shadow-sm shadow-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent px-3 py-2"
             />
             </FieldsetContainer>
 
@@ -137,14 +137,14 @@ export default function SignupForm() {
               type="text"
               value={additionalUserData?.nickname ?? ''}
               onChange={onChangeAdditionalUserData}
-              className='w-full text-center text-black bg-white rounded-md border-gray-300 shadow-sm shadow-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent px-3 py-2'
+              className='w-full text-center text-black bg-white rounded-lg border-gray-300 shadow-sm shadow-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent px-3 py-2'
               />
             </FieldsetContainer>
 
           <button
             type='submit'
             className={`
-            relative ease-in-out w-full h-full border-4 border-white rounded-md px-20 py-10 transition-all duration-500 z-10 overflow-hidden text-3xl mt-20
+            relative ease-in-out w-full h-full border-4 border-white rounded-lg px-20 py-10 transition-all duration-500 z-10 overflow-hidden text-3xl mt-20
             before:content=[''] before:z-[-1] before:absolute before:w-full before:h-full before:origin-top-right before:translate-x-[100%] before:bg-black before:top-0 before:right-0 before:transition-all before:duration-700
             after:content=[''] after:z-[-1] after:absolute after:w-full after:h-full after:origin-top-left after:-translate-x-[100%] after:bg-red-400 after:top-0 after:left-0 after:transition-all after:duration-700
             hover:before:translate-x-[50%] hover:before:bg-blue-500

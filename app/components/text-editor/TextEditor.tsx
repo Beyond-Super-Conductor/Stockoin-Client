@@ -64,7 +64,7 @@ export default function TextEditor() {
       <input
         type="text"
         placeholder='유저들의 어그로를 끌 제목을 입력해주세요.'
-        className='w-1/2 pl-4 py-4 outline outline-indigo-400/30 rounded-md focus:outline-indigo-800'
+        className='w-1/2 pl-4 py-4 outline outline-indigo-400/30 rounded-lg focus:outline-indigo-800'
         value={titleValue}
         onChange={onChangeTitleValue}
         />

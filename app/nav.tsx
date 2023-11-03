@@ -43,38 +43,38 @@ export default function GlobalHeader() {
               ? <Image
                   src='/mainLogo.jpg'
                   alt="logo"
-                  className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
+                  className='min-w-[60px] rounded-lg' width={60} height={60} style={{aspectRatio: 1}}
                   priority
                 />
             : <Image
                 src='/mainLogo2.png'
                 alt="logo"
-                className='min-w-[60px] rounded-md' width={60} height={60} style={{aspectRatio: 1}}
+                className='min-w-[60px] rounded-lg' width={60} height={60} style={{aspectRatio: 1}}
               />
             }
           </Link>
           <form className='flex-1 flex items-center gap-2 justify-center'>
           <input
-            className='border border-slate-400 h-24 pl-4 rounded-md placeholder:text-md min-w-[400px] placeholder:text-slate-500 focus:outline-sky-400'
+            className='border border-slate-400 h-24 pl-4 rounded-lg placeholder:text-md min-w-[400px] placeholder:text-slate-500 focus:outline-sky-400'
             type="text"
             placeholder='UBCI 또는 관심 있는 토큰을 검색해보세요!'
             />
-          <button className='border h-24 w-24 min border-slate-300  rounded-md p-1 hover:bg-slate-300 hover:text-slate-600 '>
+          <button className='border h-24 w-24 min border-slate-300  rounded-lg p-1 hover:bg-slate-300 hover:text-slate-600 '>
             검색</button>
           </form>
         </li>
         <li className=' flex-1 flex justify-end items-center gap-10'>
           {
             !user
-            ? <div className='py-4 bg-sky-200 px-8 rounded-md flex gap-4'>
+            ? <div className='py-4 bg-sky-200 px-8 rounded-lg flex gap-4'>
                 <Link
                   className='
-                    sky-400 border px-4 rounded-md text-white font-bold shadow-sm border-white hover:border-sky-400 hover:bg-white hover:text-sky-400 transition-all duration-300'
+                    sky-400 border px-4 rounded-lg text-white font-bold shadow-sm border-white hover:border-sky-400 hover:bg-white hover:text-sky-400 transition-all duration-300'
                     href="/partner">
                     파트너 로그인
                 </Link>
                 <Link
-                  className={`sky-400 border px-4 rounded-md text-white font-bold shadow-sm border-l-indigo-400 border-t-indigo-400 border-r-rose-400 border-b-rose-400
+                  className={`sky-400 border px-4 rounded-lg text-white font-bold shadow-sm border-l-indigo-400 border-t-indigo-400 border-r-rose-400 border-b-rose-400
                               hover:border-l-rose-400 hover:border-t-rose-400 hover:border-r-indigo-400 hover:border-b-indigo-400 hover:bg-white transition-all duration-300`}
                   href="/auth"
                   >
@@ -102,7 +102,7 @@ export default function GlobalHeader() {
               <Image
                 src={category.icon}
                 alt="logo"
-                className='rounded-md' width={30} height={30} style={{aspectRatio: 1}}
+                className='rounded-lg' width={30} height={30} style={{aspectRatio: 1}}
               />
               <span className='text-xl md:text-3xl block pb-4 md:pb-0'>{category.koName}</span>
             </Link>

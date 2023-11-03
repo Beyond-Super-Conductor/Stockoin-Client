@@ -17,7 +17,7 @@ export default function Error({
   }, [error])
  
   return (
-    <div className='p-10 w-full bg-indigo-400/80 rounded-md shadow-sm shadow-gray-100'>
+    <div className='p-10 w-full bg-indigo-400/80 rounded-lg shadow-sm shadow-gray-100'>
       <h2 className='w-full text-center font-bold text-4xl py-4'>무언가 우롱차가 되어가고 있습니다!</h2>
       <Image
         width={600}

@@ -66,7 +66,7 @@ export default function Post() {
         {parse(post.content)}
         <div
           className={`
-           absolute bottom-20 left-1/2 right-1/2 -translate-x-1/2 border w-[200px] h-[120px] flex flex-col items-center justify-center rounded-md
+           absolute bottom-20 left-1/2 right-1/2 -translate-x-1/2 border w-[200px] h-[120px] flex flex-col items-center justify-center rounded-lg
            cursor-pointer font-bold
            hover:border-slate-400 hover:bg-indigo-400 hover:text-white  hover:transition-all hover:duration-500
            active:border-indigo-400 active:bg-red-400 active:text-white active:rounded-2xl
@@ -120,9 +120,9 @@ export default function Post() {
           <textarea className='border border-slate-400 w-full h-40' />
           <div className='flex items-center justify-end gap-2'>
             <button
-              className='border rounded-md border-slate-400 px-4 py-2'
+              className='border rounded-lg border-slate-400 px-4 py-2'
               >등록</button>
-            <button className='border rounded-md border-slate-400 px-4 py-2'>등록+추천</button>
+            <button className='border rounded-lg border-slate-400 px-4 py-2'>등록+추천</button>
           </div>
           </div>
       </div>
