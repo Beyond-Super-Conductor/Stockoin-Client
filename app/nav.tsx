@@ -66,10 +66,23 @@ export default function GlobalHeader() {
         <li className=' flex-1 flex justify-end items-center gap-10'>
           {
             !user
-            ? <>
-                <Link href="/partner">파트너로그인</Link>
-                <Link href="/auth">로그인 / 회원가입</Link>
-              </>
+            ? <div className='py-4 bg-sky-200 px-8 rounded-md flex gap-4'>
+                <Link
+                  className='
+                    sky-400 border px-4 rounded-md text-white font-bold shadow-sm border-white hover:border-sky-400 hover:bg-white hover:text-sky-400 transition-all duration-300'
+                    href="/partner">
+                    파트너 로그인
+                </Link>
+                <Link
+                  className={`sky-400 border px-4 rounded-md text-white font-bold shadow-sm border-l-indigo-400 border-t-indigo-400 border-r-rose-400 border-b-rose-400
+                              hover:border-l-rose-400 hover:border-t-rose-400 hover:border-r-indigo-400 hover:border-b-indigo-400 hover:bg-white transition-all duration-300`}
+                  href="/auth"
+                  >
+                    <span className='text-indigo-400'>로그인</span>
+                    <span className='text-clip text-rose-400'> / </span> 
+                    <span className='text-rose-400'>회원가입</span>
+                </Link>
+              </div>
             : <>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
                 <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
