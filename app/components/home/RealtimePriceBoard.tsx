@@ -1,10 +1,11 @@
 'use client'
 
 import useWebsocket from '@/hooks/useWebsocket'
-import React, { useState } from 'react'
+import React from 'react'
 import HighLowUnderline from './widgets/HighLowUnderline';
 import { format } from 'date-fns';
-import Link from 'next/link';
+
+import { extractMiddleCategoryFromCoinCategory } from '@/utils/extractMiddleCategoryFromCoinCategory';
 
 interface Props {
   children: React.ReactNode;
@@ -15,6 +16,11 @@ interface Props {
 
 export default function RealtimePriceBoard({children, isExpanded, onShrink, onExpand }: Props) {
   const { ticker } = useWebsocket();
+
+  const onClickMoveToCoinDetailPage = (key: string) => {
+    const middleCategory = extractMiddleCategoryFromCoinCategory(key);
+    window.location.href = `/dashboard/${middleCategory}/${key}`;
+  }
   
   return (
   <div
@@ -47,11 +53,13 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
           <div key={key} className={` w-full flex items-center justify-around border-b pb-2 `}>
             <div className='flex-1 flex justify-center items-center gap-4'>
               <img src={`/assets/coins/${key.replace('KRW-','').toLowerCase()}.webp`} alt="logo" className='w-6 h-6' />
-              <Link className='text-center' href={`/coin/${key.replace('KRW-','')}`}>
+              <button
+                onClick={() => onClickMoveToCoinDetailPage(key.replace('KRW-',''))}
+                className='text-center' >
                 <span className='text-xl text-center'>
                   {key.replace('KRW-','')}
                 </span>
-              </Link>
+              </button>
               </div>
             <p className={`relative flex-1 flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
               <span className='text-base'> {(ticker[key].tp).toLocaleString()} 원</span>

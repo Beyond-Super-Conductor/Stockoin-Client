@@ -14,26 +14,26 @@ export default function MainSection() {
     
     clearTimeout(setTimeout(() => {
       setIsExpanded(false);
-      },300));
+      },1000));
 
     setTimeout(() => {
     setIsExpanded(false);
-    },300)
+    },1000)
     
   }
   const onExpand = () => {
     
     clearTimeout(setTimeout(() => {
       setIsExpanded(true);
-      },300));
+      },1000));
 
     setTimeout(() => {
     setIsExpanded(true);
-    },300)
+    },1000)
    }
 
   return (
-    <div className='flex w-full gap-2'>
+    <div className='flex w-full gap-2 cursor-pointer'>
     <RealtimePriceBoard isExpanded={isExpanded} onShrink={onShrink} onExpand={onExpand}>
       <RealtimePriceBoardTitle />
     </RealtimePriceBoard>
