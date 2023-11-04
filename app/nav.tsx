@@ -93,7 +93,7 @@ export default function GlobalHeader() {
             : <div className='py-4 bg-sky-200 px-8 rounded-lg flex gap-4'>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
                 <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
-                <Link href="/auth">내 판</Link>
+                <Link href="/pan">My Pan</Link>
               </div>
           }
           
