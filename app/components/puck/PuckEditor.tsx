@@ -65,13 +65,32 @@ const config:Config = {
 }
 
 // Describe the initial data
-// const initialData = {};
+const initialData = {
+  root: {
+    type: "HeadingBlock",
+    children: [
+      {
+        type: "Paragraph",
+        children: [],
+      },
+    ],
+  },
+  content: {
+    type: "Paragraph",
+    children: [
+      {
+        type: "Paragraph",
+        children: [],
+      },
+    ]
+  }
+};
 
 // Save the data to your database
-// const save = (data) => {};
+const save = (data: any) => {};
 
 const myPlugin = {
-  renderRootFields: ({ children, dispatch, state }:{state:AppState}) => (
+  renderRootFields: ({ children, dispatch, state }:{children:ReactNode, dispatch:any, state:AppState}) => (
     <div>
       {children}
 
@@ -93,7 +112,7 @@ const myPlugin = {
 export default function PuckEditor() {
   return (
     <div className='w-full mt-100 pt-[300px]'>
-      <Puck config={config} plugins={[myPlugin]}  />
+      <Puck config={config} plugins={[myPlugin]} data={initialData as any} onPublish={save} />
     </div>
   )
 }
