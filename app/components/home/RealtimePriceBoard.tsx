@@ -4,6 +4,7 @@ import useWebsocket from '@/hooks/useWebsocket'
 import React, { useState } from 'react'
 import HighLowUnderline from './widgets/HighLowUnderline';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
@@ -26,39 +27,46 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
     h-[580px]
     flex flex-col items-center justify-start gap-4
     px-8
-    rounded-lg ring ring-slate-200
+    rounded-lg 
     shadow-lg shadow-gray-300
     transition-all duration-700 ease-in-out
       `}>
     <div className={`sticky top-0 bg-white pt-10 w-full flex items-start justify-around`}>
       {children}
-      {
-        isExpanded && <>
-          <span className='text-xl text-center'>매수/매도</span>
-          <span className='flex-1 text-xl text-center'>전일 대비</span>
-          <span className='flex-1 text-xl text-center'>시간</span>
+      {isExpanded && (
+        <>
+          <span className='flex-1 text-xl text-center pb-2 border-b'>체결 종류</span>
+          <span className='flex-1 text-xl text-center pb-2 border-b'>전일 대비</span>
+          <span className='flex-[1.2] text-xl text-center pb-2 border-b'>시간</span>
         </>
-      }
+      )}
     </div>
     {
       ticker && Object.keys(ticker).map((key) => {
         return (
-          <div key={key} className={` w-full flex items-center justify-around border-b border-b-slate-400/60`}>
-            <img src={`/assets/coins/${key.replace('KRW-','').toLowerCase()}.webp`} alt="logo" className='w-10 h-10' />
-            <span className='flex-1  text-center'>{key.replace('KRW-','')}</span>
-            <p className={`relative flex-[1.2] flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
-              <span> {(ticker[key].tp).toLocaleString()} 원</span>
-              <span className={`absolute top-0 left-0`}>
+          <div key={key} className={` w-full flex items-center justify-around border-b pb-2 `}>
+            <div className='flex-1 flex justify-center items-center gap-4'>
+              <img src={`/assets/coins/${key.replace('KRW-','').toLowerCase()}.webp`} alt="logo" className='w-6 h-6' />
+              <Link className='text-center' href={`/coin/${key.replace('KRW-','')}`}>
+                <span className='text-xl text-center'>
+                  {key.replace('KRW-','')}
+                </span>
+              </Link>
+              </div>
+            <p className={`relative flex-1 flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
+              <span className='text-base'> {(ticker[key].tp).toLocaleString()} 원</span>
+              <span className={`absolute top-0 left-0 text-base md:block hidden`}>
                 {ticker[key].isRising ? '▲' : '▼'}
               </span>
               <HighLowUnderline isRising={ticker[key].isRising} />
             </p>
-            <span className={`flex-1  text-center ${ticker[key].scr > 0 ? 'text-red-500' : 'text-blue-400'}`}> {(ticker[key].scr * 100).toFixed(3)}%</span>
-            <span className='flex-1 text-2xl text-center'>
+            <span className={`flex-1 text-base text-center ${ticker[key].scr > 0 ? 'text-red-500' : 'text-blue-400'}`}>
+              {(ticker[key].scr * 100).toFixed(3)}%
+            </span>
+            <span className='flex-1 text-base text-center'>
               <span className='block mr-2'>{(Math.round(ticker[key].tp * ticker[key].tv / 100) * 100).toLocaleString()}원</span>
-              <span className='text-lg'>
-                (
-                {
+              <span className='text-base'>
+                ({
                   ticker[key].tv > 10
                   ? (ticker[key].tv).toFixed(0)
                   : (ticker[key].tv).toFixed(3)}개
@@ -67,15 +75,21 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
             </span>
             {
               isExpanded && <>
-                <span className='text-lg min-w-[30px] text-center'>
+                <span className='flex-1 text-lg min-w-[30px] text-center'>
                   {
                   ticker[key].ab === 'BID'
-                  ? <span className='text-sky-500'>매수</span>
-                  : <span className='text-rose-500'>매도</span>
+                  ? <span className='text-base text-sky-500'>매수</span>
+                  : <span className='text-base text-rose-500'>매도</span>
                   }
                 </span>
-                <span className='text-lg flex-1 text-center'>{ticker[key].c}</span>
-                <span className='text-lg flex-1 text-center'>{format(ticker[key].tms ?? 1, 'MM월 dd일 HH:mm:ss')}</span>
+                <span
+                  className={`
+                  text-lg flex-1 text-center
+                  ${ticker[key].c === 'RISE' ? 'text-red-500' : ticker[key].c === 'FALL' ? 'text-blue-400' : 'text-gray-500'}
+                  `}>
+                  {ticker[key].c === 'RISE' ? '상승' : ticker[key].c === 'FALL' ? '하락' : '보합'}
+                </span>
+                <span className='text-lg flex-[1.2] text-center'>{format(ticker[key].tms ?? 1, 'MM월 dd일 HH:mm:ss')}</span>
               </>
             }
           </div>

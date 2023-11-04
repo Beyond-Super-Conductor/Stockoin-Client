@@ -10,23 +10,23 @@ const SLIDES = Array.from(Array.from({length: SLIDE_COUNT}).keys())
 function Home() {
   
   return (
-    <main className="flex flex-col items-center justify-between mt-4">
+    <main className="max-w-[1280px] mx-auto flex flex-col items-center justify-between mt-4 p-10">
       <section className='sandbox__carousel w-full'>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
       <MainSection />
-      <div className='px-10 w-full h-[280px] ring ring-slate-200 shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
+      <div className='px-10 w-full h-[280px]  shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
         최근 본 코인
       </div>
       <div className='flex w-full gap-2'>
-      <div className='flex-1 px-10 w-full h-[280px] ring ring-slate-200 shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
+      <div className='flex-1 px-10 w-full h-[280px]  shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
         핫코인 - 조회수
 
       </div>
-      <div className='flex-1 px-10 w-full h-[280px] ring ring-slate-200 shadow-lg shadow-gray-300-400 flex items-center justify-center mt-6 rounded-lg'>
+      <div className='flex-1 px-10 w-full h-[280px]  shadow-lg shadow-gray-300-400 flex items-center justify-center mt-6 rounded-lg'>
         야수코인 - 등락 낙차 큰 코인 TOP5
       </div>
-      <div className='flex-1 px-10 w-full h-[280px] ring ring-slate-200 shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
+      <div className='flex-1 px-10 w-full h-[280px]  shadow-lg shadow-gray-300 flex items-center justify-center mt-6 rounded-lg'>
         풀매수코인 - 1주일 전과 자기자신을 비교해서 가장 낮은 가격 : 고도화가 필요한 부분이다...
       </div>
       </div>

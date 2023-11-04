@@ -32,7 +32,11 @@ export default function GlobalHeader() {
   },[])
 
   return (
-    <nav id="main--navigation" className={`sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' } transition-all duration-300`}>
+    <nav id="main--navigation"
+    className={`
+    sticky top-0 z-[999] w-full flex flex-col h-auto items-center justify-between transition-all duration-300
+    ${isIntersecting ? 'bg-black/80 text-white' : 'bg-white/40 text-black' }
+    `}>
       
       <ul className='w-full flex md:flex-row flex-col items-center justify-center px-4 '>
         
@@ -66,7 +70,10 @@ export default function GlobalHeader() {
         <li className=' flex-1 flex justify-end items-center gap-10'>
           {
             !user
-            ? <div className='py-4 bg-sky-200 px-8 rounded-lg flex gap-4'>
+            ? <div
+                className={`py-4  px-8 rounded-lg flex gap-4
+                  ${isIntersecting ? 'bg-slate-700 bg-opacity-70' : 'bg-sky-200/80'}
+                  `}>
                 <Link
                   className='
                     sky-400 border px-4 rounded-lg text-white font-bold shadow-sm border-white hover:border-sky-400 hover:bg-white hover:text-sky-400 transition-all duration-300'
@@ -83,17 +90,16 @@ export default function GlobalHeader() {
                     <span className='text-rose-400'>회원가입</span>
                 </Link>
               </div>
-            : <>
+            : <div className='py-4 bg-sky-200 px-8 rounded-lg flex gap-4'>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
                 <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
                 <Link href="/auth">내 판</Link>
-              </>
+              </div>
           }
           
         </li>
           
       </ul>
-      {/* hover:bg-gradient-radial hover:to-[#4a74fe] hover:from-[-50%] from-[#4ad4e9] transition-all duration-500 */}
       <ul className='relative w-full md:mt-0 mt-8 justify-between flex items-center h-auto border-b border-slate-300 px-4 cursor-pointer'>
         {
           coinCategory.slice(0,5).map((category) => (
