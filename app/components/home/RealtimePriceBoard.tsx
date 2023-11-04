@@ -101,10 +101,7 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
               </>
             }
           </div>
-        )
-      }
-      )
-    }
+        )}
+      )}
   </div>
-)
-}
+)}
