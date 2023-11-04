@@ -55,6 +55,7 @@ export default function DashboardLayoutLogo() {
           width={80}
           height={80}
           style={{aspectRatio: 1}}
+          priority
         />
       </Link>
       }

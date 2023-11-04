@@ -1,10 +1,9 @@
 'use client';
 import useCoinBoardActions from '@/hooks/useCoinBoardActions';
-import { CoinPost } from '@/types/coinBoardActions'
 import { formatDate } from '@/utils/formatDate';
 import parse from 'html-react-parser';
 import Image from 'next/image';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 
