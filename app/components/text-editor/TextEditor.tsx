@@ -51,12 +51,7 @@ export default function TextEditor() {
       setUnSavedPost('');
     }
   },[user])
-
   
-  
-
-
-
   return (
     <>
     {error && <div>{error}</div>}
