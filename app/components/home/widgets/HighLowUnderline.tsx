@@ -22,6 +22,6 @@ export default function HighLowUnderline({isRising}: Props) {
   }, [isRising])
 
   return (
-    <span className={`block w-1/2 h-[1px] absolute top-6 ${highlight} opacity-75`}/>
+    <span className={`mx-auto block w-2/3 h-[1px] absolute -bottom-2 ${highlight} opacity-75`}/>
   )
 }

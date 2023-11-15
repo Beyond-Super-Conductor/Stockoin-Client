@@ -18,10 +18,9 @@ export default function Post() {
 
     getPostById(+params.postId);
     getCommentsByPostId(+params.postId);
-  },[params.postId])
 
-  console.log(comments)
-  
+  },[params.postId]);
+
   if(!post) return null;
   return (
     <div className='w-full max-w-[1280px] mx-auto'>
@@ -32,7 +31,6 @@ export default function Post() {
         <div className='bg-gradient-to-r from-slate-100 to-slate-300 text-transparent bg-clip-text text-4xl font-[500] antialiased'>
           <span>{post.title}</span>
           <br />
-          
         </div>
         
         <div className='flex flex-col items-end'>

@@ -31,7 +31,6 @@ export default function CoinTitle() {
           </span> 
         </p>
       }
-      
       </h1>
   )
 }

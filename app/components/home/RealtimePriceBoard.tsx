@@ -62,7 +62,7 @@ export default function RealtimePriceBoard({children, isExpanded, onShrink, onEx
               </button>
               </div>
             <p className={`relative flex-1 flex items-center justify-center ${ticker[key].isRising ? 'text-red-500' : 'text-blue-400'}`}>
-              <span className='text-base'> {(ticker[key].tp).toLocaleString()} 원</span>
+              <span className='text-xl'> {(ticker[key].tp).toLocaleString()} 원</span>
               <span className={`absolute top-0 left-0 text-base md:block hidden`}>
                 {ticker[key].isRising ? '▲' : '▼'}
               </span>

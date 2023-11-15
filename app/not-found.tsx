@@ -1,13 +1,23 @@
 import Link from 'next/link'
- 
+import RootLayout from './layout'
+import GlobalHeader from './nav'
+import 'styles/404.css'
 export default function NotFound() {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>404</p>
-      
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
-    </div>
+    <RootLayout>
+      <GlobalHeader />
+      <div className="px-40 bg-[#38a1ff]">
+        <div className="grid">
+            <div className="error flex justify-center flex-col items-center">
+              <h3 className=''>404 error</h3>
+              <p className='text-white'>요청하신 페이지를 찾지 못했습니다.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing </p>
+            </div>      
+          <Link href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-12 h-12"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+          </Link>
+        </div>
+      </div>       
+    </RootLayout>
   )
 }

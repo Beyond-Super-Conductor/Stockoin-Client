@@ -10,7 +10,6 @@ export default function layout({children}: Props) {
     <>
     <GlobalHeader />
     <div className='w-full min-h-[340px] border border-red-400 mt-20'>
-      
       {children}
     </div>
     </>

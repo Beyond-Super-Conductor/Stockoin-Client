@@ -34,7 +34,7 @@ export default function TradeHistoryPanel() {
               <span className='flex-[0.25] w-14'>{item.ab && item.ab === 'BID' ? '매수' : '매도'}</span>
               <span className='flex-[0.6] '>{item.cd.replace('KRW-','')}</span>
               <p className={`relative flex-[0.7] flex items-center justify-center ${item.isRising ? 'text-red-500' : 'text-blue-400'}`}>
-                <span> {(item.tp).toLocaleString()} 원</span>
+                <span className=''> {(item.tp).toLocaleString()} 원</span>
                 <span className={`absolute top-0 left-0`}>
                   {item.isRising ? '▲' : '▼'}
                 </span>

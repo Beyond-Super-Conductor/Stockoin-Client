@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+.card{
+    background-color: #38a1ff;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+
+}
+
+
+.grid{
+    display: grid;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: end;
+    height: 50rem;
+    
+}
+
+
+.error{
+    z-index: 1;
+    position: relative;
+}
+
+.error span{
+    font-size: 90px;
+    color: #150035;
+    font-weight: 900;
+    white-space: pre-line;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-shadow: 1px 7px 1px #fff;
+}
+.error p{
+    color: #fff;
+    white-space: pre-line;
+    padding-top: 25px;
+    font-size: 15px;
+    line-height: 1.3;
+}
+

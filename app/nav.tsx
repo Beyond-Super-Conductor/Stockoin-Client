@@ -9,7 +9,6 @@ import React, { useEffect, useState } from 'react'
 
 export default function GlobalHeader() {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  
   const { getUserProfile,user } = useAuth();
   const { throttleScroll } = useThrottle();
   
@@ -22,9 +21,7 @@ export default function GlobalHeader() {
   }
 
   useEffect(() => {
-    window.addEventListener(
-      'scroll',
-      throttleScrollHandler);
+    window.addEventListener('scroll',throttleScrollHandler);
   },[])
 
   useEffect(() => {
@@ -39,7 +36,6 @@ export default function GlobalHeader() {
     `}>
       
       <ul className='w-full flex md:flex-row flex-col items-center justify-center px-4 '>
-        
         <li className='flex items-center justify-between flex-1 my-4'>
           <Link href="/">
             {
@@ -63,8 +59,9 @@ export default function GlobalHeader() {
             type="text"
             placeholder='UBCI 또는 관심 있는 토큰을 검색해보세요!'
             />
-          <button className='border h-24 w-24 min border-slate-300  rounded-lg p-1 hover:bg-slate-300 hover:text-slate-600 '>
-            검색</button>
+            <button className='border h-24 w-24 min border-slate-300 rounded-lg p-1 hover:bg-slate-300 hover:text-slate-600 '>
+              검색
+            </button>
           </form>
         </li>
         <li className=' flex-1 flex justify-end items-center gap-10'>
@@ -72,7 +69,7 @@ export default function GlobalHeader() {
             !user
             ? <div
                 className={`py-4  px-8 rounded-lg flex gap-4
-                  ${isIntersecting ? 'bg-slate-700 bg-opacity-70' : 'bg-sky-200/80'}
+                  ${isIntersecting ? 'bg-transparent' : 'bg-slate-700 bg-opacity-70'}
                   `}>
                 <Link
                   className='
@@ -92,13 +89,11 @@ export default function GlobalHeader() {
               </div>
             : <div className='py-4 bg-sky-200 px-8 rounded-lg flex gap-4'>
                 <Link href='/profile'>{user.nickname}님 환영합니다!</Link>
-                <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
+                  <button onClick={() => {localStorage.clear(); location.href = '/'}}>로그아웃</button>
                 <Link href="/pan">My Pan</Link>
               </div>
           }
-          
         </li>
-          
       </ul>
       <ul className='relative w-full md:mt-0 mt-8 justify-between flex items-center h-auto border-b border-slate-300 px-4 cursor-pointer'>
         {
@@ -116,7 +111,7 @@ export default function GlobalHeader() {
           ))
         }
         <ShowMoreCategoryButton />
-    </ul>
+      </ul>
     </nav>
     
   )

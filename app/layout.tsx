@@ -13,7 +13,7 @@ interface Props {}
 export default function RootLayout({children}:PropsWithChildren<Props>) {
   return (
     <html lang='ko'>                             
-      <body className=' my-0 mx-auto bg-white min-h-[100vh] h-auto '>
+      <body className='my-0 mx-auto bg-white min-h-[100vh] h-auto'>
         <Recoil>
           <MSW>
             {children}

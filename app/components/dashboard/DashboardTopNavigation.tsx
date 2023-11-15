@@ -16,6 +16,7 @@ export default function DashboardTopNavigation() {
       window.removeEventListener('popstate', handleBackButtonClick)
     }
   },[])
+  
   return (
     <div
     className={`flex-1 flex items-center justify-between h-full`}
