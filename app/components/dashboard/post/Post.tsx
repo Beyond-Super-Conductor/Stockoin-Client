@@ -23,6 +23,7 @@ export default function Post() {
 
   if(!post) return null;
   return (
+    // Todo: 컴포넌트 분리작업
     <div className='w-full max-w-[1280px] mx-auto'>
       
       <div
@@ -51,9 +52,9 @@ export default function Post() {
             <p className='text-lg text-gray-400'>작성일자:{formatDate(post.createdAt)}</p>
             <p className='text-lg text-gray-500'>수정일자:{formatDate(post.updatedAt)}</p>
             <div>
-            <span className='text-gray-600 px-1 inline-block text-lg pr-2'>조회: {post.viewCount}</span>
-            <span className='text-gray-600 px-1 inline-block text-lg'>추천: 4</span>
-            <span className='text-gray-600 px-1 inline-block text-lg'>댓글: 4</span>
+              <span className='text-gray-600 px-1 inline-block text-lg pr-2'>조회: {post.viewCount}</span>
+              <span className='text-gray-600 px-1 inline-block text-lg'>추천: 4</span>
+              <span className='text-gray-600 px-1 inline-block text-lg'>댓글: 4</span>
             </div>
           </div>
         </div>
@@ -110,7 +111,7 @@ export default function Post() {
       </div>
       <div className='w-full my-10 flex items-center justify-end px-20 border-y border-slate-400 h-[200px] gap-2'>
         <p className='flex-[0.4]'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, odit laboriosam est inventore eveniet autem ad at, ex vel, accusantium eos et. Aliquam omnis molestias eligendi, quas eius eveniet accusantium!
+          스토코인 관련 글
         </p>
         <div className='flex-[0.6] flex flex-col items-end gap-4'>
           <textarea className='border border-slate-400 w-full h-40' />
